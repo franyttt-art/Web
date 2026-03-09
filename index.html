@@ -3,444 +3,824 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Urban Barber | Estilo & Tradición</title>
+  <title>WebDeveloper Pro | Sitios Web que Venden</title>
   
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💈</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <style>
     body { font-family: 'Inter', sans-serif; }
-    .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+    .display { font-family: 'Space Grotesk', sans-serif; }
     
-    .barber-gradient {
-      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    .gradient-hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     }
     
-    .gold-accent {
-      color: #d4af37;
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     
-    .gold-bg {
-      background-color: #d4af37;
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
-    .gold-border {
-      border-color: #d4af37;
+    .card-lift {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-lift:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 25px 50px -12px rgba(102, 126, 234, 0.4);
     }
     
-    .stripe-pattern {
-      background: repeating-linear-gradient(
-        45deg,
-        #1a1a1a,
-        #1a1a1a 10px,
-        #2d2d2d 10px,
-        #2d2d2d 20px
-      );
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
     }
     
-    .service-card {
-      transition: all 0.3s ease;
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+    }
+    
+    .grid-bg {
+      background-image: 
+        linear-gradient(rgba(102, 126, 234, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    
+    .price-popular {
       position: relative;
       overflow: hidden;
     }
-    
-    .service-card::before {
-      content: '';
+    .price-popular::before {
+      content: 'MÁS ELEGIDO';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
-      transition: left 0.5s;
+      top: 20px;
+      right: -35px;
+      background: #667eea;
+      color: white;
+      padding: 5px 40px;
+      font-size: 10px;
+      font-weight: bold;
+      transform: rotate(45deg);
     }
     
-    .service-card:hover::before {
-      left: 100%;
+    .typing::after {
+      content: '|';
+      animation: blink 1s infinite;
     }
-    
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.3);
-    }
-    
-    .clipper-animation {
-      animation: clip 2s ease-in-out infinite;
-    }
-    
-    @keyframes clip {
-      0%, 100% { transform: rotate(-5deg); }
-      50% { transform: rotate(5deg); }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
     }
   </style>
 </head>
-<body class="bg-neutral-900 text-white">
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
 
   <!-- NAV -->
-  <nav class="fixed w-full z-50 bg-neutral-900/95 backdrop-blur-md border-b border-neutral-800">
+  <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
     <div class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center relative">
-            <div class="absolute inset-0 bg-red-600 rounded-full animate-ping opacity-20"></div>
-            <i class="fas fa-cut text-white text-xl"></i>
+          <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
+            W
           </div>
-          <div>
-            <h1 class="display text-2xl text-white">THE URBAN <span class="gold-accent">BARBER</span></h1>
-          </div>
+          <span class="display font-bold text-xl">Web<span class="gradient-text">Developer</span></span>
         </div>
         <div class="hidden md:flex items-center gap-8">
-          <a href="#" class="text-neutral-400 hover:text-white transition text-sm uppercase tracking-wider">Servicios</a>
-          <a href="#" class="text-neutral-400 hover:text-white transition text-sm uppercase tracking-wider">Barberos</a>
-          <a href="#" class="text-neutral-400 hover:text-white transition text-sm uppercase tracking-wider">Galería</a>
-          <button class="gold-bg text-neutral-900 px-6 py-2.5 rounded font-bold hover:bg-yellow-500 transition">
-            RESERVAR
-          </button>
+          <a href="#servicios" class="text-slate-600 hover:text-indigo-600 font-medium transition">Servicios</a>
+          <a href="#portfolio" class="text-slate-600 hover:text-indigo-600 font-medium transition">Portfolio</a>
+          <a href="#precios" class="text-slate-600 hover:text-indigo-600 font-medium transition">Precios</a>
+          <a href="#faq" class="text-slate-600 hover:text-indigo-600 font-medium transition">FAQ</a>
+          <a href="https://wa.me/5492214547057" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-full font-medium transition">
+            <i class="fab fa-whatsapp mr-2"></i>Contactar
+          </a>
         </div>
-        <button class="md:hidden text-white">
+        <button class="md:hidden text-slate-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
           <i class="fas fa-bars text-2xl"></i>
         </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-6 py-4 space-y-3">
+        <a href="#servicios" class="block text-slate-600 py-2">Servicios</a>
+        <a href="#portfolio" class="block text-slate-600 py-2">Portfolio</a>
+        <a href="#precios" class="block text-slate-600 py-2">Precios</a>
+        <a href="https://wa.me/5492214547057" class="block bg-indigo-600 text-white text-center py-3 rounded-lg">Contactar</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="pt-32 pb-20 relative overflow-hidden">
-    <div class="absolute inset-0 stripe-pattern opacity-30"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-neutral-900/50 to-neutral-900"></div>
+  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden grid-bg">
+    <div class="absolute inset-0 gradient-hero opacity-5"></div>
+    <div class="absolute top-20 right-0 w-1/2 h-full bg-gradient-to-l from-indigo-500/10 to-transparent"></div>
     
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <div class="inline-flex items-center gap-2 gold-bg text-neutral-900 px-4 py-2 rounded-full text-sm font-bold mb-6">
-            <i class="fas fa-star"></i>
-            #1 Barbería de la Ciudad
+    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="gsap-hero-text">
+          <div class="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            Disponible para proyectos
           </div>
           
-          <h2 class="display text-6xl md:text-8xl font-bold mb-6 leading-none">
-            ESTILO QUE <br/>
-            <span class="gold-accent">MARCA</span> DIFERENCIA
-          </h2>
+          <h1 class="display text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            Sitios web que <br/>
+            <span class="gradient-text typing" id="typing-text">venden</span>
+          </h1>
           
-          <p class="text-neutral-400 text-xl mb-8 max-w-lg">
-            Más que un corte, una experiencia. Tradición barbera combinada con las últimas tendencias urbanas.
+          <p class="text-xl text-slate-600 mb-8 max-w-lg leading-relaxed">
+            Desarrollo páginas profesionales con sistema de turnos integrado. 
+            Desde <strong class="text-indigo-600">$150.000 ARS</strong> o <strong class="text-indigo-600">$800 USD</strong>.
           </p>
           
           <div class="flex flex-wrap gap-4 mb-12">
-            <button class="gold-bg text-neutral-900 px-8 py-4 rounded font-bold text-lg hover:bg-yellow-500 transition shadow-lg shadow-yellow-500/20">
-              <i class="fas fa-calendar-alt mr-2"></i>AGENDAR TURNO
-            </button>
-            <button class="border-2 border-neutral-600 text-white px-8 py-4 rounded font-bold text-lg hover:border-white transition">
-              <i class="fas fa-play mr-2"></i>VER SERVICIOS
-            </button>
+            <a href="https://wa.me/5492214547057?text=Hola!%20V%C3%AD%20tu%20web%20y%20quiero%20consultar%20por%20un%20proyecto" target="_blank" 
+               class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition shadow-xl hover:shadow-2xl pulse-glow">
+              <i class="fab fa-whatsapp mr-2"></i>Consultar Gratis
+            </a>
+            <a href="#portfolio" class="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-indigo-600 hover:text-indigo-600 transition">
+              Ver Trabajos
+            </a>
           </div>
           
-          <div class="flex items-center gap-6">
-            <div class="flex -space-x-3">
-              <img src="https://ui-avatars.com/api/?name=Juan+Perez&background=d4af37&color=1a1a1a" class="w-12 h-12 rounded-full border-2 border-neutral-900" alt="Cliente">
-              <img src="https://ui-avatars.com/api/?name=Pedro+Lopez&background=c0392b&color=fff" class="w-12 h-12 rounded-full border-2 border-neutral-900" alt="Cliente">
-              <img src="https://ui-avatars.com/api/?name=Martin+Garcia&background=2980b9&color=fff" class="w-12 h-12 rounded-full border-2 border-neutral-900" alt="Cliente">
+          <div class="flex items-center gap-6 text-sm text-slate-500">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-green-500"></i>
+              <span>Entrega en 7 días</span>
             </div>
-            <div>
-              <div class="flex items-center gap-1 gold-accent mb-1">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="text-neutral-400 text-sm">+2,500 clientes satisfechos</p>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-green-500"></i>
+              <span>Garantía 30 días</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle text-green-500"></i>
+              <span>Soporte incluido</span>
             </div>
           </div>
         </div>
         
-        <div class="relative">
-          <div class="absolute -inset-4 bg-gradient-to-r from-red-600/20 to-yellow-500/20 rounded-3xl blur-2xl"></div>
-          <div class="relative bg-neutral-800 rounded-3xl p-6 border border-neutral-700">
-            <div class="flex items-center justify-between mb-6">
-              <h3 class="display text-2xl">PRÓXIMOS TURNOS</h3>
-              <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs font-bold">ABIERTO</span>
+        <div class="relative gsap-hero-image">
+          <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur-2xl opacity-20"></div>
+          <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200">
+            <div class="bg-slate-900 p-4 flex items-center gap-2">
+              <div class="flex gap-1.5">
+                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+              </div>
+              <div class="flex-1 text-center text-xs text-slate-400">lic-florencia-rosales.vercel.app</div>
             </div>
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" class="w-full h-auto" alt="Website Preview">
             
-            <div class="space-y-4">
-              <div class="bg-neutral-700/50 rounded-xl p-4 flex items-center gap-4 hover:bg-neutral-700 transition cursor-pointer group">
-                <div class="w-16 h-16 bg-neutral-600 rounded-lg flex items-center justify-center">
-                  <i class="fas fa-user-tie text-2xl text-neutral-400 group-hover:text-white transition"></i>
+            <!-- Floating Stats -->
+            <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 float">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                  <i class="fas fa-chart-line text-xl"></i>
                 </div>
-                <div class="flex-1">
-                  <h4 class="font-bold text-lg">Diego "El Maestro"</h4>
-                  <p class="text-neutral-400 text-sm">Especialista en fades y diseños</p>
-                </div>
-                <div class="text-right">
-                  <div class="gold-accent font-bold">14:30</div>
-                  <div class="text-green-400 text-xs">Disponible</div>
-                </div>
-              </div>
-              
-              <div class="bg-neutral-700/50 rounded-xl p-4 flex items-center gap-4 hover:bg-neutral-700 transition cursor-pointer group">
-                <div class="w-16 h-16 bg-neutral-600 rounded-lg flex items-center justify-center">
-                  <i class="fas fa-user-tie text-2xl text-neutral-400 group-hover:text-white transition"></i>
-                </div>
-                <div class="flex-1">
-                  <h4 class="font-bold text-lg">Marco "The Artist"</h4>
-                  <p class="text-neutral-400 text-sm">Barba y tratamientos</p>
-                </div>
-                <div class="text-right">
-                  <div class="gold-accent font-bold">15:00</div>
-                  <div class="text-green-400 text-xs">Disponible</div>
-                </div>
-              </div>
-              
-              <div class="bg-neutral-700/50 rounded-xl p-4 flex items-center gap-4 hover:bg-neutral-700 transition cursor-pointer group">
-                <div class="w-16 h-16 bg-neutral-600 rounded-lg flex items-center justify-center">
-                  <i class="fas fa-user-tie text-2xl text-neutral-400 group-hover:text-white transition"></i>
-                </div>
-                <div class="flex-1">
-                  <h4 class="font-bold text-lg">Leo "Classic"</h4>
-                  <p class="text-neutral-400 text-sm">Cortes tradicionales</p>
-                </div>
-                <div class="text-right">
-                  <div class="gold-accent font-bold">16:15</div>
-                  <div class="text-yellow-400 text-xs">Último turno</div>
+                <div>
+                  <div class="text-2xl font-bold text-slate-800">+340%</div>
+                  <div class="text-xs text-slate-500">Reservas online</div>
                 </div>
               </div>
             </div>
             
-            <button class="w-full mt-6 gold-bg text-neutral-900 py-4 rounded-xl font-bold hover:bg-yellow-500 transition">
-              VER TODOS LOS HORARIOS
-            </button>
+            <div class="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-4 float" style="animation-delay: 1s;">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600">
+                  <i class="fas fa-mobile-alt text-xl"></i>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-slate-800">100%</div>
+                  <div class="text-xs text-slate-500">Responsive</div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="py-12 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="text-center text-slate-400 text-sm uppercase tracking-wider mb-8">Diseños para cualquier rubro</p>
+      <div class="flex flex-wrap justify-center gap-12 opacity-50">
+        <div class="flex items-center gap-2 text-slate-400">
+          <i class="fas fa-heartbeat text-2xl"></i>
+          <span class="font-semibold">Medicina</span>
+        </div>
+        <div class="flex items-center gap-2 text-slate-400">
+          <i class="fas fa-cut text-2xl"></i>
+          <span class="font-semibold">Barberías</span>
+        </div>
+        <div class="flex items-center gap-2 text-slate-400">
+          <i class="fas fa-briefcase text-2xl"></i>
+          <span class="font-semibold">Consultoras</span>
+        </div>
+        <div class="flex items-center gap-2 text-slate-400">
+          <i class="fas fa-utensils text-2xl"></i>
+          <span class="font-semibold">Restaurantes</span>
+        </div>
+        <div class="flex items-center gap-2 text-slate-400">
+          <i class="fas fa-dumbbell text-2xl"></i>
+          <span class="font-semibold">Gimnasios</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SERVICIOS -->
-  <section class="py-24 bg-neutral-800">
+  <section id="servicios" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h3 class="display text-5xl font-bold mb-4">NUESTROS <span class="gold-accent">SERVICIOS</span></h3>
-        <p class="text-neutral-400 max-w-2xl mx-auto text-lg">Cada servicio incluye bebida de cortesía y asesoramiento de estilo personalizado.</p>
+        <h3 class="display text-4xl md:text-5xl font-bold mb-4">¿Qué incluye?</h3>
+        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Todo lo que necesitás para tener presencia online profesional y empezar a recibir reservas.</p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="service-card bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-700">
-          <div class="h-48 bg-neutral-700 relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-cut text-6xl text-neutral-600"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-neutral-900 to-transparent h-20"></div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
+          <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 mb-6">
+            <i class="fas fa-paint-brush text-2xl"></i>
           </div>
-          <div class="p-6">
-            <h4 class="display text-2xl mb-2">Corte Clásico</h4>
-            <p class="text-neutral-400 text-sm mb-4">Tijera y máquina, acabado perfecto.</p>
-            <div class="flex items-center justify-between">
-              <span class="gold-accent text-2xl font-bold">$2,500</span>
-              <span class="text-neutral-500 text-sm">30 min</span>
-            </div>
-          </div>
+          <h4 class="font-bold text-xl mb-3">Diseño Único</h4>
+          <p class="text-slate-600">Diseño personalizado según tu marca. No uso plantillas genéricas. Cada sitio es único.</p>
         </div>
         
-        <div class="service-card bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-700">
-          <div class="h-48 bg-neutral-700 relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-razor text-6xl text-neutral-600"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-neutral-900 to-transparent h-20"></div>
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
+          <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6">
+            <i class="fas fa-calendar-check text-2xl"></i>
           </div>
-          <div class="p-6">
-            <h4 class="display text-2xl mb-2">Fade Premium</h4>
-            <p class="text-neutral-400 text-sm mb-4">Degradado perfecto, cualquier altura.</p>
-            <div class="flex items-center justify-between">
-              <span class="gold-accent text-2xl font-bold">$3,200</span>
-              <span class="text-neutral-500 text-sm">45 min</span>
-            </div>
-          </div>
+          <h4 class="font-bold text-xl mb-3">Sistema de Turnos</h4>
+          <p class="text-slate-600">Calendario interactivo donde tus clientes reservan directo. Notificaciones automáticas.</p>
         </div>
         
-        <div class="service-card bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-700">
-          <div class="h-48 bg-neutral-700 relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-magic text-6xl text-neutral-600"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-neutral-900 to-transparent h-20"></div>
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
+          <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 mb-6">
+            <i class="fas fa-mobile-alt text-2xl"></i>
           </div>
-          <div class="p-6">
-            <h4 class="display text-2xl mb-2">Barba & Bigote</h4>
-            <p class="text-neutral-400 text-sm mb-4">Diseño, perfilado y tratamiento.</p>
-            <div class="flex items-center justify-between">
-              <span class="gold-accent text-2xl font-bold">$2,000</span>
-              <span class="text-neutral-500 text-sm">25 min</span>
-            </div>
-          </div>
+          <h4 class="font-bold text-xl mb-3">100% Responsive</h4>
+          <p class="text-slate-600">Se ve perfecto en celulares, tablets y computadoras. Tus clientes pueden reservar desde cualquier lado.</p>
         </div>
         
-        <div class="service-card bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-700 relative">
-          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">POPULAR</div>
-          <div class="h-48 bg-neutral-700 relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <i class="fas fa-crown text-6xl text-neutral-600"></i>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-neutral-900 to-transparent h-20"></div>
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
+          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+            <i class="fas fa-lock text-2xl"></i>
           </div>
-          <div class="p-6">
-            <h4 class="display text-2xl mb-2">Full Experience</h4>
-            <p class="text-neutral-400 text-sm mb-4">Corte + barba + tratamiento facial.</p>
-            <div class="flex items-center justify-between">
-              <span class="gold-accent text-2xl font-bold">$5,500</span>
-              <span class="text-neutral-500 text-sm">75 min</span>
-            </div>
+          <h4 class="font-bold text-xl mb-3">Panel de Admin</h4>
+          <p class="text-slate-600">Gestioná tus turnos, disponibilidad y datos de clientes desde un panel privado con contraseña.</p>
+        </div>
+        
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
+          <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-6">
+            <i class="fas fa-rocket text-2xl"></i>
           </div>
+          <h4 class="font-bold text-xl mb-3">Hosting Incluido</h4>
+          <p class="text-slate-600">Subo tu web a internet sin costo adicional el primer año. Dominio personalizado opcional.</p>
+        </div>
+        
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
+          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-6">
+            <i class="fas fa-headset text-2xl"></i>
+          </div>
+          <h4 class="font-bold text-xl mb-3">Soporte Garantizado</h4>
+          <p class="text-slate-600">30 días de soporte post-entrega para ajustes. Después, soporte mensual opcional.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BARBEROS -->
-  <section class="py-24 bg-neutral-900 relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-30"></div>
-    
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="py-24 bg-slate-50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h3 class="display text-5xl font-bold mb-4">CONOCE A LOS <span class="gold-accent">ARTISTAS</span></h3>
-        <p class="text-neutral-400">Cada barbero tiene su especialidad. Elegí el que mejor se adapte a tu estilo.</p>
+        <h3 class="display text-4xl md:text-5xl font-bold mb-4">Trabajos Recientes</h3>
+        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Algunos ejemplos de sitios entregados con sistema de reservas integrado.</p>
       </div>
       
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center group">
-          <div class="relative mb-6 inline-block">
-            <div class="w-48 h-48 mx-auto bg-neutral-700 rounded-full overflow-hidden border-4 border-neutral-800 group-hover:border-yellow-500 transition">
-              <img src="https://ui-avatars.com/api/?name=Diego+Barber&background=2d2d2d&color=d4af37&size=200" class="w-full h-full object-cover" alt="Barbero">
+        <!-- Proyecto 1: Psicología -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg">
+          <div class="aspect-[4/3] bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
+            <div class="text-center p-8">
+              <div class="w-20 h-20 bg-gray-800 rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">Ψ</div>
+              <h4 class="font-bold text-xl text-gray-800">Lic. Florencia Rosales</h4>
+              <p class="text-gray-500">Psicología</p>
             </div>
-            <div class="absolute bottom-0 right-0 w-12 h-12 gold-bg rounded-full flex items-center justify-center text-neutral-900 font-bold">5★</div>
           </div>
-          <h4 class="display text-2xl mb-1">DIEGO "EL MAESTRO"</h4>
-          <p class="gold-accent text-sm mb-3">Especialista en Fades</p>
-          <p class="text-neutral-400 text-sm mb-4">15 años de experiencia. Maestro en degradados y diseños geométricos.</p>
-          <button class="border border-neutral-600 text-white px-6 py-2 rounded hover:border-yellow-500 hover:text-yellow-500 transition">
-            Ver Horarios
-          </button>
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <div class="text-white">
+              <h4 class="font-bold text-lg mb-2">Sistema de Turnos para Psicóloga</h4>
+              <p class="text-sm text-slate-300 mb-4">Calendario con disponibilidad virtual y presencial. Panel de admin completo.</p>
+              <a href="#" class="inline-flex items-center gap-2 text-indigo-400 font-medium hover:text-indigo-300">
+                Ver proyecto <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
         
-        <div class="text-center group">
-          <div class="relative mb-6 inline-block">
-            <div class="w-48 h-48 mx-auto bg-neutral-700 rounded-full overflow-hidden border-4 border-neutral-800 group-hover:border-yellow-500 transition">
-              <img src="https://ui-avatars.com/api/?name=Marco+Artist&background=2d2d2d&color=c0392b&size=200" class="w-full h-full object-cover" alt="Barbero">
+        <!-- Proyecto 2: Médico -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg">
+          <div class="aspect-[4/3] bg-gradient-to-br from-blue-50 to-emerald-50 flex items-center justify-center">
+            <div class="text-center p-8">
+              <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <h4 class="font-bold text-xl text-gray-800">Centro Médico Integral</h4>
+              <p class="text-gray-500">Salud</p>
             </div>
-            <div class="absolute bottom-0 right-0 w-12 h-12 gold-bg rounded-full flex items-center justify-center text-neutral-900 font-bold">5★</div>
           </div>
-          <h4 class="display text-2xl mb-1">MARCO "THE ARTIST"</h4>
-          <p class="gold-accent text-sm mb-3">Barba & Tratamientos</p>
-          <p class="text-neutral-400 text-sm mb-4">Experto en barbas y cuidado facial. Productos premium incluidos.</p>
-          <button class="border border-neutral-600 text-white px-6 py-2 rounded hover:border-yellow-500 hover:text-yellow-500 transition">
-            Ver Horarios
-          </button>
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <div class="text-white">
+              <h4 class="font-bold text-lg mb-2">Clínica con 20+ Especialidades</h4>
+              <p class="text-sm text-slate-300 mb-4">Reservas por especialidad, recordatorios automáticos y gestión de pacientes.</p>
+              <a href="#" class="inline-flex items-center gap-2 text-indigo-400 font-medium hover:text-indigo-300">
+                Ver proyecto <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
         
-        <div class="text-center group">
-          <div class="relative mb-6 inline-block">
-            <div class="w-48 h-48 mx-auto bg-neutral-700 rounded-full overflow-hidden border-4 border-neutral-800 group-hover:border-yellow-500 transition">
-              <img src="https://ui-avatars.com/api/?name=Leo+Classic&background=2d2d2d&color=2980b9&size=200" class="w-full h-full object-cover" alt="Barbero">
+        <!-- Proyecto 3: Barbería -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg">
+          <div class="aspect-[4/3] bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center">
+            <div class="text-center p-8">
+              <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-neutral-900 text-3xl mx-auto mb-4">
+                <i class="fas fa-cut"></i>
+              </div>
+              <h4 class="font-bold text-xl text-white">The Urban Barber</h4>
+              <p class="text-yellow-500">Estilo Urbano</p>
             </div>
-            <div class="absolute bottom-0 right-0 w-12 h-12 gold-bg rounded-full flex items-center justify-center text-neutral-900 font-bold">4.9★</div>
           </div>
-          <h4 class="display text-2xl mb-1">LEO "CLASSIC"</h4>
-          <p class="gold-accent text-sm mb-3">Cortes Tradicionales</p>
-          <p class="text-neutral-400 text-sm mb-4">Especialista en cortes clásicos y vintage. Técnica impecable.</p>
-          <button class="border border-neutral-600 text-white px-6 py-2 rounded hover:border-yellow-500 hover:text-yellow-500 transition">
-            Ver Horarios
-          </button>
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <div class="text-white">
+              <h4 class="font-bold text-lg mb-2">Barbería con Sistema de Barberos</h4>
+              <p class="text-sm text-slate-300 mb-4">Elegí barbero, servicio y horario. Pagos integrados y sistema de puntos.</p>
+              <a href="#" class="inline-flex items-center gap-2 text-indigo-400 font-medium hover:text-indigo-300">
+                Ver proyecto <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <p class="text-slate-500 mb-4">¿Tenés un proyecto en mente?</p>
+        <a href="https://wa.me/5492214547057" target="_blank" class="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:text-indigo-700">
+          Hablemos de tu idea <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- INFO -->
-  <section class="py-24 bg-neutral-800">
+  <!-- PRECIOS -->
+  <section id="precios" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-3 gap-8 text-center">
-        <div class="p-8">
-          <i class="fas fa-map-marker-alt text-4xl gold-accent mb-4"></i>
-          <h4 class="display text-2xl mb-2">UBICACIÓN</h4>
-          <p class="text-neutral-400">Av. Santa Fe 2345, Palermo<br/>Buenos Aires, Argentina</p>
+      <div class="text-center mb-16">
+        <h3 class="display text-4xl md:text-5xl font-bold mb-4">Inversión</h3>
+        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Precios transparentes. Sin costos ocultos. Elegí el plan que se adapte a tu negocio.</p>
+        
+        <!-- Toggle ARS/USD -->
+        <div class="flex justify-center mt-8">
+          <div class="bg-slate-100 p-1 rounded-full inline-flex">
+            <button onclick="showPrices('ars')" id="btn-ars" class="px-6 py-2 rounded-full bg-white shadow-sm font-medium text-slate-800 transition">Pesos ARS</button>
+            <button onclick="showPrices('usd')" id="btn-usd" class="px-6 py-2 rounded-full font-medium text-slate-500 hover:text-slate-800 transition">Dólares USD</button>
+          </div>
         </div>
-        <div class="p-8 border-x border-neutral-700">
-          <i class="fas fa-clock text-4xl gold-accent mb-4"></i>
-          <h4 class="display text-2xl mb-2">HORARIOS</h4>
-          <p class="text-neutral-400">Lun a Sáb: 10:00 - 20:00<br/>Domingos: Cerrado</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Plan Básico -->
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 card-lift">
+          <div class="mb-6">
+            <h4 class="font-bold text-lg text-slate-600 mb-2">Landing Page</h4>
+            <div class="price-ars">
+              <span class="text-4xl font-bold text-slate-800">$150.000</span>
+              <span class="text-slate-500"> ARS</span>
+            </div>
+            <div class="price-usd hidden">
+              <span class="text-4xl font-bold text-slate-800">$800</span>
+              <span class="text-slate-500"> USD</span>
+            </div>
+          </div>
+          
+          <p class="text-slate-600 mb-6 text-sm">Página única profesional con información de tu negocio y formulario de contacto.</p>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-sm">
+              <i class="fas fa-check text-green-500"></i>
+              <span>Diseño personalizado</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <i class="fas fa-check text-green-500"></i>
+              <span>Responsive (mobile-friendly)</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <i class="fas fa-check text-green-500"></i>
+              <span>Formulario de contacto</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <i class="fas fa-check text-green-500"></i>
+              <span>Hosting 1 año incluido</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-400">
+              <i class="fas fa-times"></i>
+              <span>Sistema de turnos</span>
+            </li>
+          </ul>
+          
+          <a href="https://wa.me/5492214547057?text=Hola!%20Me%20interesa%20el%20Plan%20Landing%20Page" target="_blank" 
+             class="block w-full border-2 border-slate-300 text-slate-700 text-center py-3 rounded-xl font-semibold hover:border-indigo-600 hover:text-indigo-600 transition">
+            Consultar
+          </a>
         </div>
-        <div class="p-8">
-          <i class="fas fa-phone text-4xl gold-accent mb-4"></i>
-          <h4 class="display text-2xl mb-2">CONTACTO</h4>
-          <p class="text-neutral-400">+54 11 5555-0123<br/>hola@urbanbarber.com</p>
+        
+        <!-- Plan Profesional (POPULAR) -->
+        <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 card-lift price-popular relative">
+          <div class="mb-6">
+            <h4 class="font-bold text-lg text-indigo-400 mb-2">Con Turnos</h4>
+            <div class="price-ars">
+              <span class="text-4xl font-bold text-white">$280.000</span>
+              <span class="text-slate-400"> ARS</span>
+            </div>
+            <div class="price-usd hidden">
+              <span class="text-4xl font-bold text-white">$1.500</span>
+              <span class="text-slate-400"> USD</span>
+            </div>
+          </div>
+          
+          <p class="text-slate-400 mb-6 text-sm">Sitio completo con sistema de reservas. Ideal para profesionales y consultorios.</p>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-sm text-white">
+              <i class="fas fa-check text-indigo-400"></i>
+              <span>Todo del plan anterior</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white">
+              <i class="fas fa-check text-indigo-400"></i>
+              <span><strong>Sistema de turnos completo</strong></span>
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white">
+              <i class="fas fa-check text-indigo-400"></i>
+              <span>Panel de administración</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white">
+              <i class="fas fa-check text-indigo-400"></i>
+              <span>Múltiples secciones</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white">
+              <i class="fas fa-check text-indigo-400"></i>
+              <span>Notificaciones por email</span>
+            </li>
+          </ul>
+          
+          <a href="https://wa.me/5492214547057?text=Hola!%20Me%20interesa%20el%20Plan%20Con%20Turnos%20(Profesional)" target="_blank" 
+             class="block w-full bg-indigo-600 text-white text-center py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">
+            Elegir Plan
+          </a>
+        </div>
+        
+        <!-- Plan Premium -->
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 card-lift">
+          <div class="mb-6">
+            <h4 class="font-bold text-lg text-slate-600 mb-2">Premium</h4>
+            <div class="price-ars">
+              <span class="text-4xl font-bold text-slate-800">$450.000</span>
+              <span class="text-slate-500"> ARS</span>
+            </div>
+            <div class="price-usd hidden">
+              <span class="text-4xl font-bold text-slate-800">$2.500</span>
+              <span class="text-slate-500"> USD</span>
+            </div>
+          </div>
+          
+          <p class="text-slate-600 mb-6 text-sm">Para negocios que necesitan funcionalidades avanzadas y múltiples profesionales.</p>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-sm">
+              <i class="fas fa-check text-green-500"></i>
+              <span>Todo del plan Con Turnos</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <i class="fas fa-check text-green-500"></i>
+              <span>Múltiples profesionales/barberos</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <i class="fas fa-check text-green-500"></i>
+              <span>Pagos online integrados</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <i class="fas fa-check text-green-500"></i>
+              <span>Recordatorios WhatsApp</span>
+            </li>
+            <li class="flex items-center gap-3 text-sm">
+              <i class="fas fa-check text-green-500"></i>
+              <span>Soporte prioritario 6 meses</span>
+            </li>
+          </ul>
+          
+          <a href="https://wa.me/5492214547057?text=Hola!%20Me%20interesa%20el%20Plan%20Premium" target="_blank" 
+             class="block w-full border-2 border-slate-300 text-slate-700 text-center py-3 rounded-xl font-semibold hover:border-indigo-600 hover:text-indigo-600 transition">
+            Consultar
+          </a>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12 p-6 bg-indigo-50 rounded-2xl max-w-2xl mx-auto">
+        <p class="text-slate-600 text-sm">
+          <i class="fas fa-info-circle text-indigo-600 mr-2"></i>
+          Los precios en pesos pueden ajustarse según cotización del dólar blue. 
+          Consultá por planes de mantenimiento mensual.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h3 class="display text-4xl md:text-5xl font-bold mb-4">¿Cómo trabajamos?</h3>
+        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Proceso simple y transparente. De tu idea a la web en línea en 7 días.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 text-2xl font-bold mx-auto mb-4">1</div>
+          <h4 class="font-bold text-lg mb-2">Consulta</h4>
+          <p class="text-slate-500 text-sm">Hablamos de tu negocio, necesidades y objetivos. Sin compromiso.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 text-2xl font-bold mx-auto mb-4">2</div>
+          <h4 class="font-bold text-lg mb-2">Propuesta</h4>
+          <p class="text-slate-500 text-sm">Te envío un diseño preliminar y presupuesto detallado.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 text-2xl font-bold mx-auto mb-4">3</div>
+          <h4 class="font-bold text-lg mb-2">Desarrollo</h4>
+          <p class="text-slate-500 text-sm">Construyo tu sitio con actualizaciones cada 2 días.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-2xl font-bold mx-auto mb-4">4</div>
+          <h4 class="font-bold text-lg mb-2">Entrega</h4>
+          <p class="text-slate-500 text-sm">Tu web online, capacitación y 30 días de soporte incluido.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-red-600"></div>
-    <div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.5) 35px, rgba(0,0,0,.5) 70px);"></div>
+  <!-- FAQ -->
+  <section id="faq" class="py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h3 class="display text-4xl font-bold mb-4">Preguntas Frecuentes</h3>
+        <p class="text-slate-500">Todo lo que necesitás saber antes de empezar.</p>
+      </div>
+      
+      <div class="space-y-4">
+        <details class="group bg-slate-50 rounded-xl">
+          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium">
+            <span>¿Cuánto tiempo tarda en estar lista la web?</span>
+            <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-6 pb-6 text-slate-600">
+            Entre 5 y 7 días hábiles desde que confirmás el proyecto. Si necesitás algo urgente, consultá por entrega express (3-4 días con recargo del 20%).
+          </div>
+        </details>
+        
+        <details class="group bg-slate-50 rounded-xl">
+          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium">
+            <span>¿Necesito tener dominio y hosting?</span>
+            <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-6 pb-6 text-slate-600">
+            No es necesario. Incluyo hosting gratuito el primer año (Vercel/Netlify). Si querés un dominio personalizado (tunegocio.com), te guío en la compra (costo aparte, unos $15-20 USD/año).
+          </div>
+        </details>
+        
+        <details class="group bg-slate-50 rounded-xl">
+          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium">
+            <span>¿Puedo modificar los turnos una vez entregada?</span>
+            <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-6 pb-6 text-slate-600">
+            ¡Por supuesto! El panel de administración te permite agregar, modificar o eliminar disponibilidad de turnos en cualquier momento. Es 100% autogestionable.
+          </div>
+        </details>
+        
+        <details class="group bg-slate-50 rounded-xl">
+          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium">
+            <span>¿Qué pasa si tengo un problema después de los 30 días?</span>
+            <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-6 pb-6 text-slate-600">
+            Ofrezco planes de mantenimiento mensual desde $20.000 ARS (o $50 USD) que incluyen soporte técnico, actualizaciones de seguridad y pequeños cambios. También podés consultar por arreglos puntuales.
+          </div>
+        </details>
+        
+        <details class="group bg-slate-50 rounded-xl">
+          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium">
+            <span>¿Cómo se realiza el pago?</span>
+            <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-6 pb-6 text-slate-600">
+            50% al confirmar el proyecto, 50% al entregar. Acepto transferencia bancaria (Argentina), MercadoPago, PayPal o cripto (USDT). Para el exterior, preferentemente Wise o PayPal.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="py-24 gradient-hero text-white text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="white" />
+      </svg>
+    </div>
     
-    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-      <h3 class="display text-5xl md:text-6xl font-bold mb-6">¿QUÉ ESTÁS ESPERANDO?</h3>
-      <p class="text-white/90 text-xl mb-10 max-w-2xl mx-auto">Los mejores turnos se llenan rápido. Reservá ahora y asegurá tu lugar con el barbero que prefieras.</p>
-      <button class="bg-neutral-900 text-white px-12 py-5 rounded font-bold text-xl hover:bg-neutral-800 transition shadow-2xl">
-        <i class="fas fa-calendar-check mr-2"></i>RESERVAR TURNO AHORA
-      </button>
-      <p class="text-white/60 text-sm mt-4">Cancelación gratuita hasta 2 horas antes</p>
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <h3 class="display text-5xl md:text-6xl font-bold mb-6">¿Listo para tu nueva web?</h3>
+      <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+        Agendá una consulta gratuita de 15 minutos. Sin compromiso, te explico cómo podemos llevar tu negocio al siguiente nivel.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <a href="https://wa.me/5492214547057?text=Hola!%20V%C3%AD%20tu%20web%20de%20desarrollo%20y%20quiero%20consultar%20por%20un%20proyecto" target="_blank" 
+           class="bg-white text-indigo-600 px-10 py-5 rounded-full font-bold text-lg hover:bg-indigo-50 transition shadow-2xl">
+          <i class="fab fa-whatsapp mr-2"></i>Escribir por WhatsApp
+        </a>
+        <a href="mailto:tuemail@ejemplo.com" class="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/10 transition">
+          <i class="fas fa-envelope mr-2"></i>Enviar Email
+        </a>
+      </div>
+      
+      <div class="flex items-center justify-center gap-8 text-sm text-white/80">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-check-circle"></i>
+          <span>Respuesta en 2 horas</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-check-circle"></i>
+          <span>Presupuesto sin cargo</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-neutral-950 text-neutral-400 py-16 border-t border-neutral-800">
+  <footer class="bg-slate-900 text-slate-400 py-16">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-12 mb-12">
         <div>
           <div class="flex items-center gap-2 mb-6">
-            <i class="fas fa-cut text-red-600 text-2xl"></i>
-            <span class="text-white font-bold text-lg display">THE URBAN <span class="gold-accent">BARBER</span></span>
+            <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold">W</div>
+            <span class="text-white font-bold text-lg">WebDeveloper</span>
           </div>
-          <p class="text-sm leading-relaxed">La barbería donde el estilo se encuentra con la tradición. Desde 2015 cuidando tu imagen.</p>
+          <p class="text-sm leading-relaxed">Desarrollo sitios web profesionales con sistema de turnos para emprendedores y profesionales de Latinoamérica y el mundo.</p>
         </div>
         <div>
-          <h5 class="text-white font-bold mb-4 display">SERVICIOS</h5>
+          <h5 class="text-white font-semibold mb-4">Servicios</h5>
           <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-yellow-500 transition">Corte Clásico</a></li>
-            <li><a href="#" class="hover:text-yellow-500 transition">Fade Premium</a></li>
-            <li><a href="#" class="hover:text-yellow-500 transition">Barba & Bigote</a></li>
-            <li><a href="#" class="hover:text-yellow-500 transition">Full Experience</a></li>
+            <li><a href="#" class="hover:text-indigo-400 transition">Landing Pages</a></li>
+            <li><a href="#" class="hover:text-indigo-400 transition">Sistemas de Turnos</a></li>
+            <li><a href="#" class="hover:text-indigo-400 transition">E-commerce</a></li>
+            <li><a href="#" class="hover:text-indigo-400 transition">Mantenimiento</a></li>
           </ul>
         </div>
         <div>
-          <h5 class="text-white font-bold mb-4 display">HORARIOS</h5>
+          <h5 class="text-white font-semibold mb-4">Contacto</h5>
           <ul class="space-y-2 text-sm">
-            <li>Lunes a Sábado: 10:00 - 20:00</li>
-            <li>Domingos: Cerrado</li>
-            <li class="text-green-400">Turnos online 24/7</li>
+            <li><i class="fab fa-whatsapp mr-2"></i>+54 9 221 454-7057</li>
+            <li><i class="fas fa-envelope mr-2"></i>tuemail@ejemplo.com</li>
+            <li><i class="fas fa-map-marker-alt mr-2"></i>La Plata, Argentina</li>
           </ul>
         </div>
         <div>
-          <h5 class="text-white font-bold mb-4 display">SEGUINOS</h5>
+          <h5 class="text-white font-semibold mb-4">Redes</h5>
           <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 bg-neutral-800 rounded flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="w-10 h-10 bg-neutral-800 rounded flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="w-10 h-10 bg-neutral-800 rounded flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
           </div>
         </div>
       </div>
-      <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm">&copy; 2026 The Urban Barber. Todos los derechos reservados.</p>
-        <div class="flex gap-6 text-sm">
-          <a href="#" class="hover:text-white">Términos</a>
-          <a href="#" class="hover:text-white">Privacidad</a>
-        </div>
+      <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm">&copy; 2026 WebDeveloper. Todos los derechos reservados.</p>
+        <p class="text-sm">Hecho con <i class="fas fa-heart text-red-500 mx-1"></i> en Argentina</p>
       </div>
     </div>
   </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Toggle precios ARS/USD
+    function showPrices(currency) {
+      const arsElements = document.querySelectorAll('.price-ars');
+      const usdElements = document.querySelectorAll('.price-usd');
+      const btnArs = document.getElementById('btn-ars');
+      const btnUsd = document.getElementById('btn-usd');
+      
+      if (currency === 'ars') {
+        arsElements.forEach(el => el.classList.remove('hidden'));
+        usdElements.forEach(el => el.classList.add('hidden'));
+        btnArs.classList.add('bg-white', 'shadow-sm', 'text-slate-800');
+        btnArs.classList.remove('text-slate-500');
+        btnUsd.classList.remove('bg-white', 'shadow-sm', 'text-slate-800');
+        btnUsd.classList.add('text-slate-500');
+      } else {
+        arsElements.forEach(el => el.classList.add('hidden'));
+        usdElements.forEach(el => el.classList.remove('hidden'));
+        btnUsd.classList.add('bg-white', 'shadow-sm', 'text-slate-800');
+        btnUsd.classList.remove('text-slate-500');
+        btnArs.classList.remove('bg-white', 'shadow-sm', 'text-slate-800');
+        btnArs.classList.add('text-slate-500');
+      }
+    }
+    
+    // Typing effect
+    const words = ['venden', 'conectan', 'crecen', 'destacan'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingElement = document.getElementById('typing-text');
+    
+    function type() {
+      const currentWord = words[wordIndex];
+      
+      if (isDeleting) {
+        typingElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+      
+      let typeSpeed = isDeleting ? 50 : 100;
+      
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+      }
+      
+      setTimeout(type, typeSpeed);
+    }
+    
+    // Iniciar typing
+    setTimeout(type, 1000);
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+      } else {
+        navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+      }
+    });
+    
+    // GSAP Animations
+    if (typeof gsap !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      
+      gsap.from('.gsap-hero-text', {
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        ease: 'power3.out'
+      });
+      
+      gsap.from('.gsap-hero-image', {
+        opacity: 0,
+        x: 50,
+        duration: 1,
+        delay: 0.3,
+        ease: 'power3.out'
+      });
+    }
+  </script>
 
 </body>
 </html>
