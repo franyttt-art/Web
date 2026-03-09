@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebDeveloper Pro | Sitios Web que Venden</title>
+  <title>Francisco Caro | Desarrollo Web Profesional</title>
   
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,20 +16,34 @@
     body { font-family: 'Inter', sans-serif; }
     .display { font-family: 'Space Grotesk', sans-serif; }
     
+    /* Nuevo esquema de colores: Negro, Dorado y Blanco */
     .gradient-hero {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
     }
     
     .gradient-text {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .gold-text {
+      color: #FFD700;
+    }
+    
+    .gold-bg {
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    }
+    
+    .gold-border {
+      border-color: #FFD700;
     }
     
     .glass {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 215, 0, 0.2);
     }
     
     .card-lift {
@@ -37,7 +51,7 @@
     }
     .card-lift:hover {
       transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 25px 50px -12px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 25px 50px -12px rgba(255, 215, 0, 0.3);
     }
     
     .float {
@@ -52,28 +66,29 @@
       animation: pulse-glow 2s ease-in-out infinite;
     }
     @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
-      50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
     }
     
     .grid-bg {
       background-image: 
-        linear-gradient(rgba(102, 126, 234, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
       background-size: 60px 60px;
     }
     
     .price-popular {
       position: relative;
       overflow: hidden;
+      border: 2px solid #FFD700;
     }
     .price-popular::before {
       content: 'MÁS ELEGIDO';
       position: absolute;
       top: 20px;
       right: -35px;
-      background: #667eea;
-      color: white;
+      background: #FFD700;
+      color: #0a0a0a;
       padding: 5px 40px;
       font-size: 10px;
       font-weight: bold;
@@ -83,133 +98,179 @@
     .typing::after {
       content: '|';
       animation: blink 1s infinite;
+      color: #FFD700;
     }
     @keyframes blink {
       0%, 50% { opacity: 1; }
       51%, 100% { opacity: 0; }
     }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      color: #0a0a0a;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+    }
+    
+    .btn-secondary {
+      border: 2px solid #FFD700;
+      color: #FFD700;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: #FFD700;
+      color: #0a0a0a;
+    }
+    
+    .service-icon {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+    
+    .nav-scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    }
+    
+    .section-dark {
+      background: #0a0a0a;
+      color: #ffffff;
+    }
+    
+    .section-light {
+      background: #f5f5f5;
+      color: #0a0a0a;
+    }
+    
+    .text-gold-muted {
+      color: #D4AF37;
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
+<body class="bg-white text-slate-900 overflow-x-hidden">
 
   <!-- NAV -->
-  <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+  <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent" id="navbar">
     <div class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
-            W
+          <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center text-black font-bold text-xl">
+            FC
           </div>
-          <span class="display font-bold text-xl">Web<span class="gradient-text">Developer</span></span>
+          <span class="display font-bold text-xl text-white">Francisco<span class="gradient-text">Caro</span></span>
         </div>
         <div class="hidden md:flex items-center gap-8">
-          <a href="#servicios" class="text-slate-600 hover:text-indigo-600 font-medium transition">Servicios</a>
-          <a href="#portfolio" class="text-slate-600 hover:text-indigo-600 font-medium transition">Portfolio</a>
-          <a href="#precios" class="text-slate-600 hover:text-indigo-600 font-medium transition">Precios</a>
-          <a href="#faq" class="text-slate-600 hover:text-indigo-600 font-medium transition">FAQ</a>
-          <a href="https://wa.me/5492214547057" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-full font-medium transition">
+          <a href="#servicios" class="text-slate-300 hover:text-yellow-400 font-medium transition">Servicios</a>
+          <a href="#portfolio" class="text-slate-300 hover:text-yellow-400 font-medium transition">Portfolio</a>
+          <a href="#precios" class="text-slate-300 hover:text-yellow-400 font-medium transition">Precios</a>
+          <a href="#faq" class="text-slate-300 hover:text-yellow-400 font-medium transition">FAQ</a>
+          <a href="https://wa.me/5492604323056" target="_blank" class="btn-primary px-6 py-2.5 rounded-full font-medium">
             <i class="fab fa-whatsapp mr-2"></i>Contactar
           </a>
         </div>
-        <button class="md:hidden text-slate-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <button class="md:hidden text-white" onclick="toggleMobileMenu()">
           <i class="fas fa-bars text-2xl"></i>
         </button>
       </div>
     </div>
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+    <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-yellow-500/20">
       <div class="px-6 py-4 space-y-3">
-        <a href="#servicios" class="block text-slate-600 py-2">Servicios</a>
-        <a href="#portfolio" class="block text-slate-600 py-2">Portfolio</a>
-        <a href="#precios" class="block text-slate-600 py-2">Precios</a>
-        <a href="https://wa.me/5492214547057" class="block bg-indigo-600 text-white text-center py-3 rounded-lg">Contactar</a>
+        <a href="#servicios" class="block text-slate-300 py-2 hover:text-yellow-400">Servicios</a>
+        <a href="#portfolio" class="block text-slate-300 py-2 hover:text-yellow-400">Portfolio</a>
+        <a href="#precios" class="block text-slate-300 py-2 hover:text-yellow-400">Precios</a>
+        <a href="https://wa.me/5492604323056" class="block btn-primary text-center py-3 rounded-lg text-black font-semibold">Contactar</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden grid-bg">
-    <div class="absolute inset-0 gradient-hero opacity-5"></div>
-    <div class="absolute top-20 right-0 w-1/2 h-full bg-gradient-to-l from-indigo-500/10 to-transparent"></div>
+  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden grid-bg gradient-hero">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
+    <div class="absolute top-20 right-0 w-1/2 h-full bg-gradient-to-l from-yellow-500/10 to-transparent"></div>
     
     <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div class="gsap-hero-text">
-          <div class="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <div class="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
             Disponible para proyectos
           </div>
           
-          <h1 class="display text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 class="display text-5xl md:text-7xl font-bold mb-6 leading-tight text-white">
             Sitios web que <br/>
             <span class="gradient-text typing" id="typing-text">venden</span>
           </h1>
           
-          <p class="text-xl text-slate-600 mb-8 max-w-lg leading-relaxed">
+          <p class="text-xl text-slate-300 mb-8 max-w-lg leading-relaxed">
             Desarrollo páginas profesionales con sistema de turnos integrado. 
-            Desde <strong class="text-indigo-600">$150.000 ARS</strong> o <strong class="text-indigo-600">$800 USD</strong>.
+            Desde <strong class="text-yellow-400">$150.000 ARS</strong> o <strong class="text-yellow-400">$110 USD</strong>.
           </p>
           
           <div class="flex flex-wrap gap-4 mb-12">
-            <a href="https://wa.me/5492214547057?text=Hola!%20V%C3%AD%20tu%20web%20y%20quiero%20consultar%20por%20un%20proyecto" target="_blank" 
-               class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition shadow-xl hover:shadow-2xl pulse-glow">
+            <a href="https://wa.me/5492604323056?text=Hola!%20V%C3%AD%20tu%20web%20y%20quiero%20consultar%20por%20un%20proyecto" target="_blank" 
+               class="btn-primary px-8 py-4 rounded-full font-semibold text-lg pulse-glow inline-flex items-center">
               <i class="fab fa-whatsapp mr-2"></i>Consultar Gratis
             </a>
-            <a href="#portfolio" class="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-indigo-600 hover:text-indigo-600 transition">
+            <a href="#portfolio" class="btn-secondary px-8 py-4 rounded-full font-semibold text-lg">
               Ver Trabajos
             </a>
           </div>
           
-          <div class="flex items-center gap-6 text-sm text-slate-500">
+          <div class="flex items-center gap-6 text-sm text-slate-400">
             <div class="flex items-center gap-2">
-              <i class="fas fa-check-circle text-green-500"></i>
+              <i class="fas fa-check-circle text-yellow-500"></i>
               <span>Entrega en 7 días</span>
             </div>
             <div class="flex items-center gap-2">
-              <i class="fas fa-check-circle text-green-500"></i>
+              <i class="fas fa-check-circle text-yellow-500"></i>
               <span>Garantía 30 días</span>
             </div>
             <div class="flex items-center gap-2">
-              <i class="fas fa-check-circle text-green-500"></i>
-              <span>Soporte incluido</span>
+              <i class="fas fa-check-circle text-yellow-500"></i>
+              <span>Soporte accesible</span>
             </div>
           </div>
         </div>
         
         <div class="relative gsap-hero-image">
-          <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur-2xl opacity-20"></div>
-          <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200">
-            <div class="bg-slate-900 p-4 flex items-center gap-2">
+          <div class="absolute -inset-4 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-3xl blur-2xl opacity-20"></div>
+          <div class="relative bg-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-yellow-500/20">
+            <div class="bg-black p-4 flex items-center gap-2 border-b border-yellow-500/20">
               <div class="flex gap-1.5">
                 <div class="w-3 h-3 bg-red-500 rounded-full"></div>
                 <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <div class="w-3 h-3 bg-green-500 rounded-full"></div>
               </div>
-              <div class="flex-1 text-center text-xs text-slate-400">lic-florencia-rosales.vercel.app</div>
+              <div class="flex-1 text-center text-xs text-slate-500">francisco-caro.vercel.app</div>
             </div>
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" class="w-full h-auto" alt="Website Preview">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" class="w-full h-auto opacity-90" alt="Website Preview">
             
             <!-- Floating Stats -->
-            <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 float">
+            <div class="absolute -bottom-6 -left-6 bg-slate-900 rounded-2xl shadow-xl p-4 float border border-yellow-500/30">
               <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                <div class="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center text-yellow-400">
                   <i class="fas fa-chart-line text-xl"></i>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-slate-800">+340%</div>
-                  <div class="text-xs text-slate-500">Reservas online</div>
+                  <div class="text-2xl font-bold text-white">+340%</div>
+                  <div class="text-xs text-slate-400">Reservas online</div>
                 </div>
               </div>
             </div>
             
-            <div class="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-4 float" style="animation-delay: 1s;">
+            <div class="absolute -top-6 -right-6 bg-slate-900 rounded-2xl shadow-xl p-4 float border border-yellow-500/30" style="animation-delay: 1s;">
               <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600">
+                <div class="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center text-yellow-400">
                   <i class="fas fa-mobile-alt text-xl"></i>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-slate-800">100%</div>
-                  <div class="text-xs text-slate-500">Responsive</div>
+                  <div class="text-2xl font-bold text-white">100%</div>
+                  <div class="text-xs text-slate-400">Responsive</div>
                 </div>
               </div>
             </div>
@@ -220,27 +281,27 @@
   </section>
 
   <!-- CLIENTES -->
-  <section class="py-12 bg-white border-y border-slate-200">
+  <section class="py-12 bg-slate-950 border-y border-yellow-500/10">
     <div class="max-w-7xl mx-auto px-6">
-      <p class="text-center text-slate-400 text-sm uppercase tracking-wider mb-8">Diseños para cualquier rubro</p>
-      <div class="flex flex-wrap justify-center gap-12 opacity-50">
-        <div class="flex items-center gap-2 text-slate-400">
+      <p class="text-center text-slate-500 text-sm uppercase tracking-wider mb-8">Diseños para cualquier rubro</p>
+      <div class="flex flex-wrap justify-center gap-12 opacity-70">
+        <div class="flex items-center gap-2 text-slate-400 hover:text-yellow-400 transition">
           <i class="fas fa-heartbeat text-2xl"></i>
           <span class="font-semibold">Medicina</span>
         </div>
-        <div class="flex items-center gap-2 text-slate-400">
+        <div class="flex items-center gap-2 text-slate-400 hover:text-yellow-400 transition">
           <i class="fas fa-cut text-2xl"></i>
           <span class="font-semibold">Barberías</span>
         </div>
-        <div class="flex items-center gap-2 text-slate-400">
+        <div class="flex items-center gap-2 text-slate-400 hover:text-yellow-400 transition">
           <i class="fas fa-briefcase text-2xl"></i>
           <span class="font-semibold">Consultoras</span>
         </div>
-        <div class="flex items-center gap-2 text-slate-400">
+        <div class="flex items-center gap-2 text-slate-400 hover:text-yellow-400 transition">
           <i class="fas fa-utensils text-2xl"></i>
           <span class="font-semibold">Restaurantes</span>
         </div>
-        <div class="flex items-center gap-2 text-slate-400">
+        <div class="flex items-center gap-2 text-slate-400 hover:text-yellow-400 transition">
           <i class="fas fa-dumbbell text-2xl"></i>
           <span class="font-semibold">Gimnasios</span>
         </div>
@@ -252,57 +313,57 @@
   <section id="servicios" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h3 class="display text-4xl md:text-5xl font-bold mb-4">¿Qué incluye?</h3>
-        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Todo lo que necesitás para tener presencia online profesional y empezar a recibir reservas.</p>
+        <h3 class="display text-4xl md:text-5xl font-bold mb-4 text-slate-900">¿Qué incluye?</h3>
+        <p class="text-slate-600 max-w-2xl mx-auto text-lg">Todo lo que necesitás para tener presencia online profesional y empezar a recibir reservas.</p>
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
-          <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 mb-6">
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:border-yellow-400/50">
+          <div class="w-14 h-14 service-icon rounded-xl flex items-center justify-center text-yellow-600 mb-6">
             <i class="fas fa-paint-brush text-2xl"></i>
           </div>
-          <h4 class="font-bold text-xl mb-3">Diseño Único</h4>
+          <h4 class="font-bold text-xl mb-3 text-slate-900">Diseño Único</h4>
           <p class="text-slate-600">Diseño personalizado según tu marca. No uso plantillas genéricas. Cada sitio es único.</p>
         </div>
         
-        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
-          <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6">
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:border-yellow-400/50">
+          <div class="w-14 h-14 service-icon rounded-xl flex items-center justify-center text-yellow-600 mb-6">
             <i class="fas fa-calendar-check text-2xl"></i>
           </div>
-          <h4 class="font-bold text-xl mb-3">Sistema de Turnos</h4>
+          <h4 class="font-bold text-xl mb-3 text-slate-900">Sistema de Turnos</h4>
           <p class="text-slate-600">Calendario interactivo donde tus clientes reservan directo. Notificaciones automáticas.</p>
         </div>
         
-        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
-          <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 mb-6">
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:border-yellow-400/50">
+          <div class="w-14 h-14 service-icon rounded-xl flex items-center justify-center text-yellow-600 mb-6">
             <i class="fas fa-mobile-alt text-2xl"></i>
           </div>
-          <h4 class="font-bold text-xl mb-3">100% Responsive</h4>
+          <h4 class="font-bold text-xl mb-3 text-slate-900">100% Responsive</h4>
           <p class="text-slate-600">Se ve perfecto en celulares, tablets y computadoras. Tus clientes pueden reservar desde cualquier lado.</p>
         </div>
         
-        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
-          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:border-yellow-400/50">
+          <div class="w-14 h-14 service-icon rounded-xl flex items-center justify-center text-yellow-600 mb-6">
             <i class="fas fa-lock text-2xl"></i>
           </div>
-          <h4 class="font-bold text-xl mb-3">Panel de Admin</h4>
+          <h4 class="font-bold text-xl mb-3 text-slate-900">Panel de Admin</h4>
           <p class="text-slate-600">Gestioná tus turnos, disponibilidad y datos de clientes desde un panel privado con contraseña.</p>
         </div>
         
-        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
-          <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-6">
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:border-yellow-400/50">
+          <div class="w-14 h-14 service-icon rounded-xl flex items-center justify-center text-yellow-600 mb-6">
             <i class="fas fa-rocket text-2xl"></i>
           </div>
-          <h4 class="font-bold text-xl mb-3">Hosting Incluido</h4>
-          <p class="text-slate-600">Subo tu web a internet sin costo adicional el primer año. Dominio personalizado opcional.</p>
+          <h4 class="font-bold text-xl mb-3 text-slate-900">Hosting Accesible</h4>
+          <p class="text-slate-600">Precio accesible según la necesidad del cliente. Dominio personalizado opcional.</p>
         </div>
         
-        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-100">
-          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-6">
+        <div class="card-lift bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:border-yellow-400/50">
+          <div class="w-14 h-14 service-icon rounded-xl flex items-center justify-center text-yellow-600 mb-6">
             <i class="fas fa-headset text-2xl"></i>
           </div>
-          <h4 class="font-bold text-xl mb-3">Soporte Garantizado</h4>
-          <p class="text-slate-600">30 días de soporte post-entrega para ajustes. Después, soporte mensual opcional.</p>
+          <h4 class="font-bold text-xl mb-3 text-slate-900">Soporte Garantizado</h4>
+          <p class="text-slate-600">30 días de soporte post-entrega para ajustes. Después, soporte mensual accesible.</p>
         </div>
       </div>
     </div>
@@ -312,79 +373,79 @@
   <section id="portfolio" class="py-24 bg-slate-50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h3 class="display text-4xl md:text-5xl font-bold mb-4">Trabajos Recientes</h3>
-        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Algunos ejemplos de sitios entregados con sistema de reservas integrado.</p>
+        <h3 class="display text-4xl md:text-5xl font-bold mb-4 text-slate-900">Trabajos Recientes</h3>
+        <p class="text-slate-600 max-w-2xl mx-auto text-lg">Algunos ejemplos de sitios entregados con sistema de reservas integrado.</p>
       </div>
       
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Proyecto 1: Psicología -->
-        <div class="group relative overflow-hidden rounded-2xl shadow-lg">
-          <div class="aspect-[4/3] bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer" onclick="showProjectAlert('Psicología')">
+          <div class="aspect-[4/3] bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center border border-yellow-500/20">
             <div class="text-center p-8">
-              <div class="w-20 h-20 bg-gray-800 rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">Ψ</div>
-              <h4 class="font-bold text-xl text-gray-800">Lic. Florencia Rosales</h4>
-              <p class="text-gray-500">Psicología</p>
+              <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-black text-3xl mx-auto mb-4">Ψ</div>
+              <h4 class="font-bold text-xl text-white">Consultorio Psicología</h4>
+              <p class="text-yellow-500/80">Sistema de Turnos</p>
             </div>
           </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
             <div class="text-white">
               <h4 class="font-bold text-lg mb-2">Sistema de Turnos para Psicóloga</h4>
               <p class="text-sm text-slate-300 mb-4">Calendario con disponibilidad virtual y presencial. Panel de admin completo.</p>
-              <a href="#" class="inline-flex items-center gap-2 text-indigo-400 font-medium hover:text-indigo-300">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
+              <span class="inline-flex items-center gap-2 text-yellow-400 font-medium">
+                Ver detalles <i class="fas fa-arrow-right"></i>
+              </span>
             </div>
           </div>
         </div>
         
         <!-- Proyecto 2: Médico -->
-        <div class="group relative overflow-hidden rounded-2xl shadow-lg">
-          <div class="aspect-[4/3] bg-gradient-to-br from-blue-50 to-emerald-50 flex items-center justify-center">
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer" onclick="showProjectAlert('Centro Médico')">
+          <div class="aspect-[4/3] bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center border border-yellow-500/20">
             <div class="text-center p-8">
-              <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">
+              <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-black text-3xl mx-auto mb-4">
                 <i class="fas fa-heartbeat"></i>
               </div>
-              <h4 class="font-bold text-xl text-gray-800">Centro Médico Integral</h4>
-              <p class="text-gray-500">Salud</p>
+              <h4 class="font-bold text-xl text-slate-900">Centro Médico</h4>
+              <p class="text-yellow-600">Reservas Online</p>
             </div>
           </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
             <div class="text-white">
-              <h4 class="font-bold text-lg mb-2">Clínica con 20+ Especialidades</h4>
+              <h4 class="font-bold text-lg mb-2">Clínica con Especialidades</h4>
               <p class="text-sm text-slate-300 mb-4">Reservas por especialidad, recordatorios automáticos y gestión de pacientes.</p>
-              <a href="#" class="inline-flex items-center gap-2 text-indigo-400 font-medium hover:text-indigo-300">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
+              <span class="inline-flex items-center gap-2 text-yellow-400 font-medium">
+                Ver detalles <i class="fas fa-arrow-right"></i>
+              </span>
             </div>
           </div>
         </div>
         
         <!-- Proyecto 3: Barbería -->
-        <div class="group relative overflow-hidden rounded-2xl shadow-lg">
-          <div class="aspect-[4/3] bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center">
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer" onclick="showProjectAlert('Barbería')">
+          <div class="aspect-[4/3] bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center border border-yellow-500/20">
             <div class="text-center p-8">
-              <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-neutral-900 text-3xl mx-auto mb-4">
+              <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-black text-3xl mx-auto mb-4">
                 <i class="fas fa-cut"></i>
               </div>
-              <h4 class="font-bold text-xl text-white">The Urban Barber</h4>
-              <p class="text-yellow-500">Estilo Urbano</p>
+              <h4 class="font-bold text-xl text-white">Barbería Premium</h4>
+              <p class="text-yellow-500/80">Estilo Urbano</p>
             </div>
           </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
             <div class="text-white">
               <h4 class="font-bold text-lg mb-2">Barbería con Sistema de Barberos</h4>
-              <p class="text-sm text-slate-300 mb-4">Elegí barbero, servicio y horario. Pagos integrados y sistema de puntos.</p>
-              <a href="#" class="inline-flex items-center gap-2 text-indigo-400 font-medium hover:text-indigo-300">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
+              <p class="text-sm text-slate-300 mb-4">Elegí barbero, servicio y horario. Sistema de puntos y reservas.</p>
+              <span class="inline-flex items-center gap-2 text-yellow-400 font-medium">
+                Ver detalles <i class="fas fa-arrow-right"></i>
+              </span>
             </div>
           </div>
         </div>
       </div>
       
       <div class="text-center mt-12">
-        <p class="text-slate-500 mb-4">¿Tenés un proyecto en mente?</p>
-        <a href="https://wa.me/5492214547057" target="_blank" class="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:text-indigo-700">
+        <p class="text-slate-600 mb-4">¿Tenés un proyecto en mente?</p>
+        <a href="https://wa.me/5492604323056" target="_blank" class="inline-flex items-center gap-2 text-yellow-600 font-semibold hover:text-yellow-700">
           Hablemos de tu idea <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -395,29 +456,31 @@
   <section id="precios" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h3 class="display text-4xl md:text-5xl font-bold mb-4">Inversión</h3>
-        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Precios transparentes. Sin costos ocultos. Elegí el plan que se adapte a tu negocio.</p>
+        <h3 class="display text-4xl md:text-5xl font-bold mb-4 text-slate-900">Inversión</h3>
+        <p class="text-slate-600 max-w-2xl mx-auto text-lg">Precios transparentes. Sin costos ocultos. Elegí el plan que se adapte a tu negocio.</p>
+        <p class="text-sm text-slate-500 mt-2">* Los precios en USD se actualizan automáticamente según cotización del dólar blue</p>
         
         <!-- Toggle ARS/USD -->
         <div class="flex justify-center mt-8">
           <div class="bg-slate-100 p-1 rounded-full inline-flex">
-            <button onclick="showPrices('ars')" id="btn-ars" class="px-6 py-2 rounded-full bg-white shadow-sm font-medium text-slate-800 transition">Pesos ARS</button>
-            <button onclick="showPrices('usd')" id="btn-usd" class="px-6 py-2 rounded-full font-medium text-slate-500 hover:text-slate-800 transition">Dólares USD</button>
+            <button onclick="showPrices('ars')" id="btn-ars" class="px-6 py-2 rounded-full bg-white shadow-sm font-medium text-slate-900 transition">Pesos ARS</button>
+            <button onclick="showPrices('usd')" id="btn-usd" class="px-6 py-2 rounded-full font-medium text-slate-500 hover:text-slate-900 transition">Dólares USD</button>
           </div>
         </div>
+        <div class="text-xs text-slate-400 mt-2" id="exchange-rate-info">Cotización actual: $1,415 ARS/USD</div>
       </div>
       
       <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <!-- Plan Básico -->
-        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 card-lift">
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 card-lift hover:border-yellow-400/50">
           <div class="mb-6">
-            <h4 class="font-bold text-lg text-slate-600 mb-2">Landing Page</h4>
+            <h4 class="font-bold text-lg text-slate-700 mb-2">Landing Page</h4>
             <div class="price-ars">
-              <span class="text-4xl font-bold text-slate-800">$150.000</span>
+              <span class="text-4xl font-bold text-slate-900">$150.000</span>
               <span class="text-slate-500"> ARS</span>
             </div>
             <div class="price-usd hidden">
-              <span class="text-4xl font-bold text-slate-800">$800</span>
+              <span class="text-4xl font-bold text-slate-900">$110</span>
               <span class="text-slate-500"> USD</span>
             </div>
           </div>
@@ -426,20 +489,20 @@
           
           <ul class="space-y-3 mb-8">
             <li class="flex items-center gap-3 text-sm">
-              <i class="fas fa-check text-green-500"></i>
+              <i class="fas fa-check text-yellow-600"></i>
               <span>Diseño personalizado</span>
             </li>
             <li class="flex items-center gap-3 text-sm">
-              <i class="fas fa-check text-green-500"></i>
+              <i class="fas fa-check text-yellow-600"></i>
               <span>Responsive (mobile-friendly)</span>
             </li>
             <li class="flex items-center gap-3 text-sm">
-              <i class="fas fa-check text-green-500"></i>
+              <i class="fas fa-check text-yellow-600"></i>
               <span>Formulario de contacto</span>
             </li>
             <li class="flex items-center gap-3 text-sm">
-              <i class="fas fa-check text-green-500"></i>
-              <span>Hosting 1 año incluido</span>
+              <i class="fas fa-check text-yellow-600"></i>
+              <span>Hosting accesible</span>
             </li>
             <li class="flex items-center gap-3 text-sm text-slate-400">
               <i class="fas fa-times"></i>
@@ -447,67 +510,67 @@
             </li>
           </ul>
           
-          <a href="https://wa.me/5492214547057?text=Hola!%20Me%20interesa%20el%20Plan%20Landing%20Page" target="_blank" 
-             class="block w-full border-2 border-slate-300 text-slate-700 text-center py-3 rounded-xl font-semibold hover:border-indigo-600 hover:text-indigo-600 transition">
+          <a href="https://wa.me/5492604323056?text=Hola!%20Me%20interesa%20el%20Plan%20Landing%20Page" target="_blank" 
+             class="block w-full border-2 border-slate-300 text-slate-700 text-center py-3 rounded-xl font-semibold hover:border-yellow-500 hover:text-yellow-600 transition">
             Consultar
           </a>
         </div>
         
         <!-- Plan Profesional (POPULAR) -->
-        <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 card-lift price-popular relative">
+        <div class="bg-slate-900 rounded-2xl p-8 border-2 border-yellow-500 card-lift price-popular relative">
           <div class="mb-6">
-            <h4 class="font-bold text-lg text-indigo-400 mb-2">Con Turnos</h4>
+            <h4 class="font-bold text-lg text-yellow-400 mb-2">Con Turnos</h4>
             <div class="price-ars">
-              <span class="text-4xl font-bold text-white">$280.000</span>
+              <span class="text-4xl font-bold text-white">$210.000</span>
               <span class="text-slate-400"> ARS</span>
             </div>
             <div class="price-usd hidden">
-              <span class="text-4xl font-bold text-white">$1.500</span>
+              <span class="text-4xl font-bold text-white">$150</span>
               <span class="text-slate-400"> USD</span>
             </div>
           </div>
           
-          <p class="text-slate-400 mb-6 text-sm">Sitio completo con sistema de reservas. Ideal para profesionales y consultorios.</p>
+          <p class="text-slate-300 mb-6 text-sm">Sitio completo con sistema de reservas. Ideal para profesionales y consultorios.</p>
           
           <ul class="space-y-3 mb-8">
             <li class="flex items-center gap-3 text-sm text-white">
-              <i class="fas fa-check text-indigo-400"></i>
+              <i class="fas fa-check text-yellow-400"></i>
               <span>Todo del plan anterior</span>
             </li>
             <li class="flex items-center gap-3 text-sm text-white">
-              <i class="fas fa-check text-indigo-400"></i>
+              <i class="fas fa-check text-yellow-400"></i>
               <span><strong>Sistema de turnos completo</strong></span>
             </li>
             <li class="flex items-center gap-3 text-sm text-white">
-              <i class="fas fa-check text-indigo-400"></i>
+              <i class="fas fa-check text-yellow-400"></i>
               <span>Panel de administración</span>
             </li>
             <li class="flex items-center gap-3 text-sm text-white">
-              <i class="fas fa-check text-indigo-400"></i>
+              <i class="fas fa-check text-yellow-400"></i>
               <span>Múltiples secciones</span>
             </li>
             <li class="flex items-center gap-3 text-sm text-white">
-              <i class="fas fa-check text-indigo-400"></i>
+              <i class="fas fa-check text-yellow-400"></i>
               <span>Notificaciones por email</span>
             </li>
           </ul>
           
-          <a href="https://wa.me/5492214547057?text=Hola!%20Me%20interesa%20el%20Plan%20Con%20Turnos%20(Profesional)" target="_blank" 
-             class="block w-full bg-indigo-600 text-white text-center py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">
+          <a href="https://wa.me/5492604323056?text=Hola!%20Me%20interesa%20el%20Plan%20Con%20Turnos%20(Profesional)" target="_blank" 
+             class="block w-full btn-primary text-black text-center py-3 rounded-xl font-semibold hover:opacity-90 transition">
             Elegir Plan
           </a>
         </div>
         
         <!-- Plan Premium -->
-        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 card-lift">
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 card-lift hover:border-yellow-400/50">
           <div class="mb-6">
-            <h4 class="font-bold text-lg text-slate-600 mb-2">Premium</h4>
+            <h4 class="font-bold text-lg text-slate-700 mb-2">Premium</h4>
             <div class="price-ars">
-              <span class="text-4xl font-bold text-slate-800">$450.000</span>
+              <span class="text-4xl font-bold text-slate-900">$360.000</span>
               <span class="text-slate-500"> ARS</span>
             </div>
             <div class="price-usd hidden">
-              <span class="text-4xl font-bold text-slate-800">$2.500</span>
+              <span class="text-4xl font-bold text-slate-900">$255</span>
               <span class="text-slate-500"> USD</span>
             </div>
           </div>
@@ -516,39 +579,39 @@
           
           <ul class="space-y-3 mb-8">
             <li class="flex items-center gap-3 text-sm">
-              <i class="fas fa-check text-green-500"></i>
+              <i class="fas fa-check text-yellow-600"></i>
               <span>Todo del plan Con Turnos</span>
             </li>
             <li class="flex items-center gap-3 text-sm">
-              <i class="fas fa-check text-green-500"></i>
+              <i class="fas fa-check text-yellow-600"></i>
               <span>Múltiples profesionales/barberos</span>
             </li>
             <li class="flex items-center gap-3 text-sm">
-              <i class="fas fa-check text-green-500"></i>
+              <i class="fas fa-check text-yellow-600"></i>
               <span>Pagos online integrados</span>
             </li>
             <li class="flex items-center gap-3 text-sm">
-              <i class="fas fa-check text-green-500"></i>
+              <i class="fas fa-check text-yellow-600"></i>
               <span>Recordatorios WhatsApp</span>
             </li>
             <li class="flex items-center gap-3 text-sm">
-              <i class="fas fa-check text-green-500"></i>
+              <i class="fas fa-check text-yellow-600"></i>
               <span>Soporte prioritario 6 meses</span>
             </li>
           </ul>
           
-          <a href="https://wa.me/5492214547057?text=Hola!%20Me%20interesa%20el%20Plan%20Premium" target="_blank" 
-             class="block w-full border-2 border-slate-300 text-slate-700 text-center py-3 rounded-xl font-semibold hover:border-indigo-600 hover:text-indigo-600 transition">
+          <a href="https://wa.me/5492604323056?text=Hola!%20Me%20interesa%20el%20Plan%20Premium" target="_blank" 
+             class="block w-full border-2 border-slate-300 text-slate-700 text-center py-3 rounded-xl font-semibold hover:border-yellow-500 hover:text-yellow-600 transition">
             Consultar
           </a>
         </div>
       </div>
       
-      <div class="text-center mt-12 p-6 bg-indigo-50 rounded-2xl max-w-2xl mx-auto">
-        <p class="text-slate-600 text-sm">
-          <i class="fas fa-info-circle text-indigo-600 mr-2"></i>
-          Los precios en pesos pueden ajustarse según cotización del dólar blue. 
-          Consultá por planes de mantenimiento mensual.
+      <div class="text-center mt-12 p-6 bg-yellow-50 rounded-2xl max-w-2xl mx-auto border border-yellow-200">
+        <p class="text-slate-700 text-sm">
+          <i class="fas fa-info-circle text-yellow-600 mr-2"></i>
+          <strong>Soporte mensual accesible:</strong> Desde $30.000 a $50.000 ARS ($25-$35 USD) según tus necesidades. 
+          Incluye mantenimiento, actualizaciones y soporte técnico.
         </p>
       </div>
     </div>
@@ -558,29 +621,29 @@
   <section class="py-24 bg-slate-50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h3 class="display text-4xl md:text-5xl font-bold mb-4">¿Cómo trabajamos?</h3>
-        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Proceso simple y transparente. De tu idea a la web en línea en 7 días.</p>
+        <h3 class="display text-4xl md:text-5xl font-bold mb-4 text-slate-900">¿Cómo trabajamos?</h3>
+        <p class="text-slate-600 max-w-2xl mx-auto text-lg">Proceso simple y transparente. De tu idea a la web en línea en 7 días.</p>
       </div>
       
       <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 text-2xl font-bold mx-auto mb-4">1</div>
-          <h4 class="font-bold text-lg mb-2">Consulta</h4>
+        <div class="text-center group cursor-pointer" onclick="showProcessDetail(1)">
+          <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-600 text-2xl font-bold mx-auto mb-4 group-hover:bg-yellow-500 group-hover:text-white transition">1</div>
+          <h4 class="font-bold text-lg mb-2 text-slate-900">Consulta</h4>
           <p class="text-slate-500 text-sm">Hablamos de tu negocio, necesidades y objetivos. Sin compromiso.</p>
         </div>
-        <div class="text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 text-2xl font-bold mx-auto mb-4">2</div>
-          <h4 class="font-bold text-lg mb-2">Propuesta</h4>
+        <div class="text-center group cursor-pointer" onclick="showProcessDetail(2)">
+          <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-600 text-2xl font-bold mx-auto mb-4 group-hover:bg-yellow-500 group-hover:text-white transition">2</div>
+          <h4 class="font-bold text-lg mb-2 text-slate-900">Propuesta</h4>
           <p class="text-slate-500 text-sm">Te envío un diseño preliminar y presupuesto detallado.</p>
         </div>
-        <div class="text-center">
-          <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 text-2xl font-bold mx-auto mb-4">3</div>
-          <h4 class="font-bold text-lg mb-2">Desarrollo</h4>
+        <div class="text-center group cursor-pointer" onclick="showProcessDetail(3)">
+          <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-600 text-2xl font-bold mx-auto mb-4 group-hover:bg-yellow-500 group-hover:text-white transition">3</div>
+          <h4 class="font-bold text-lg mb-2 text-slate-900">Desarrollo</h4>
           <p class="text-slate-500 text-sm">Construyo tu sitio con actualizaciones cada 2 días.</p>
         </div>
-        <div class="text-center">
-          <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-2xl font-bold mx-auto mb-4">4</div>
-          <h4 class="font-bold text-lg mb-2">Entrega</h4>
+        <div class="text-center group cursor-pointer" onclick="showProcessDetail(4)">
+          <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-600 text-2xl font-bold mx-auto mb-4 group-hover:bg-yellow-500 group-hover:text-white transition">4</div>
+          <h4 class="font-bold text-lg mb-2 text-slate-900">Entrega</h4>
           <p class="text-slate-500 text-sm">Tu web online, capacitación y 30 días de soporte incluido.</p>
         </div>
       </div>
@@ -591,55 +654,55 @@
   <section id="faq" class="py-24 bg-white">
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h3 class="display text-4xl font-bold mb-4">Preguntas Frecuentes</h3>
-        <p class="text-slate-500">Todo lo que necesitás saber antes de empezar.</p>
+        <h3 class="display text-4xl font-bold mb-4 text-slate-900">Preguntas Frecuentes</h3>
+        <p class="text-slate-600">Todo lo que necesitás saber antes de empezar.</p>
       </div>
       
       <div class="space-y-4">
-        <details class="group bg-slate-50 rounded-xl">
-          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium">
+        <details class="group bg-slate-50 rounded-xl border border-slate-200 hover:border-yellow-400/50 transition cursor-pointer">
+          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium text-slate-900">
             <span>¿Cuánto tiempo tarda en estar lista la web?</span>
-            <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+            <i class="fas fa-chevron-down transition-transform group-open:rotate-180 text-yellow-600"></i>
           </summary>
           <div class="px-6 pb-6 text-slate-600">
             Entre 5 y 7 días hábiles desde que confirmás el proyecto. Si necesitás algo urgente, consultá por entrega express (3-4 días con recargo del 20%).
           </div>
         </details>
         
-        <details class="group bg-slate-50 rounded-xl">
-          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium">
+        <details class="group bg-slate-50 rounded-xl border border-slate-200 hover:border-yellow-400/50 transition cursor-pointer">
+          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium text-slate-900">
             <span>¿Necesito tener dominio y hosting?</span>
-            <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+            <i class="fas fa-chevron-down transition-transform group-open:rotate-180 text-yellow-600"></i>
           </summary>
           <div class="px-6 pb-6 text-slate-600">
-            No es necesario. Incluyo hosting gratuito el primer año (Vercel/Netlify). Si querés un dominio personalizado (tunegocio.com), te guío en la compra (costo aparte, unos $15-20 USD/año).
+            No es necesario. Ofrezco hosting a precio accesible según tu necesidad. Si querés un dominio personalizado (tunegocio.com), te guío en la compra (costo aparte, unos $15-20 USD/año).
           </div>
         </details>
         
-        <details class="group bg-slate-50 rounded-xl">
-          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium">
+        <details class="group bg-slate-50 rounded-xl border border-slate-200 hover:border-yellow-400/50 transition cursor-pointer">
+          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium text-slate-900">
             <span>¿Puedo modificar los turnos una vez entregada?</span>
-            <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+            <i class="fas fa-chevron-down transition-transform group-open:rotate-180 text-yellow-600"></i>
           </summary>
           <div class="px-6 pb-6 text-slate-600">
             ¡Por supuesto! El panel de administración te permite agregar, modificar o eliminar disponibilidad de turnos en cualquier momento. Es 100% autogestionable.
           </div>
         </details>
         
-        <details class="group bg-slate-50 rounded-xl">
-          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium">
+        <details class="group bg-slate-50 rounded-xl border border-slate-200 hover:border-yellow-400/50 transition cursor-pointer">
+          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium text-slate-900">
             <span>¿Qué pasa si tengo un problema después de los 30 días?</span>
-            <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+            <i class="fas fa-chevron-down transition-transform group-open:rotate-180 text-yellow-600"></i>
           </summary>
           <div class="px-6 pb-6 text-slate-600">
-            Ofrezco planes de mantenimiento mensual desde $20.000 ARS (o $50 USD) que incluyen soporte técnico, actualizaciones de seguridad y pequeños cambios. También podés consultar por arreglos puntuales.
+            Ofrezco planes de mantenimiento mensual accesibles desde $30.000 a $50.000 ARS ($25-$35 USD) que incluyen soporte técnico, actualizaciones de seguridad y pequeños cambios. También podés consultar por arreglos puntuales.
           </div>
         </details>
         
-        <details class="group bg-slate-50 rounded-xl">
-          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium">
+        <details class="group bg-slate-50 rounded-xl border border-slate-200 hover:border-yellow-400/50 transition cursor-pointer">
+          <summary class="flex justify-between items-center p-6 cursor-pointer font-medium text-slate-900">
             <span>¿Cómo se realiza el pago?</span>
-            <i class="fas fa-chevron-down transition-transform group-open:rotate-180"></i>
+            <i class="fas fa-chevron-down transition-transform group-open:rotate-180 text-yellow-600"></i>
           </summary>
           <div class="px-6 pb-6 text-slate-600">
             50% al confirmar el proyecto, 50% al entregar. Acepto transferencia bancaria (Argentina), MercadoPago, PayPal o cripto (USDT). Para el exterior, preferentemente Wise o PayPal.
@@ -653,85 +716,92 @@
   <section class="py-24 gradient-hero text-white text-center relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
       <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="white" />
+        <path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="#FFD700" />
       </svg>
     </div>
     
     <div class="max-w-4xl mx-auto px-6 relative z-10">
       <h3 class="display text-5xl md:text-6xl font-bold mb-6">¿Listo para tu nueva web?</h3>
-      <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+      <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
         Agendá una consulta gratuita de 15 minutos. Sin compromiso, te explico cómo podemos llevar tu negocio al siguiente nivel.
       </p>
       
       <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-        <a href="https://wa.me/5492214547057?text=Hola!%20V%C3%AD%20tu%20web%20de%20desarrollo%20y%20quiero%20consultar%20por%20un%20proyecto" target="_blank" 
-           class="bg-white text-indigo-600 px-10 py-5 rounded-full font-bold text-lg hover:bg-indigo-50 transition shadow-2xl">
+        <a href="https://wa.me/5492604323056?text=Hola!%20V%C3%AD%20tu%20web%20de%20desarrollo%20y%20quiero%20consultar%20por%20un%20proyecto" target="_blank" 
+           class="bg-yellow-500 text-black px-10 py-5 rounded-full font-bold text-lg hover:bg-yellow-400 transition shadow-2xl inline-flex items-center justify-center">
           <i class="fab fa-whatsapp mr-2"></i>Escribir por WhatsApp
         </a>
-        <a href="mailto:tuemail@ejemplo.com" class="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/10 transition">
+        <a href="mailto:FranYTTT@gmail.com" class="border-2 border-yellow-500 text-yellow-400 px-10 py-5 rounded-full font-bold text-lg hover:bg-yellow-500 hover:text-black transition inline-flex items-center justify-center">
           <i class="fas fa-envelope mr-2"></i>Enviar Email
         </a>
       </div>
       
-      <div class="flex items-center justify-center gap-8 text-sm text-white/80">
+      <div class="flex items-center justify-center gap-8 text-sm text-slate-400">
         <div class="flex items-center gap-2">
-          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-check-circle text-yellow-500"></i>
           <span>Respuesta en 2 horas</span>
         </div>
         <div class="flex items-center gap-2">
-          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-check-circle text-yellow-500"></i>
           <span>Presupuesto sin cargo</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-check-circle text-yellow-500"></i>
+          <span>Soporte accesible</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-slate-900 text-slate-400 py-16">
+  <footer class="bg-slate-950 text-slate-400 py-16 border-t border-yellow-500/10">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-12 mb-12">
         <div>
           <div class="flex items-center gap-2 mb-6">
-            <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold">W</div>
-            <span class="text-white font-bold text-lg">WebDeveloper</span>
+            <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center text-black font-bold">FC</div>
+            <span class="text-white font-bold text-lg">Francisco Caro</span>
           </div>
           <p class="text-sm leading-relaxed">Desarrollo sitios web profesionales con sistema de turnos para emprendedores y profesionales de Latinoamérica y el mundo.</p>
         </div>
         <div>
           <h5 class="text-white font-semibold mb-4">Servicios</h5>
           <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-indigo-400 transition">Landing Pages</a></li>
-            <li><a href="#" class="hover:text-indigo-400 transition">Sistemas de Turnos</a></li>
-            <li><a href="#" class="hover:text-indigo-400 transition">E-commerce</a></li>
-            <li><a href="#" class="hover:text-indigo-400 transition">Mantenimiento</a></li>
+            <li><a href="#servicios" class="hover:text-yellow-400 transition">Landing Pages</a></li>
+            <li><a href="#servicios" class="hover:text-yellow-400 transition">Sistemas de Turnos</a></li>
+            <li><a href="#servicios" class="hover:text-yellow-400 transition">E-commerce</a></li>
+            <li><a href="#servicios" class="hover:text-yellow-400 transition">Mantenimiento</a></li>
           </ul>
         </div>
         <div>
           <h5 class="text-white font-semibold mb-4">Contacto</h5>
           <ul class="space-y-2 text-sm">
-            <li><i class="fab fa-whatsapp mr-2"></i>+54 9 221 454-7057</li>
-            <li><i class="fas fa-envelope mr-2"></i>tuemail@ejemplo.com</li>
-            <li><i class="fas fa-map-marker-alt mr-2"></i>La Plata, Argentina</li>
+            <li><a href="https://wa.me/5492604323056" target="_blank" class="hover:text-yellow-400 transition"><i class="fab fa-whatsapp mr-2"></i>+54 9 260 432-3056</a></li>
+            <li><a href="mailto:FranYTTT@gmail.com" class="hover:text-yellow-400 transition"><i class="fas fa-envelope mr-2"></i>FranYTTT@gmail.com</a></li>
+            <li><i class="fas fa-map-marker-alt mr-2"></i>Mendoza, Argentina</li>
           </ul>
         </div>
         <div>
           <h5 class="text-white font-semibold mb-4">Redes</h5>
           <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-github"></i></a>
+            <a href="#" onclick="showSocialAlert('Instagram')" class="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center hover:bg-yellow-500 hover:text-black transition border border-yellow-500/20"><i class="fab fa-instagram"></i></a>
+            <a href="#" onclick="showSocialAlert('LinkedIn')" class="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center hover:bg-yellow-500 hover:text-black transition border border-yellow-500/20"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" onclick="showSocialAlert('GitHub')" class="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center hover:bg-yellow-500 hover:text-black transition border border-yellow-500/20"><i class="fab fa-github"></i></a>
           </div>
         </div>
       </div>
       <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm">&copy; 2026 WebDeveloper. Todos los derechos reservados.</p>
-        <p class="text-sm">Hecho con <i class="fas fa-heart text-red-500 mx-1"></i> en Argentina</p>
+        <p class="text-sm">&copy; 2026 Francisco Caro. Todos los derechos reservados.</p>
+        <p class="text-sm">Hecho con <i class="fas fa-heart text-yellow-500 mx-1"></i> en Argentina</p>
       </div>
     </div>
   </footer>
 
   <!-- SCRIPTS -->
   <script>
+    // Exchange rate (actualizado manualmente o mediante API)
+    const EXCHANGE_RATE = 1415; // Dólar blue actual
+    
     // Toggle precios ARS/USD
     function showPrices(currency) {
       const arsElements = document.querySelectorAll('.price-ars');
@@ -742,16 +812,16 @@
       if (currency === 'ars') {
         arsElements.forEach(el => el.classList.remove('hidden'));
         usdElements.forEach(el => el.classList.add('hidden'));
-        btnArs.classList.add('bg-white', 'shadow-sm', 'text-slate-800');
+        btnArs.classList.add('bg-white', 'shadow-sm', 'text-slate-900');
         btnArs.classList.remove('text-slate-500');
-        btnUsd.classList.remove('bg-white', 'shadow-sm', 'text-slate-800');
+        btnUsd.classList.remove('bg-white', 'shadow-sm', 'text-slate-900');
         btnUsd.classList.add('text-slate-500');
       } else {
         arsElements.forEach(el => el.classList.add('hidden'));
         usdElements.forEach(el => el.classList.remove('hidden'));
-        btnUsd.classList.add('bg-white', 'shadow-sm', 'text-slate-800');
+        btnUsd.classList.add('bg-white', 'shadow-sm', 'text-slate-900');
         btnUsd.classList.remove('text-slate-500');
-        btnArs.classList.remove('bg-white', 'shadow-sm', 'text-slate-800');
+        btnArs.classList.remove('bg-white', 'shadow-sm', 'text-slate-900');
         btnArs.classList.add('text-slate-500');
       }
     }
@@ -795,11 +865,36 @@
     window.addEventListener('scroll', () => {
       const navbar = document.getElementById('navbar');
       if (window.scrollY > 50) {
-        navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+        navbar.classList.add('nav-scrolled');
       } else {
-        navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+        navbar.classList.remove('nav-scrolled');
       }
     });
+    
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+    
+    // Alert functions for placeholder projects
+    function showProjectAlert(project) {
+      alert('Proyecto de ' + project + ' - Próximamente disponible. Contactame por WhatsApp para ver demos similares.');
+    }
+    
+    function showProcessDetail(step) {
+      const details = {
+        1: 'Consulta gratuita: Analizamos tu negocio y objetivos',
+        2: 'Propuesta personalizada: Diseño y presupuesto a medida',
+        3: 'Desarrollo ágil: Actualizaciones cada 48hs',
+        4: 'Entrega completa: Capacitación y soporte incluido'
+      };
+      alert(details[step]);
+    }
+    
+    function showSocialAlert(network) {
+      alert('Próximamente - ' + network + '. Por ahora contactame por WhatsApp o Email.');
+    }
     
     // GSAP Animations
     if (typeof gsap !== 'undefined') {
@@ -820,6 +915,14 @@
         ease: 'power3.out'
       });
     }
+    
+    // Auto-update exchange rate display
+    document.addEventListener('DOMContentLoaded', function() {
+      const rateInfo = document.getElementById('exchange-rate-info');
+      if (rateInfo) {
+        rateInfo.textContent = `Cotización referencial: $${EXCHANGE_RATE.toLocaleString()} ARS/USD (Dólar Blue)`;
+      }
+    });
   </script>
 
 </body>
