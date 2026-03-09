@@ -3,68 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consultora Estratégica | Transformamos Negocios</title>
+  <title>The Urban Barber | Estilo & Tradición</title>
   
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💈</text></svg>" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    body { font-family: 'DM Sans', sans-serif; }
-    .display { font-family: 'Space Grotesk', sans-serif; }
+    body { font-family: 'Inter', sans-serif; }
+    .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
     
-    .gradient-business {
-      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+    .barber-gradient {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
     }
     
-    .glass-dark {
-      background: rgba(30, 27, 75, 0.8);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    .gold-accent {
+      color: #d4af37;
     }
     
-    .card-hover {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .card-hover:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 25px 50px -12px rgba(67, 56, 202, 0.25);
+    .gold-bg {
+      background-color: #d4af37;
     }
     
-    .text-gradient {
-      background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .gold-border {
+      border-color: #d4af37;
     }
     
-    .grid-pattern {
-      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
-      background-size: 40px 40px;
+    .stripe-pattern {
+      background: repeating-linear-gradient(
+        45deg,
+        #1a1a1a,
+        #1a1a1a 10px,
+        #2d2d2d 10px,
+        #2d2d2d 20px
+      );
+    }
+    
+    .service-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+      transition: left 0.5s;
+    }
+    
+    .service-card:hover::before {
+      left: 100%;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .clipper-animation {
+      animation: clip 2s ease-in-out infinite;
+    }
+    
+    @keyframes clip {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-neutral-900 text-white">
 
   <!-- NAV -->
-  <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+  <nav class="fixed w-full z-50 bg-neutral-900/95 backdrop-blur-md border-b border-neutral-800">
     <div class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-            N
+          <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center relative">
+            <div class="absolute inset-0 bg-red-600 rounded-full animate-ping opacity-20"></div>
+            <i class="fas fa-cut text-white text-xl"></i>
           </div>
-          <span class="display font-bold text-xl text-slate-900">Nexus<span class="text-indigo-600">Consulting</span></span>
+          <div>
+            <h1 class="display text-2xl text-white">THE URBAN <span class="gold-accent">BARBER</span></h1>
+          </div>
         </div>
         <div class="hidden md:flex items-center gap-8">
-          <a href="#" class="text-slate-600 hover:text-indigo-600 font-medium">Servicios</a>
-          <a href="#" class="text-slate-600 hover:text-indigo-600 font-medium">Casos de Éxito</a>
-          <a href="#" class="text-slate-600 hover:text-indigo-600 font-medium">Equipo</a>
-          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-lg font-medium transition">
-            Agendar Consulta
+          <a href="#" class="text-neutral-400 hover:text-white transition text-sm uppercase tracking-wider">Servicios</a>
+          <a href="#" class="text-neutral-400 hover:text-white transition text-sm uppercase tracking-wider">Barberos</a>
+          <a href="#" class="text-neutral-400 hover:text-white transition text-sm uppercase tracking-wider">Galería</a>
+          <button class="gold-bg text-neutral-900 px-6 py-2.5 rounded font-bold hover:bg-yellow-500 transition">
+            RESERVAR
           </button>
         </div>
-        <button class="md:hidden text-slate-600">
+        <button class="md:hidden text-white">
           <i class="fas fa-bars text-2xl"></i>
         </button>
       </div>
@@ -72,103 +107,109 @@
   </nav>
 
   <!-- HERO -->
-  <section class="pt-32 pb-20 gradient-business text-white relative overflow-hidden grid-pattern">
-    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-indigo-500/20 to-transparent"></div>
+  <section class="pt-32 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 stripe-pattern opacity-30"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-neutral-900/50 to-neutral-900"></div>
     
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-8 border border-white/20">
-            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-            Disponible para nuevos proyectos
+          <div class="inline-flex items-center gap-2 gold-bg text-neutral-900 px-4 py-2 rounded-full text-sm font-bold mb-6">
+            <i class="fas fa-star"></i>
+            #1 Barbería de la Ciudad
           </div>
           
-          <h1 class="display text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Transformamos <br/>
-            <span class="text-gradient">tu negocio</span> con datos
-          </h1>
+          <h2 class="display text-6xl md:text-8xl font-bold mb-6 leading-none">
+            ESTILO QUE <br/>
+            <span class="gold-accent">MARCA</span> DIFERENCIA
+          </h2>
           
-          <p class="text-xl text-indigo-200 mb-10 max-w-xl leading-relaxed">
-            Consultoría estratégica para empresas que quieren escalar. Análisis financiero, marketing digital y optimización de procesos.
+          <p class="text-neutral-400 text-xl mb-8 max-w-lg">
+            Más que un corte, una experiencia. Tradición barbera combinada con las últimas tendencias urbanas.
           </p>
           
-          <div class="flex flex-wrap gap-4">
-            <button class="bg-white text-indigo-900 px-8 py-4 rounded-lg font-bold hover:bg-indigo-50 transition shadow-2xl">
-              <i class="fas fa-rocket mr-2"></i>Empezar Proyecto
+          <div class="flex flex-wrap gap-4 mb-12">
+            <button class="gold-bg text-neutral-900 px-8 py-4 rounded font-bold text-lg hover:bg-yellow-500 transition shadow-lg shadow-yellow-500/20">
+              <i class="fas fa-calendar-alt mr-2"></i>AGENDAR TURNO
             </button>
-            <button class="border-2 border-white/30 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition backdrop-blur">
-              <i class="fas fa-play-circle mr-2"></i>Ver Casos de Éxito
+            <button class="border-2 border-neutral-600 text-white px-8 py-4 rounded font-bold text-lg hover:border-white transition">
+              <i class="fas fa-play mr-2"></i>VER SERVICIOS
             </button>
           </div>
           
-          <div class="mt-12 flex items-center gap-8">
-            <div>
-              <div class="text-3xl font-bold text-white">+200</div>
-              <div class="text-indigo-300 text-sm">Proyectos</div>
+          <div class="flex items-center gap-6">
+            <div class="flex -space-x-3">
+              <img src="https://ui-avatars.com/api/?name=Juan+Perez&background=d4af37&color=1a1a1a" class="w-12 h-12 rounded-full border-2 border-neutral-900" alt="Cliente">
+              <img src="https://ui-avatars.com/api/?name=Pedro+Lopez&background=c0392b&color=fff" class="w-12 h-12 rounded-full border-2 border-neutral-900" alt="Cliente">
+              <img src="https://ui-avatars.com/api/?name=Martin+Garcia&background=2980b9&color=fff" class="w-12 h-12 rounded-full border-2 border-neutral-900" alt="Cliente">
             </div>
-            <div class="w-px h-12 bg-white/20"></div>
             <div>
-              <div class="text-3xl font-bold text-white">98%</div>
-              <div class="text-indigo-300 text-sm">Satisfacción</div>
-            </div>
-            <div class="w-px h-12 bg-white/20"></div>
-            <div>
-              <div class="text-3xl font-bold text-white">+50M</div>
-              <div class="text-indigo-300 text-sm">Generados</div>
+              <div class="flex items-center gap-1 gold-accent mb-1">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="text-neutral-400 text-sm">+2,500 clientes satisfechos</p>
             </div>
           </div>
         </div>
         
         <div class="relative">
-          <div class="glass-dark rounded-3xl p-8 shadow-2xl">
-            <div class="flex items-center justify-between mb-8">
-              <h3 class="font-bold text-xl">Agenda tu Consultoría</h3>
-              <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs font-medium">Disponible</span>
+          <div class="absolute -inset-4 bg-gradient-to-r from-red-600/20 to-yellow-500/20 rounded-3xl blur-2xl"></div>
+          <div class="relative bg-neutral-800 rounded-3xl p-6 border border-neutral-700">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="display text-2xl">PRÓXIMOS TURNOS</h3>
+              <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs font-bold">ABIERTO</span>
             </div>
             
-            <div class="space-y-4 mb-6">
-              <div class="bg-white/5 rounded-xl p-4 border border-white/10 hover:border-indigo-400/50 transition cursor-pointer group">
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center text-indigo-300 group-hover:bg-indigo-500 group-hover:text-white transition">
-                    <i class="fas fa-chart-line text-xl"></i>
-                  </div>
-                  <div class="flex-1">
-                    <h4 class="font-semibold">Estrategia Digital</h4>
-                    <p class="text-indigo-200 text-sm">60 min • $150 USD</p>
-                  </div>
-                  <i class="fas fa-chevron-right text-indigo-400"></i>
+            <div class="space-y-4">
+              <div class="bg-neutral-700/50 rounded-xl p-4 flex items-center gap-4 hover:bg-neutral-700 transition cursor-pointer group">
+                <div class="w-16 h-16 bg-neutral-600 rounded-lg flex items-center justify-center">
+                  <i class="fas fa-user-tie text-2xl text-neutral-400 group-hover:text-white transition"></i>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-bold text-lg">Diego "El Maestro"</h4>
+                  <p class="text-neutral-400 text-sm">Especialista en fades y diseños</p>
+                </div>
+                <div class="text-right">
+                  <div class="gold-accent font-bold">14:30</div>
+                  <div class="text-green-400 text-xs">Disponible</div>
                 </div>
               </div>
               
-              <div class="bg-white/5 rounded-xl p-4 border border-white/10 hover:border-indigo-400/50 transition cursor-pointer group">
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-300 group-hover:bg-purple-500 group-hover:text-white transition">
-                    <i class="fas fa-coins text-xl"></i>
-                  </div>
-                  <div class="flex-1">
-                    <h4 class="font-semibold">Análisis Financiero</h4>
-                    <p class="text-indigo-200 text-sm">90 min • $250 USD</p>
-                  </div>
-                  <i class="fas fa-chevron-right text-indigo-400"></i>
+              <div class="bg-neutral-700/50 rounded-xl p-4 flex items-center gap-4 hover:bg-neutral-700 transition cursor-pointer group">
+                <div class="w-16 h-16 bg-neutral-600 rounded-lg flex items-center justify-center">
+                  <i class="fas fa-user-tie text-2xl text-neutral-400 group-hover:text-white transition"></i>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-bold text-lg">Marco "The Artist"</h4>
+                  <p class="text-neutral-400 text-sm">Barba y tratamientos</p>
+                </div>
+                <div class="text-right">
+                  <div class="gold-accent font-bold">15:00</div>
+                  <div class="text-green-400 text-xs">Disponible</div>
                 </div>
               </div>
               
-              <div class="bg-white/5 rounded-xl p-4 border border-white/10 hover:border-indigo-400/50 transition cursor-pointer group">
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center text-orange-300 group-hover:bg-orange-500 group-hover:text-white transition">
-                    <i class="fas fa-users text-xl"></i>
-                  </div>
-                  <div class="flex-1">
-                    <h4 class="font-semibold">Workshop de Equipo</h4>
-                    <p class="text-indigo-200 text-sm">4 horas • $800 USD</p>
-                  </div>
-                  <i class="fas fa-chevron-right text-indigo-400"></i>
+              <div class="bg-neutral-700/50 rounded-xl p-4 flex items-center gap-4 hover:bg-neutral-700 transition cursor-pointer group">
+                <div class="w-16 h-16 bg-neutral-600 rounded-lg flex items-center justify-center">
+                  <i class="fas fa-user-tie text-2xl text-neutral-400 group-hover:text-white transition"></i>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-bold text-lg">Leo "Classic"</h4>
+                  <p class="text-neutral-400 text-sm">Cortes tradicionales</p>
+                </div>
+                <div class="text-right">
+                  <div class="gold-accent font-bold">16:15</div>
+                  <div class="text-yellow-400 text-xs">Último turno</div>
                 </div>
               </div>
             </div>
             
-            <button class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-4 rounded-xl font-bold hover:opacity-90 transition">
-              Ver Disponibilidad Completa
+            <button class="w-full mt-6 gold-bg text-neutral-900 py-4 rounded-xl font-bold hover:bg-yellow-500 transition">
+              VER TODOS LOS HORARIOS
             </button>
           </div>
         </div>
@@ -177,158 +218,225 @@
   </section>
 
   <!-- SERVICIOS -->
-  <section class="py-24 bg-white">
+  <section class="py-24 bg-neutral-800">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h3 class="display text-4xl font-bold text-slate-900 mb-4">Nuestros Servicios</h3>
-        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Soluciones integrales diseñadas para impulsar el crecimiento sostenible de tu empresa.</p>
+        <h3 class="display text-5xl font-bold mb-4">NUESTROS <span class="gold-accent">SERVICIOS</span></h3>
+        <p class="text-neutral-400 max-w-2xl mx-auto text-lg">Cada servicio incluye bebida de cortesía y asesoramiento de estilo personalizado.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="service-card bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-700">
+          <div class="h-48 bg-neutral-700 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fas fa-cut text-6xl text-neutral-600"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-neutral-900 to-transparent h-20"></div>
+          </div>
+          <div class="p-6">
+            <h4 class="display text-2xl mb-2">Corte Clásico</h4>
+            <p class="text-neutral-400 text-sm mb-4">Tijera y máquina, acabado perfecto.</p>
+            <div class="flex items-center justify-between">
+              <span class="gold-accent text-2xl font-bold">$2,500</span>
+              <span class="text-neutral-500 text-sm">30 min</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="service-card bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-700">
+          <div class="h-48 bg-neutral-700 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fas fa-razor text-6xl text-neutral-600"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-neutral-900 to-transparent h-20"></div>
+          </div>
+          <div class="p-6">
+            <h4 class="display text-2xl mb-2">Fade Premium</h4>
+            <p class="text-neutral-400 text-sm mb-4">Degradado perfecto, cualquier altura.</p>
+            <div class="flex items-center justify-between">
+              <span class="gold-accent text-2xl font-bold">$3,200</span>
+              <span class="text-neutral-500 text-sm">45 min</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="service-card bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-700">
+          <div class="h-48 bg-neutral-700 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fas fa-magic text-6xl text-neutral-600"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-neutral-900 to-transparent h-20"></div>
+          </div>
+          <div class="p-6">
+            <h4 class="display text-2xl mb-2">Barba & Bigote</h4>
+            <p class="text-neutral-400 text-sm mb-4">Diseño, perfilado y tratamiento.</p>
+            <div class="flex items-center justify-between">
+              <span class="gold-accent text-2xl font-bold">$2,000</span>
+              <span class="text-neutral-500 text-sm">25 min</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="service-card bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-700 relative">
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">POPULAR</div>
+          <div class="h-48 bg-neutral-700 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <i class="fas fa-crown text-6xl text-neutral-600"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-neutral-900 to-transparent h-20"></div>
+          </div>
+          <div class="p-6">
+            <h4 class="display text-2xl mb-2">Full Experience</h4>
+            <p class="text-neutral-400 text-sm mb-4">Corte + barba + tratamiento facial.</p>
+            <div class="flex items-center justify-between">
+              <span class="gold-accent text-2xl font-bold">$5,500</span>
+              <span class="text-neutral-500 text-sm">75 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARBEROS -->
+  <section class="py-24 bg-neutral-900 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-30"></div>
+    
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h3 class="display text-5xl font-bold mb-4">CONOCE A LOS <span class="gold-accent">ARTISTAS</span></h3>
+        <p class="text-neutral-400">Cada barbero tiene su especialidad. Elegí el que mejor se adapte a tu estilo.</p>
       </div>
       
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="card-hover bg-slate-50 p-8 rounded-2xl border border-slate-100">
-          <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 mb-6">
-            <i class="fas fa-bullseye text-3xl"></i>
+        <div class="text-center group">
+          <div class="relative mb-6 inline-block">
+            <div class="w-48 h-48 mx-auto bg-neutral-700 rounded-full overflow-hidden border-4 border-neutral-800 group-hover:border-yellow-500 transition">
+              <img src="https://ui-avatars.com/api/?name=Diego+Barber&background=2d2d2d&color=d4af37&size=200" class="w-full h-full object-cover" alt="Barbero">
+            </div>
+            <div class="absolute bottom-0 right-0 w-12 h-12 gold-bg rounded-full flex items-center justify-center text-neutral-900 font-bold">5★</div>
           </div>
-          <h4 class="display text-xl font-bold text-slate-900 mb-3">Estrategia Digital</h4>
-          <p class="text-slate-600 mb-6 leading-relaxed">Transformación digital completa: desde la presencia online hasta automatización de procesos clave.</p>
-          <ul class="space-y-2 text-sm text-slate-500 mb-6">
-            <li class="flex items-center gap-2"><i class="fas fa-check text-indigo-500"></i>Marketing Automation</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-indigo-500"></i>SEO & SEM</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-indigo-500"></i>Analytics Avanzado</li>
-          </ul>
-          <button class="text-indigo-600 font-semibold hover:text-indigo-700">Saber más →</button>
+          <h4 class="display text-2xl mb-1">DIEGO "EL MAESTRO"</h4>
+          <p class="gold-accent text-sm mb-3">Especialista en Fades</p>
+          <p class="text-neutral-400 text-sm mb-4">15 años de experiencia. Maestro en degradados y diseños geométricos.</p>
+          <button class="border border-neutral-600 text-white px-6 py-2 rounded hover:border-yellow-500 hover:text-yellow-500 transition">
+            Ver Horarios
+          </button>
         </div>
         
-        <div class="card-hover bg-slate-50 p-8 rounded-2xl border border-slate-100">
-          <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 mb-6">
-            <i class="fas fa-chart-pie text-3xl"></i>
+        <div class="text-center group">
+          <div class="relative mb-6 inline-block">
+            <div class="w-48 h-48 mx-auto bg-neutral-700 rounded-full overflow-hidden border-4 border-neutral-800 group-hover:border-yellow-500 transition">
+              <img src="https://ui-avatars.com/api/?name=Marco+Artist&background=2d2d2d&color=c0392b&size=200" class="w-full h-full object-cover" alt="Barbero">
+            </div>
+            <div class="absolute bottom-0 right-0 w-12 h-12 gold-bg rounded-full flex items-center justify-center text-neutral-900 font-bold">5★</div>
           </div>
-          <h4 class="display text-xl font-bold text-slate-900 mb-3">Inteligencia Financiera</h4>
-          <p class="text-slate-600 mb-6 leading-relaxed">Análisis profundo de métricas, proyecciones y optimización de recursos para maximizar ROI.</p>
-          <ul class="space-y-2 text-sm text-slate-500 mb-6">
-            <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500"></i>Business Intelligence</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500"></i>Forecasting</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500"></i>Cost Optimization</li>
-          </ul>
-          <button class="text-purple-600 font-semibold hover:text-purple-700">Saber más →</button>
+          <h4 class="display text-2xl mb-1">MARCO "THE ARTIST"</h4>
+          <p class="gold-accent text-sm mb-3">Barba & Tratamientos</p>
+          <p class="text-neutral-400 text-sm mb-4">Experto en barbas y cuidado facial. Productos premium incluidos.</p>
+          <button class="border border-neutral-600 text-white px-6 py-2 rounded hover:border-yellow-500 hover:text-yellow-500 transition">
+            Ver Horarios
+          </button>
         </div>
         
-        <div class="card-hover bg-slate-50 p-8 rounded-2xl border border-slate-100">
-          <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
-            <i class="fas fa-cogs text-3xl"></i>
+        <div class="text-center group">
+          <div class="relative mb-6 inline-block">
+            <div class="w-48 h-48 mx-auto bg-neutral-700 rounded-full overflow-hidden border-4 border-neutral-800 group-hover:border-yellow-500 transition">
+              <img src="https://ui-avatars.com/api/?name=Leo+Classic&background=2d2d2d&color=2980b9&size=200" class="w-full h-full object-cover" alt="Barbero">
+            </div>
+            <div class="absolute bottom-0 right-0 w-12 h-12 gold-bg rounded-full flex items-center justify-center text-neutral-900 font-bold">4.9★</div>
           </div>
-          <h4 class="display text-xl font-bold text-slate-900 mb-3">Operaciones</h4>
-          <p class="text-slate-600 mb-6 leading-relaxed">Optimización de procesos, implementación de metodologías ágiles y mejora continua.</p>
-          <ul class="space-y-2 text-sm text-slate-500 mb-6">
-            <li class="flex items-center gap-2"><i class="fas fa-check text-orange-500"></i>Lean Management</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-orange-500"></i>Agile & Scrum</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-orange-500"></i>Automatización</li>
-          </ul>
-          <button class="text-orange-600 font-semibold hover:text-orange-700">Saber más →</button>
+          <h4 class="display text-2xl mb-1">LEO "CLASSIC"</h4>
+          <p class="gold-accent text-sm mb-3">Cortes Tradicionales</p>
+          <p class="text-neutral-400 text-sm mb-4">Especialista en cortes clásicos y vintage. Técnica impecable.</p>
+          <button class="border border-neutral-600 text-white px-6 py-2 rounded hover:border-yellow-500 hover:text-yellow-500 transition">
+            Ver Horarios
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIOS -->
-  <section class="py-24 bg-slate-900 text-white">
+  <!-- INFO -->
+  <section class="py-24 bg-neutral-800">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <h3 class="display text-4xl font-bold mb-6">Resultados que hablan por sí solos</h3>
-          <p class="text-slate-400 text-lg mb-8">Empresas líderes confían en nosotros para transformar sus operaciones y escalar sus negocios.</p>
-          
-          <div class="space-y-6">
-            <div class="bg-white/5 backdrop-blur p-6 rounded-xl border border-white/10">
-              <div class="flex items-center gap-4 mb-4">
-                <img src="https://ui-avatars.com/api/?name=María+González&background=6366f1&color=fff" class="w-12 h-12 rounded-full" alt="Cliente">
-                <div>
-                  <h5 class="font-semibold">María González</h5>
-                  <p class="text-slate-400 text-sm">CEO, TechStart Argentina</p>
-                </div>
-              </div>
-              <p class="text-slate-300">"Incrementamos nuestros ingresos un 340% en 8 meses gracias a su estrategia de digitalización."</p>
-            </div>
-            
-            <div class="bg-white/5 backdrop-blur p-6 rounded-xl border border-white/10">
-              <div class="flex items-center gap-4 mb-4">
-                <img src="https://ui-avatars.com/api/?name=Carlos+Ruiz&background=8b5cf6&color=fff" class="w-12 h-12 rounded-full" alt="Cliente">
-                <div>
-                  <h5 class="font-semibold">Carlos Ruiz</h5>
-                  <p class="text-slate-400 text-sm">Director, Logística Plus</p>
-                </div>
-              </div>
-              <p class="text-slate-300">"Redujimos costos operativos en un 25% sin sacrificar calidad. Inversión que se pagó sola."</p>
-            </div>
-          </div>
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="p-8">
+          <i class="fas fa-map-marker-alt text-4xl gold-accent mb-4"></i>
+          <h4 class="display text-2xl mb-2">UBICACIÓN</h4>
+          <p class="text-neutral-400">Av. Santa Fe 2345, Palermo<br/>Buenos Aires, Argentina</p>
         </div>
-        
-        <div class="relative">
-          <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl transform rotate-3 opacity-20"></div>
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" class="relative rounded-3xl shadow-2xl w-full" alt="Team meeting">
+        <div class="p-8 border-x border-neutral-700">
+          <i class="fas fa-clock text-4xl gold-accent mb-4"></i>
+          <h4 class="display text-2xl mb-2">HORARIOS</h4>
+          <p class="text-neutral-400">Lun a Sáb: 10:00 - 20:00<br/>Domingos: Cerrado</p>
+        </div>
+        <div class="p-8">
+          <i class="fas fa-phone text-4xl gold-accent mb-4"></i>
+          <h4 class="display text-2xl mb-2">CONTACTO</h4>
+          <p class="text-neutral-400">+54 11 5555-0123<br/>hola@urbanbarber.com</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="py-24 bg-indigo-600 text-white text-center">
-    <div class="max-w-4xl mx-auto px-6">
-      <h3 class="display text-4xl md:text-5xl font-bold mb-6">¿Listo para escalar tu negocio?</h3>
-      <p class="text-indigo-100 text-xl mb-10 max-w-2xl mx-auto">Agendá una consulta gratuita de 30 minutos. Analizamos tu situación actual y te proponemos un plan de acción concreto.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button class="bg-white text-indigo-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-indigo-50 transition shadow-2xl">
-          <i class="fas fa-calendar-check mr-2"></i>Agendar Consulta Gratis
-        </button>
-        <button class="border-2 border-white text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/10 transition">
-          <i class="fas fa-download mr-2"></i>Descargar Brochure
-        </button>
-      </div>
+  <!-- CTA -->
+  <section class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-red-600"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.5) 35px, rgba(0,0,0,.5) 70px);"></div>
+    
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+      <h3 class="display text-5xl md:text-6xl font-bold mb-6">¿QUÉ ESTÁS ESPERANDO?</h3>
+      <p class="text-white/90 text-xl mb-10 max-w-2xl mx-auto">Los mejores turnos se llenan rápido. Reservá ahora y asegurá tu lugar con el barbero que prefieras.</p>
+      <button class="bg-neutral-900 text-white px-12 py-5 rounded font-bold text-xl hover:bg-neutral-800 transition shadow-2xl">
+        <i class="fas fa-calendar-check mr-2"></i>RESERVAR TURNO AHORA
+      </button>
+      <p class="text-white/60 text-sm mt-4">Cancelación gratuita hasta 2 horas antes</p>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-slate-950 text-slate-400 py-16">
+  <footer class="bg-neutral-950 text-neutral-400 py-16 border-t border-neutral-800">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-12 mb-12">
         <div>
           <div class="flex items-center gap-2 mb-6">
-            <div class="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center text-white font-bold">N</div>
-            <span class="text-white font-bold text-lg">NexusConsulting</span>
+            <i class="fas fa-cut text-red-600 text-2xl"></i>
+            <span class="text-white font-bold text-lg display">THE URBAN <span class="gold-accent">BARBER</span></span>
           </div>
-          <p class="text-sm leading-relaxed">Transformamos datos en decisiones estratégicas que impulsan el crecimiento sostenible.</p>
+          <p class="text-sm leading-relaxed">La barbería donde el estilo se encuentra con la tradición. Desde 2015 cuidando tu imagen.</p>
         </div>
         <div>
-          <h5 class="text-white font-semibold mb-4">Servicios</h5>
-          <ul class="space-y-3 text-sm">
-            <li><a href="#" class="hover:text-indigo-400 transition">Estrategia Digital</a></li>
-            <li><a href="#" class="hover:text-indigo-400 transition">Finanzas</a></li>
-            <li><a href="#" class="hover:text-indigo-400 transition">Operaciones</a></li>
-            <li><a href="#" class="hover:text-indigo-400 transition">Capacitación</a></li>
+          <h5 class="text-white font-bold mb-4 display">SERVICIOS</h5>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-yellow-500 transition">Corte Clásico</a></li>
+            <li><a href="#" class="hover:text-yellow-500 transition">Fade Premium</a></li>
+            <li><a href="#" class="hover:text-yellow-500 transition">Barba & Bigote</a></li>
+            <li><a href="#" class="hover:text-yellow-500 transition">Full Experience</a></li>
           </ul>
         </div>
         <div>
-          <h5 class="text-white font-semibold mb-4">Contacto</h5>
-          <ul class="space-y-3 text-sm">
-            <li><i class="fas fa-envelope mr-2"></i>hola@nexusconsulting.com</li>
-            <li><i class="fas fa-phone mr-2"></i>+54 11 5555-0123</li>
-            <li><i class="fas fa-map-marker-alt mr-2"></i>Buenos Aires, Argentina</li>
+          <h5 class="text-white font-bold mb-4 display">HORARIOS</h5>
+          <ul class="space-y-2 text-sm">
+            <li>Lunes a Sábado: 10:00 - 20:00</li>
+            <li>Domingos: Cerrado</li>
+            <li class="text-green-400">Turnos online 24/7</li>
           </ul>
         </div>
         <div>
-          <h5 class="text-white font-semibold mb-4">Seguinos</h5>
+          <h5 class="text-white font-bold mb-4 display">SEGUINOS</h5>
           <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-neutral-800 rounded flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-neutral-800 rounded flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 bg-neutral-800 rounded flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
           </div>
         </div>
       </div>
-      <div class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm">&copy; 2026 Nexus Consulting. Todos los derechos reservados.</p>
+      <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm">&copy; 2026 The Urban Barber. Todos los derechos reservados.</p>
         <div class="flex gap-6 text-sm">
-          <a href="#" class="hover:text-white">Privacidad</a>
           <a href="#" class="hover:text-white">Términos</a>
+          <a href="#" class="hover:text-white">Privacidad</a>
         </div>
       </div>
     </div>
