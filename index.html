@@ -3,210 +3,297 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Francisco Caro | Desarrollo Web Profesional con Sistema de Turnos</title>
+  <title>Francisco Caro | Desarrollo Web Profesional</title>
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <style>
+    /* PALETA DE ALTO CONTRASTE - WCAG AAA Compliant */
     :root {
-      /* PALETA REFINADA - Naranja coral suave + Azul profundo elegante */
-      --color-primary: #FF7043;      /* Coral suave, menos agresivo */
-      --color-primary-light: #FF8A65; /* Coral claro para hover */
-      --color-secondary: #1A237E;    /* Índigo profundo, más sofisticado */
-      --color-accent: #26A69A;       /* Turquesa elegante */
-      --color-bg: #FAFAFA;           /* Blanco hueso, no tan frío */
-      --color-surface: #FFFFFF;      /* Blanco puro para tarjetas */
-      --color-text: #263238;         /* Gris azulado oscuro, más suave que negro */
-      --color-text-muted: #607D8B;   /* Gris azulado medio */
-      --color-border: #ECEFF1;       /* Gris muy claro para bordes */
+      --bg-dark: #0a0a0a;        /* Negro casi puro para fondos oscuros */
+      --bg-light: #ffffff;       /* Blanco puro para fondos claros */
+      --bg-gray: #f5f5f5;        /* Gris muy claro para secciones alternas */
+      
+      --text-dark: #000000;      /* Negro puro para texto sobre fondo claro */
+      --text-light: #ffffff;     /* Blanco puro para texto sobre fondo oscuro */
+      --text-muted-dark: #374151; /* Gris oscuro para texto secundario (fondo claro) */
+      --text-muted-light: #d1d5db; /* Gris claro para texto secundario (fondo oscuro) */
+      
+      --accent: #f97316;         /* Naranja brillante para acentos */
+      --accent-dark: #ea580c;    /* Naranja oscuro para hover */
+      --accent-light: #fb923c;   /* Naranja claro */
+      
+      --border-light: #e5e7eb;   /* Bordes sutiles */
+      --border-dark: #374151;    /* Bordes en modo oscuro */
     }
     
     body { 
       font-family: 'Inter', sans-serif; 
-      background-color: var(--color-bg);
-      color: var(--color-text);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
       line-height: 1.6;
     }
+    
     .display { font-family: 'Space Grotesk', sans-serif; }
     
-    /* Gradiente suave y elegante */
-    .gradient-hero {
-      background: linear-gradient(135deg, #1A237E 0%, #283593 50%, #1A237E 100%);
-      position: relative;
+    /* HERO - Fondo oscuro, texto claro (MÁXIMO CONTRASTE) */
+    .hero-section {
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+      min-height: 100vh;
     }
     
-    .gradient-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 30% 50%, rgba(255, 112, 67, 0.08) 0%, transparent 60%);
-      pointer-events: none;
+    .hero-title {
+      color: #ffffff;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
     }
     
-    /* Texto degradado refinado */
-    .gradient-text {
-      background: linear-gradient(135deg, #FF7043 0%, #FF8A65 50%, #FFAB91 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero-subtitle {
+      color: #e5e7eb; /* Gris muy claro, alto contraste sobre negro */
+      font-size: 1.5rem;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    
+    .hero-text {
+      color: #d1d5db; /* Gris claro para texto secundario */
+    }
+    
+    /* Texto acentuado - Naranja brillante sobre fondo oscuro */
+    .text-accent {
+      color: #f97316;
       font-weight: 700;
     }
     
-    /* Botón primario refinado */
+    /* Botón primario - Alto contraste */
     .btn-primary {
-      background: linear-gradient(135deg, #FF7043 0%, #FF8A65 100%);
-      color: white;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      box-shadow: 0 4px 20px rgba(255, 112, 67, 0.25);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
+      background: #f97316;
+      color: #000000;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
     }
     
     .btn-primary:hover {
+      background: #fb923c;
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255, 112, 67, 0.35);
+      box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
     }
     
-    /* Botón secundario elegante */
-    .btn-secondary {
+    /* Botón secundario sobre fondo oscuro */
+    .btn-secondary-dark {
       background: transparent;
-      border: 1.5px solid #FF7043;
-      color: #FF7043;
-      font-weight: 500;
+      color: #ffffff;
+      border: 2px solid #f97316;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
       transition: all 0.3s ease;
     }
     
-    .btn-secondary:hover {
-      background: rgba(255, 112, 67, 0.05);
-      transform: translateY(-2px);
+    .btn-secondary-dark:hover {
+      background: rgba(249, 115, 22, 0.1);
+      color: #f97316;
     }
     
-    /* Tarjetas con sombra suave y bordes redondeados */
-    .card-elegant {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
+    /* Secciones claras - Fondo blanco, texto negro */
+    .section-light {
+      background: #ffffff;
+      color: #000000;
+    }
+    
+    .section-light h2,
+    .section-light h3 {
+      color: #000000;
+      font-weight: 800;
+    }
+    
+    .section-light p {
+      color: #374151; /* Gris oscuro, alto contraste sobre blanco */
+    }
+    
+    /* Secciones grises - Fondo gris claro, texto negro */
+    .section-gray {
+      background: #f5f5f5;
+      color: #000000;
+    }
+    
+    .section-gray h2,
+    .section-gray h3 {
+      color: #000000;
+      font-weight: 800;
+    }
+    
+    .section-gray p {
+      color: #374151;
+    }
+    
+    /* Tarjetas - Fondo blanco, borde sutil, texto negro */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
       border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
     }
     
-    .card-elegant:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-      border-color: rgba(255, 112, 67, 0.2);
+    .card:hover {
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      border-color: #f97316;
+      transform: translateY(-4px);
     }
     
-    /* Animación flotante suave */
-    .float {
-      animation: float 8s ease-in-out infinite;
+    .card h4 {
+      color: #000000;
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
     }
     
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
+    .card p {
+      color: #4b5563; /* Gris oscuro para mejor lectura */
+      line-height: 1.6;
     }
     
-    /* Pulso sutil */
-    .pulse-soft {
-      animation: pulse-soft 3s ease-in-out infinite;
+    /* Iconos en tarjetas - Fondo naranja muy claro */
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      background: #fff7ed; /* Naranja muy muy claro */
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ea580c; /* Naranja oscuro para contraste */
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
     }
     
-    @keyframes pulse-soft {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 112, 67, 0.2); }
-      50% { box-shadow: 0 0 0 15px rgba(255, 112, 67, 0); }
+    /* Precios - Números grandes y negros */
+    .price-number {
+      color: #000000;
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1;
     }
     
-    /* Grid muy sutil */
-    .grid-bg {
-      background-image: 
-        radial-gradient(circle at 1px 1px, rgba(255, 112, 67, 0.08) 1px, transparent 0);
-      background-size: 40px 40px;
+    .price-currency {
+      color: #6b7280;
+      font-size: 1.125rem;
+      font-weight: 500;
     }
     
-    /* Badge popular refinado */
-    .price-popular {
+    /* Plan destacado */
+    .plan-featured {
+      background: #000000;
+      border: 2px solid #f97316;
       position: relative;
       overflow: hidden;
-      border: 2px solid #FF7043;
     }
     
-    .price-popular::before {
-      content: 'RECOMENDADO';
-      position: absolute;
-      top: 18px;
-      right: -30px;
-      background: #FF7043;
-      color: white;
-      padding: 6px 35px;
-      font-size: 9px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      transform: rotate(45deg);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .plan-featured .price-number,
+    .plan-featured h4,
+    .plan-featured li {
+      color: #ffffff;
     }
     
-    /* Efecto typing elegante */
-    .typing::after {
-      content: '|';
-      animation: blink 1.2s infinite;
-      color: #FF7043;
-      font-weight: 300;
+    .plan-featured .price-currency {
+      color: #9ca3af;
     }
     
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
+    /* Lista de features - Check verde oscuro para contraste */
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      color: #374151;
+      font-size: 0.95rem;
     }
     
-    /* Navbar scrolled elegante */
-    .nav-scrolled {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    .feature-list i {
+      color: #059669; /* Verde oscuro para contraste sobre blanco */
+      font-size: 1rem;
     }
     
-    /* Secciones alternadas suaves */
-    .section-light {
-      background: #FAFAFA;
+    .plan-featured .feature-list li {
+      color: #e5e7eb;
     }
     
-    .section-white {
-      background: #FFFFFF;
+    .plan-featured .feature-list i {
+      color: #f97316; /* Naranja sobre fondo negro */
     }
     
-    /* Iconos con fondo suave */
-    .icon-soft {
-      background: linear-gradient(135deg, rgba(255, 112, 67, 0.08) 0%, rgba(255, 138, 101, 0.08) 100%);
-      border: 1px solid rgba(255, 112, 67, 0.15);
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      width: 100%;
+      z-index: 50;
       transition: all 0.3s ease;
+      padding: 1rem 0;
     }
     
-    .icon-soft:hover {
-      background: linear-gradient(135deg, rgba(255, 112, 67, 0.12) 0%, rgba(255, 138, 101, 0.12) 100%);
-      transform: scale(1.05);
+    .navbar-scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 0.75rem 0;
     }
     
-    /* Línea divisoria elegante */
-    .divider-elegant {
-      height: 3px;
-      width: 50px;
-      background: linear-gradient(90deg, #FF7043, #FFAB91);
-      border-radius: 2px;
+    .navbar-scrolled .nav-link {
+      color: #000000;
     }
     
-    /* Modal para proyectos */
-    .project-modal {
+    .navbar-scrolled .nav-link:hover {
+      color: #f97316;
+    }
+    
+    .nav-link {
+      color: #ffffff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: #f97316;
+    }
+    
+    /* Footer - Fondo oscuro, texto claro */
+    .footer {
+      background: #000000;
+      color: #d1d5db;
+    }
+    
+    .footer h5 {
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .footer a {
+      color: #9ca3af;
+      transition: color 0.3s ease;
+    }
+    
+    .footer a:hover {
+      color: #f97316;
+    }
+    
+    /* Modal */
+    .modal-overlay {
       display: none;
       position: fixed;
       top: 0;
@@ -217,190 +304,277 @@
       z-index: 100;
       justify-content: center;
       align-items: center;
-      backdrop-filter: blur(5px);
+      padding: 1rem;
     }
     
-    .project-modal.active {
+    .modal-overlay.active {
       display: flex;
     }
     
     .modal-content {
-      background: white;
-      padding: 40px;
+      background: #ffffff;
       border-radius: 20px;
       max-width: 500px;
-      width: 90%;
-      text-align: center;
-      animation: modalIn 0.3s ease;
+      width: 100%;
+      padding: 2.5rem;
+      position: relative;
     }
     
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+    .modal-content h3 {
+      color: #000000;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
     
-    /* Tipografía refinada */
-    .text-subtitle {
-      color: #546E7A;
-      font-size: 1.25rem;
+    .modal-content p {
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    /* Typing effect */
+    .typing::after {
+      content: '|';
+      animation: blink 1s infinite;
+      color: #f97316;
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    /* Stats */
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #000000;
+    }
+    
+    .stat-label {
+      color: #6b7280;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+    
+    /* Proceso steps */
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: #f97316;
+      color: #000000;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin: 0 auto 1rem;
+    }
+    
+    /* FAQ */
+    details {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    
+    summary {
+      padding: 1.25rem;
+      font-weight: 600;
+      color: #000000;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+    
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    
+    summary i {
+      color: #f97316;
+      transition: transform 0.3s ease;
+    }
+    
+    details[open] summary i {
+      transform: rotate(180deg);
+    }
+    
+    details > div {
+      padding: 0 1.25rem 1.25rem;
+      color: #4b5563;
       line-height: 1.7;
     }
     
-    /* Espaciado generoso */
-    .spacious {
-      letter-spacing: 0.02em;
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    }
+    
+    .cta-section h2 {
+      color: #ffffff;
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-section p {
+      color: #d1d5db;
+      font-size: 1.25rem;
+    }
+    
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      padding: 1rem;
+      position: absolute;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .mobile-menu.active {
+      display: block;
+    }
+    
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 0;
+      color: #000000;
+      font-weight: 500;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .mobile-menu a:last-child {
+      border-bottom: none;
     }
   </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
 
   <!-- NAV -->
-  <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent py-5" id="navbar">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md">
-            FC
-          </div>
-          <div>
-            <span class="display font-bold text-xl text-white block leading-tight">Francisco<span class="text-orange-400">Caro</span></span>
-            <span class="text-[10px] text-slate-300 tracking-[0.2em] uppercase">Desarrollo Web</span>
-          </div>
+  <nav class="navbar" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-black font-bold text-xl">
+          FC
         </div>
-        <div class="hidden md:flex items-center gap-10">
-          <a href="#servicios" class="text-slate-200 hover:text-orange-300 font-medium transition text-sm tracking-wide">Servicios</a>
-          <a href="#portfolio" class="text-slate-200 hover:text-orange-300 font-medium transition text-sm tracking-wide">Portfolio</a>
-          <a href="#precios" class="text-slate-200 hover:text-orange-300 font-medium transition text-sm tracking-wide">Precios</a>
-          <a href="#faq" class="text-slate-200 hover:text-orange-300 font-medium transition text-sm tracking-wide">FAQ</a>
-          <a href="https://wa.me/5492604323056" target="_blank" class="btn-primary px-6 py-2.5 rounded-full text-sm">
-            Contactar
-          </a>
+        <div>
+          <span class="display font-bold text-xl text-white navbar-logo-text">Francisco<span class="text-orange-500">Caro</span></span>
         </div>
-        <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
-          <i class="fas fa-bars"></i>
-        </button>
       </div>
+      
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#precios" class="nav-link">Precios</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="https://wa.me/5492604323056" target="_blank" class="btn-primary text-sm">
+          <i class="fab fa-whatsapp"></i>
+          Contactar
+        </a>
+      </div>
+      
+      <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
+    
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg">
-      <div class="px-6 py-6 space-y-4">
-        <a href="#servicios" class="block text-slate-700 py-2 hover:text-orange-500">Servicios</a>
-        <a href="#portfolio" class="block text-slate-700 py-2 hover:text-orange-500">Portfolio</a>
-        <a href="#precios" class="block text-slate-700 py-2 hover:text-orange-500">Precios</a>
-        <a href="https://wa.me/5492604323056" class="block btn-primary text-center py-3 rounded-lg mt-4">Contactar</a>
-      </div>
+    <div class="mobile-menu md:hidden" id="mobile-menu">
+      <a href="#servicios">Servicios</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#precios">Precios</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://wa.me/5492604323056" class="btn-primary text-center mt-4 justify-center">
+        <i class="fab fa-whatsapp"></i>
+        Contactar
+      </a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden grid-bg gradient-hero">
-    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+  <section class="hero-section flex items-center pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-6 w-full">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="gsap-hero-text space-y-8">
-          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-orange-200 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider">
-            <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 text-green-400 px-4 py-2 rounded-full text-sm font-semibold">
+            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
             Disponible para proyectos
           </div>
           
-          <div class="space-y-5">
-            <h1 class="display text-5xl md:text-6xl font-bold leading-[1.1] text-white spacious">
-              Sitios web que <br/>
-              <span class="gradient-text typing" id="typing-text">venden</span>
-            </h1>
-            
-            <p class="text-xl text-slate-200 font-light leading-relaxed max-w-xl">
-              Desarrollo páginas profesionales con <span class="text-orange-300 font-medium">sistema de turnos integrado</span>. Diseños únicos que convierten visitantes en clientes.
-            </p>
-            
-            <div class="flex items-baseline gap-3 flex-wrap pt-2">
-              <span class="text-slate-300 text-sm">Desde</span>
-              <span class="text-4xl font-bold text-white">$150.000</span>
-              <span class="text-orange-300 font-semibold">ARS</span>
-              <span class="text-slate-400 text-sm">o</span>
-              <span class="text-2xl font-semibold text-white">$110</span>
-              <span class="text-orange-300 font-medium">USD</span>
-            </div>
+          <h1 class="hero-title text-5xl md:text-7xl">
+            Sitios web que <br>
+            <span class="text-orange-500 typing" id="typing-text">venden</span>
+          </h1>
+          
+          <p class="hero-subtitle max-w-xl">
+            Desarrollo páginas profesionales con <span class="text-orange-400 font-semibold">sistema de turnos integrado</span>. Diseños únicos que convierten visitantes en clientes.
+          </p>
+          
+          <div class="flex items-baseline gap-3 flex-wrap pt-2">
+            <span class="text-gray-400">Desde</span>
+            <span class="text-5xl font-black text-white">$150.000</span>
+            <span class="text-orange-400 font-bold text-2xl">ARS</span>
+            <span class="text-gray-500">o</span>
+            <span class="text-3xl font-bold text-white">$110</span>
+            <span class="text-orange-400 font-bold text-xl">USD</span>
           </div>
           
-          <div class="flex flex-wrap gap-4 pt-2">
+          <div class="flex flex-wrap gap-4 pt-4">
             <a href="https://wa.me/5492604323056?text=Hola!%20V%C3%AD%20tu%20web%20y%20quiero%20consultar%20por%20un%20proyecto" target="_blank" 
-               class="btn-primary px-8 py-4 rounded-full text-base pulse-soft inline-flex items-center gap-2">
-              <i class="fab fa-whatsapp text-lg"></i>
+               class="btn-primary">
+              <i class="fab fa-whatsapp text-xl"></i>
               <span>Consultar gratis</span>
             </a>
-            <a href="#portfolio" class="btn-secondary px-8 py-4 rounded-full text-base inline-flex items-center gap-2">
+            <a href="#portfolio" class="btn-secondary-dark">
               <span>Ver trabajos</span>
-              <i class="fas fa-arrow-right text-sm"></i>
+              <i class="fas fa-arrow-right ml-2"></i>
             </a>
           </div>
           
-          <div class="flex flex-wrap items-center gap-6 pt-4">
-            <div class="flex items-center gap-2 text-slate-300 text-sm">
-              <i class="fas fa-check-circle text-green-400 text-xs"></i>
+          <div class="flex flex-wrap items-center gap-6 pt-4 text-sm">
+            <div class="flex items-center gap-2 text-gray-300">
+              <i class="fas fa-check-circle text-green-400"></i>
               <span>Entrega en 7 días</span>
             </div>
-            <div class="flex items-center gap-2 text-slate-300 text-sm">
-              <i class="fas fa-shield-alt text-orange-300 text-xs"></i>
+            <div class="flex items-center gap-2 text-gray-300">
+              <i class="fas fa-shield-alt text-orange-400"></i>
               <span>Garantía 30 días</span>
             </div>
-            <div class="flex items-center gap-2 text-slate-300 text-sm">
-              <i class="fas fa-headset text-blue-300 text-xs"></i>
+            <div class="flex items-center gap-2 text-gray-300">
+              <i class="fas fa-headset text-blue-400"></i>
               <span>Soporte accesible</span>
             </div>
           </div>
         </div>
         
-        <div class="relative gsap-hero-image hidden lg:block">
-          <div class="absolute -inset-4 bg-gradient-to-r from-orange-400/20 to-red-500/20 rounded-3xl blur-2xl"></div>
-          
-          <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100">
-            <div class="bg-slate-50 p-3 flex items-center gap-2 border-b border-slate-100">
-              <div class="flex gap-1.5">
-                <div class="w-2.5 h-2.5 bg-red-400 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-yellow-400 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-green-400 rounded-full"></div>
-              </div>
-              <div class="flex-1 text-center">
-                <div class="bg-white rounded px-3 py-1 text-[10px] text-slate-400 inline-block border border-slate-100">
-                  <i class="fas fa-lock mr-1 text-green-500 text-[8px]"></i>francisco-caro.vercel.app
-                </div>
-              </div>
+        <div class="hidden lg:block relative">
+          <div class="absolute -inset-4 bg-orange-500/20 rounded-3xl blur-3xl"></div>
+          <div class="relative bg-gray-900 rounded-2xl p-6 border border-gray-700">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div class="flex-1 text-center text-xs text-gray-500">francisco-caro.vercel.app</div>
             </div>
-            
-            <div class="p-6 bg-white">
-              <div class="space-y-3">
-                <div class="h-6 bg-slate-100 rounded w-2/3"></div>
-                <div class="h-3 bg-slate-50 rounded w-full"></div>
-                <div class="h-3 bg-slate-50 rounded w-4/5"></div>
-                <div class="grid grid-cols-3 gap-3 mt-4">
-                  <div class="h-20 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg border border-orange-100"></div>
-                  <div class="h-20 bg-slate-50 rounded-lg border border-slate-100"></div>
-                  <div class="h-20 bg-slate-50 rounded-lg border border-slate-100"></div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-3 float border border-slate-100">
-              <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-white text-xs">
-                  <i class="fas fa-chart-line"></i>
-                </div>
-                <div>
-                  <div class="text-lg font-bold text-slate-800">+340%</div>
-                  <div class="text-[10px] text-slate-500">Reservas</div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-3 float border border-slate-100" style="animation-delay: 1s;">
-              <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center text-white text-xs">
-                  <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div>
-                  <div class="text-lg font-bold text-slate-800">100%</div>
-                  <div class="text-[10px] text-slate-500">Responsive</div>
-                </div>
+            <div class="space-y-3">
+              <div class="h-4 bg-gray-700 rounded w-3/4"></div>
+              <div class="h-3 bg-gray-800 rounded w-full"></div>
+              <div class="h-3 bg-gray-800 rounded w-5/6"></div>
+              <div class="grid grid-cols-3 gap-3 mt-6">
+                <div class="h-24 bg-orange-500/20 rounded-lg border border-orange-500/30"></div>
+                <div class="h-24 bg-gray-800 rounded-lg"></div>
+                <div class="h-24 bg-gray-800 rounded-lg"></div>
               </div>
             </div>
           </div>
@@ -410,192 +584,164 @@
   </section>
 
   <!-- STATS -->
-  <section class="py-10 bg-white border-y border-slate-100">
+  <section class="py-12 bg-white border-y border-gray-200">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div>
-          <div class="text-3xl font-bold text-slate-800 mb-1">50+</div>
-          <div class="text-xs text-slate-500 uppercase tracking-wider font-medium">Proyectos</div>
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Proyectos entregados</div>
         </div>
         <div>
-          <div class="text-3xl font-bold text-slate-800 mb-1">100%</div>
-          <div class="text-xs text-slate-500 uppercase tracking-wider font-medium">Satisfacción</div>
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Clientes satisfechos</div>
         </div>
         <div>
-          <div class="text-3xl font-bold text-slate-800 mb-1">7</div>
-          <div class="text-xs text-slate-500 uppercase tracking-wider font-medium">Días</div>
+          <div class="stat-number">7</div>
+          <div class="stat-label">Días de entrega</div>
         </div>
         <div>
-          <div class="text-3xl font-bold text-slate-800 mb-1">24/7</div>
-          <div class="text-xs text-slate-500 uppercase tracking-wider font-medium">Soporte</div>
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Soporte accesible</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SERVICIOS -->
-  <section id="servicios" class="py-24 section-light">
+  <section id="servicios" class="section-gray py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <div class="divider-elegant mx-auto mb-6"></div>
-        <h3 class="display text-4xl font-bold mb-4 text-slate-800">¿Qué incluye?</h3>
-        <p class="text-subtitle max-w-2xl mx-auto">Todo lo que necesitás para tener presencia online profesional y empezar a recibir reservas.</p>
+        <h2 class="text-4xl md:text-5xl mb-4">¿Qué incluye?</h2>
+        <p class="text-xl max-w-2xl mx-auto">Todo lo que necesitás para tener presencia online profesional y empezar a recibir reservas.</p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card-elegant p-8 group cursor-pointer">
-          <div class="w-14 h-14 icon-soft rounded-2xl flex items-center justify-center text-orange-500 mb-6">
-            <i class="fas fa-paint-brush text-2xl"></i>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card">
+          <div class="icon-box">
+            <i class="fas fa-paint-brush"></i>
           </div>
-          <h4 class="font-bold text-lg mb-3 text-slate-800 group-hover:text-orange-500 transition">Diseño Único</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">Diseño personalizado según tu marca. No uso plantillas genéricas. Cada sitio es único.</p>
+          <h4>Diseño Único</h4>
+          <p>Diseño personalizado según tu marca. No uso plantillas genéricas. Cada sitio es único y memorable.</p>
         </div>
         
-        <div class="card-elegant p-8 group cursor-pointer">
-          <div class="w-14 h-14 icon-soft rounded-2xl flex items-center justify-center text-orange-500 mb-6">
-            <i class="fas fa-calendar-check text-2xl"></i>
+        <div class="card">
+          <div class="icon-box">
+            <i class="fas fa-calendar-check"></i>
           </div>
-          <h4 class="font-bold text-lg mb-3 text-slate-800 group-hover:text-orange-500 transition">Sistema de Turnos</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">Calendario interactivo donde tus clientes reservan directo. Notificaciones automáticas.</p>
+          <h4>Sistema de Turnos</h4>
+          <p>Calendario interactivo donde tus clientes reservan directo. Notificaciones automáticas por email.</p>
         </div>
         
-        <div class="card-elegant p-8 group cursor-pointer">
-          <div class="w-14 h-14 icon-soft rounded-2xl flex items-center justify-center text-orange-500 mb-6">
-            <i class="fas fa-mobile-alt text-2xl"></i>
+        <div class="card">
+          <div class="icon-box">
+            <i class="fas fa-mobile-alt"></i>
           </div>
-          <h4 class="font-bold text-lg mb-3 text-slate-800 group-hover:text-orange-500 transition">100% Responsive</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">Se ve perfecto en celulares, tablets y computadoras. Tus clientes pueden reservar desde cualquier lado.</p>
+          <h4>100% Responsive</h4>
+          <p>Se ve perfecto en celulares, tablets y computadoras. Tus clientes pueden reservar desde cualquier lado.</p>
         </div>
         
-        <div class="card-elegant p-8 group cursor-pointer">
-          <div class="w-14 h-14 icon-soft rounded-2xl flex items-center justify-center text-orange-500 mb-6">
-            <i class="fas fa-lock text-2xl"></i>
+        <div class="card">
+          <div class="icon-box">
+            <i class="fas fa-lock"></i>
           </div>
-          <h4 class="font-bold text-lg mb-3 text-slate-800 group-hover:text-orange-500 transition">Panel de Admin</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">Gestioná tus turnos, disponibilidad y datos de clientes desde un panel privado con contraseña.</p>
+          <h4>Panel de Admin</h4>
+          <p>Gestioná tus turnos, disponibilidad y datos de clientes desde un panel privado con contraseña.</p>
         </div>
         
-        <div class="card-elegant p-8 group cursor-pointer">
-          <div class="w-14 h-14 icon-soft rounded-2xl flex items-center justify-center text-orange-500 mb-6">
-            <i class="fas fa-rocket text-2xl"></i>
+        <div class="card">
+          <div class="icon-box">
+            <i class="fas fa-rocket"></i>
           </div>
-          <h4 class="font-bold text-lg mb-3 text-slate-800 group-hover:text-orange-500 transition">Hosting Accesible</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">Precio accesible según la necesidad del cliente. Dominio personalizado opcional.</p>
+          <h4>Hosting Accesible</h4>
+          <p>Precio accesible según la necesidad del cliente. Dominio personalizado opcional.</p>
         </div>
         
-        <div class="card-elegant p-8 group cursor-pointer">
-          <div class="w-14 h-14 icon-soft rounded-2xl flex items-center justify-center text-orange-500 mb-6">
-            <i class="fas fa-headset text-2xl"></i>
+        <div class="card">
+          <div class="icon-box">
+            <i class="fas fa-headset"></i>
           </div>
-          <h4 class="font-bold text-lg mb-3 text-slate-800 group-hover:text-orange-500 transition">Soporte Garantizado</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">30 días de soporte post-entrega para ajustes. Después, soporte mensual accesible.</p>
+          <h4>Soporte Garantizado</h4>
+          <p>30 días de soporte post-entrega para ajustes. Después, soporte mensual accesible.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PORTFOLIO - REDISEÑADO CON MODALES -->
-  <section id="portfolio" class="py-24 section-white">
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section-light py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <div class="divider-elegant mx-auto mb-6"></div>
-        <h3 class="display text-4xl font-bold mb-4 text-slate-800">Trabajos Recientes</h3>
-        <p class="text-subtitle max-w-2xl mx-auto">Algunos ejemplos de sitios entregados con sistema de reservas integrado.</p>
+        <h2 class="text-4xl md:text-5xl mb-4">Trabajos Recientes</h2>
+        <p class="text-xl max-w-2xl mx-auto">Algunos ejemplos de sitios entregados con sistema de reservas integrado.</p>
       </div>
       
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Proyecto 1 -->
-        <div class="group cursor-pointer" onclick="openProjectModal('psicologia')">
-          <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 aspect-[4/3] mb-4 border border-slate-100">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="text-center p-6">
-                <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-3 shadow-lg">
-                  Ψ
-                </div>
-                <h4 class="font-bold text-lg text-slate-700">Consultorio Psicología</h4>
-                <p class="text-xs text-slate-500 mt-1 uppercase tracking-wider">Sistema de Turnos</p>
+        <div class="cursor-pointer group" onclick="openModal('psicologia')">
+          <div class="aspect-[4/3] bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl flex items-center justify-center mb-4 border border-orange-200 group-hover:border-orange-400 transition">
+            <div class="text-center p-6">
+              <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-3 shadow-lg">
+                Ψ
               </div>
-            </div>
-            <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/40 transition-all duration-300 flex items-center justify-center">
-              <div class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                <div class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-slate-800 shadow-lg">
-                  Ver información
-                </div>
-              </div>
+              <h4 class="font-bold text-gray-900">Consultorio Psicología</h4>
+              <p class="text-sm text-orange-600 font-medium mt-1">Ver información</p>
             </div>
           </div>
-          <h4 class="font-bold text-slate-800 mb-1 group-hover:text-orange-500 transition">Sistema para Psicóloga</h4>
-          <p class="text-sm text-slate-500">Calendario con disponibilidad virtual y presencial</p>
+          <h4 class="font-bold text-gray-900 mb-1 group-hover:text-orange-600 transition">Sistema para Psicóloga</h4>
+          <p class="text-gray-600 text-sm">Calendario con disponibilidad virtual y presencial</p>
         </div>
         
         <!-- Proyecto 2 -->
-        <div class="group cursor-pointer" onclick="openProjectModal('medico')">
-          <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 aspect-[4/3] mb-4 border border-slate-100">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="text-center p-6">
-                <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-3 shadow-lg">
-                  <i class="fas fa-heartbeat"></i>
-                </div>
-                <h4 class="font-bold text-lg text-slate-700">Centro Médico</h4>
-                <p class="text-xs text-slate-500 mt-1 uppercase tracking-wider">Reservas Online</p>
+        <div class="cursor-pointer group" onclick="openModal('medico')">
+          <div class="aspect-[4/3] bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center mb-4 border border-blue-200 group-hover:border-blue-400 transition">
+            <div class="text-center p-6">
+              <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-3 shadow-lg">
+                <i class="fas fa-heartbeat"></i>
               </div>
-            </div>
-            <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/40 transition-all duration-300 flex items-center justify-center">
-              <div class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                <div class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-slate-800 shadow-lg">
-                  Ver información
-                </div>
-              </div>
+              <h4 class="font-bold text-gray-900">Centro Médico</h4>
+              <p class="text-sm text-blue-600 font-medium mt-1">Ver información</p>
             </div>
           </div>
-          <h4 class="font-bold text-slate-800 mb-1 group-hover:text-blue-500 transition">Clínica Médica</h4>
-          <p class="text-sm text-slate-500">Reservas por especialidad y recordatorios</p>
+          <h4 class="font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition">Clínica Médica</h4>
+          <p class="text-gray-600 text-sm">Reservas por especialidad y recordatorios</p>
         </div>
         
         <!-- Proyecto 3 -->
-        <div class="group cursor-pointer" onclick="openProjectModal('barberia')">
-          <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-neutral-100 to-neutral-200 aspect-[4/3] mb-4 border border-slate-100">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="text-center p-6">
-                <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-3 shadow-lg">
-                  <i class="fas fa-cut"></i>
-                </div>
-                <h4 class="font-bold text-lg text-slate-700">Barbería Premium</h4>
-                <p class="text-xs text-slate-500 mt-1 uppercase tracking-wider">Estilo Urbano</p>
+        <div class="cursor-pointer group" onclick="openModal('barberia')">
+          <div class="aspect-[4/3] bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl flex items-center justify-center mb-4 border border-yellow-200 group-hover:border-yellow-400 transition">
+            <div class="text-center p-6">
+              <div class="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-3 shadow-lg">
+                <i class="fas fa-cut"></i>
               </div>
-            </div>
-            <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/40 transition-all duration-300 flex items-center justify-center">
-              <div class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                <div class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-slate-800 shadow-lg">
-                  Ver información
-                </div>
-              </div>
+              <h4 class="font-bold text-gray-900">Barbería Premium</h4>
+              <p class="text-sm text-yellow-700 font-medium mt-1">Ver información</p>
             </div>
           </div>
-          <h4 class="font-bold text-slate-800 mb-1 group-hover:text-yellow-600 transition">The Urban Barber</h4>
-          <p class="text-sm text-slate-500">Sistema de barberos y pagos integrados</p>
+          <h4 class="font-bold text-gray-900 mb-1 group-hover:text-yellow-600 transition">The Urban Barber</h4>
+          <p class="text-gray-600 text-sm">Sistema de barberos y pagos integrados</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MODAL PARA PROYECTOS -->
-  <div id="projectModal" class="project-modal" onclick="closeProjectModal(event)">
+  <!-- MODAL -->
+  <div id="projectModal" class="modal-overlay" onclick="closeModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
-      <div id="modalIcon" class="w-16 h-16 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4 shadow-lg"></div>
-      <h3 id="modalTitle" class="text-2xl font-bold text-slate-800 mb-3"></h3>
-      <p id="modalDesc" class="text-slate-600 mb-6 leading-relaxed"></p>
+      <div id="modalIcon" class="w-16 h-16 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4"></div>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
       
-      <div class="bg-slate-50 rounded-xl p-4 mb-6 text-left">
-        <h4 class="font-semibold text-slate-700 mb-2 text-sm uppercase tracking-wider">Características implementadas:</h4>
-        <ul id="modalFeatures" class="space-y-2 text-sm text-slate-600"></ul>
+      <div class="bg-gray-50 rounded-xl p-4 mb-6">
+        <h4 class="font-semibold text-gray-900 mb-3 text-sm uppercase">Características implementadas:</h4>
+        <ul id="modalFeatures" class="space-y-2 text-sm text-gray-600"></ul>
       </div>
       
       <div class="flex gap-3">
-        <a href="https://wa.me/5492604323056?text=Hola!%20Vi%20el%20proyecto%20de%20tu%20portfolio%20y%20quiero%20algo%20similar" target="_blank" class="flex-1 btn-primary py-3 rounded-xl text-sm font-semibold">
+        <a href="https://wa.me/5492604323056?text=Hola!%20Vi%20el%20proyecto%20de%20tu%20portfolio%20y%20quiero%20algo%20similar" target="_blank" 
+           class="flex-1 bg-orange-500 text-black text-center py-3 rounded-xl font-bold hover:bg-orange-400 transition">
           Quiero algo similar
         </a>
-        <button onclick="closeProjectModal()" class="px-6 py-3 border border-slate-200 rounded-xl text-slate-600 hover:bg-slate-50 transition text-sm font-semibold">
+        <button onclick="closeModal()" class="px-6 py-3 border border-gray-200 rounded-xl text-gray-700 hover:bg-gray-50 transition font-semibold">
           Cerrar
         </button>
       </div>
@@ -603,154 +749,117 @@
   </div>
 
   <!-- PRECIOS -->
-  <section id="precios" class="py-24 section-light">
+  <section id="precios" class="section-gray py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <div class="divider-elegant mx-auto mb-6"></div>
-        <h3 class="display text-4xl font-bold mb-4 text-slate-800">Inversión</h3>
-        <p class="text-subtitle max-w-2xl mx-auto">Precios transparentes. Sin costos ocultos.</p>
-        <p class="text-xs text-slate-400 mt-3">Cotización referencial: $1,415 ARS/USD</p>
+        <h2 class="text-4xl md:text-5xl mb-4">Inversión</h2>
+        <p class="text-xl max-w-2xl mx-auto">Precios transparentes. Sin costos ocultos.</p>
+        <p class="text-sm text-gray-500 mt-2">Cotización referencial: $1,415 ARS/USD</p>
         
         <div class="flex justify-center mt-8">
-          <div class="bg-white p-1 rounded-full inline-flex border border-slate-200 shadow-sm">
-            <button onclick="showPrices('ars')" id="btn-ars" class="px-6 py-2 rounded-full bg-orange-500 text-white font-semibold text-sm shadow-md transition">Pesos ARS</button>
-            <button onclick="showPrices('usd')" id="btn-usd" class="px-6 py-2 rounded-full font-medium text-slate-500 hover:text-slate-700 transition text-sm">Dólares USD</button>
+          <div class="bg-white p-1 rounded-full inline-flex border border-gray-200 shadow-sm">
+            <button onclick="showPrices('ars')" id="btn-ars" class="px-6 py-2 rounded-full bg-orange-500 text-black font-bold text-sm shadow-md transition">Pesos ARS</button>
+            <button onclick="showPrices('usd')" id="btn-usd" class="px-6 py-2 rounded-full font-medium text-gray-500 hover:text-gray-900 transition text-sm">Dólares USD</button>
           </div>
         </div>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <!-- Plan Básico -->
-        <div class="card-elegant p-8">
+        <div class="card">
           <div class="mb-6">
-            <h4 class="font-semibold text-slate-500 text-xs uppercase tracking-wider mb-2">Landing Page</h4>
+            <h4 class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2">Landing Page</h4>
             <div class="price-ars">
-              <span class="text-4xl font-bold text-slate-800">$150.000</span>
-              <span class="text-slate-400 text-sm"> ARS</span>
+              <span class="price-number">$150.000</span>
+              <span class="price-currency"> ARS</span>
             </div>
             <div class="price-usd hidden">
-              <span class="text-4xl font-bold text-slate-800">$110</span>
-              <span class="text-slate-400 text-sm"> USD</span>
+              <span class="price-number">$110</span>
+              <span class="price-currency"> USD</span>
             </div>
           </div>
           
-          <p class="text-slate-500 text-sm mb-6 leading-relaxed">Página única profesional con información de tu negocio.</p>
+          <p class="text-gray-600 mb-6">Página única profesional con información de tu negocio.</p>
           
-          <ul class="space-y-3 mb-8 text-sm">
-            <li class="flex items-center gap-3 text-slate-600">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Diseño personalizado</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Responsive mobile-first</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Formulario de contacto</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Hosting accesible</span>
-            </li>
+          <ul class="feature-list mb-8">
+            <li><i class="fas fa-check"></i><span>Diseño personalizado único</span></li>
+            <li><i class="fas fa-check"></i><span>Responsive mobile-first</span></li>
+            <li><i class="fas fa-check"></i><span>Formulario de contacto</span></li>
+            <li><i class="fas fa-check"></i><span>Hosting accesible</span></li>
           </ul>
           
           <a href="https://wa.me/5492604323056?text=Hola!%20Me%20interesa%20el%20Plan%20Landing%20Page" target="_blank" 
-             class="block w-full border border-slate-200 text-slate-600 text-center py-3 rounded-xl font-semibold hover:border-orange-400 hover:text-orange-500 transition text-sm">
+             class="block w-full border-2 border-gray-200 text-gray-700 text-center py-3 rounded-xl font-bold hover:border-orange-500 hover:text-orange-600 transition">
             Consultar
           </a>
         </div>
         
         <!-- Plan Profesional -->
-        <div class="card-elegant p-8 price-popular transform md:-translate-y-2 shadow-xl">
+        <div class="plan-featured rounded-2xl p-8 transform md:-translate-y-4 shadow-2xl">
           <div class="mb-6">
-            <h4 class="font-semibold text-orange-500 text-xs uppercase tracking-wider mb-2">Con Turnos</h4>
+            <h4 class="text-orange-400 text-xs font-bold uppercase tracking-wider mb-2">Con Turnos</h4>
             <div class="price-ars">
-              <span class="text-4xl font-bold text-slate-800">$210.000</span>
-              <span class="text-slate-400 text-sm"> ARS</span>
+              <span class="price-number">$210.000</span>
+              <span class="price-currency"> ARS</span>
             </div>
             <div class="price-usd hidden">
-              <span class="text-4xl font-bold text-slate-800">$150</span>
-              <span class="text-slate-400 text-sm"> USD</span>
+              <span class="price-number">$150</span>
+              <span class="price-currency"> USD</span>
             </div>
           </div>
           
-          <p class="text-slate-600 text-sm mb-6 leading-relaxed">Sitio completo con sistema de reservas. Ideal para profesionales.</p>
+          <p class="text-gray-300 mb-6">Sitio completo con sistema de reservas. Ideal para profesionales.</p>
           
-          <ul class="space-y-3 mb-8 text-sm">
-            <li class="flex items-center gap-3 text-slate-700">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Todo del plan anterior</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-700">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span class="font-semibold text-orange-600">Sistema de turnos</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-700">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Panel de administración</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-700">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Notificaciones email</span>
-            </li>
+          <ul class="feature-list mb-8">
+            <li><i class="fas fa-check"></i><span>Todo del plan anterior</span></li>
+            <li><i class="fas fa-check"></i><span class="text-orange-400 font-semibold">Sistema de turnos completo</span></li>
+            <li><i class="fas fa-check"></i><span>Panel de administración</span></li>
+            <li><i class="fas fa-check"></i><span>Notificaciones email</span></li>
           </ul>
           
           <a href="https://wa.me/5492604323056?text=Hola!%20Me%20interesa%20el%20Plan%20Con%20Turnos" target="_blank" 
-             class="block w-full btn-primary text-center py-3 rounded-xl font-semibold text-sm">
+             class="block w-full bg-orange-500 text-black text-center py-3 rounded-xl font-bold hover:bg-orange-400 transition">
             Elegir Plan
           </a>
         </div>
         
         <!-- Plan Premium -->
-        <div class="card-elegant p-8">
+        <div class="card">
           <div class="mb-6">
-            <h4 class="font-semibold text-slate-500 text-xs uppercase tracking-wider mb-2">Premium</h4>
+            <h4 class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2">Premium</h4>
             <div class="price-ars">
-              <span class="text-4xl font-bold text-slate-800">$360.000</span>
-              <span class="text-slate-400 text-sm"> ARS</span>
+              <span class="price-number">$360.000</span>
+              <span class="price-currency"> ARS</span>
             </div>
             <div class="price-usd hidden">
-              <span class="text-4xl font-bold text-slate-800">$255</span>
-              <span class="text-slate-400 text-sm"> USD</span>
+              <span class="price-number">$255</span>
+              <span class="price-currency"> USD</span>
             </div>
           </div>
           
-          <p class="text-slate-500 text-sm mb-6 leading-relaxed">Funcionalidades avanzadas y múltiples profesionales.</p>
+          <p class="text-gray-600 mb-6">Funcionalidades avanzadas y múltiples profesionales.</p>
           
-          <ul class="space-y-3 mb-8 text-sm">
-            <li class="flex items-center gap-3 text-slate-600">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Todo del plan Con Turnos</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Múltiples profesionales</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Pagos online integrados</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>WhatsApp API</span>
-            </li>
+          <ul class="feature-list mb-8">
+            <li><i class="fas fa-check"></i><span>Todo del plan Con Turnos</span></li>
+            <li><i class="fas fa-check"></i><span>Múltiples profesionales</span></li>
+            <li><i class="fas fa-check"></i><span>Pagos online integrados</span></li>
+            <li><i class="fas fa-check"></i><span>WhatsApp API</span></li>
           </ul>
           
           <a href="https://wa.me/5492604323056?text=Hola!%20Me%20interesa%20el%20Plan%20Premium" target="_blank" 
-             class="block w-full border border-slate-200 text-slate-600 text-center py-3 rounded-xl font-semibold hover:border-orange-400 hover:text-orange-500 transition text-sm">
+             class="block w-full border-2 border-gray-200 text-gray-700 text-center py-3 rounded-xl font-bold hover:border-orange-500 hover:text-orange-600 transition">
             Consultar
           </a>
         </div>
       </div>
       
-      <div class="text-center mt-12 p-6 bg-white rounded-2xl max-w-2xl mx-auto border border-slate-100 shadow-sm">
+      <div class="text-center mt-12 p-6 bg-white rounded-2xl max-w-2xl mx-auto border border-gray-200">
         <div class="flex items-center justify-center gap-2 mb-2">
-          <i class="fas fa-headset text-orange-400"></i>
-          <span class="font-semibold text-slate-700">Soporte mensual accesible</span>
+          <i class="fas fa-headset text-orange-500"></i>
+          <span class="font-bold text-gray-900">Soporte mensual accesible</span>
         </div>
-        <p class="text-slate-500 text-sm">
-          Desde <span class="text-orange-600 font-semibold">$30.000 ARS</span> a <span class="text-orange-600 font-semibold">$50.000 ARS</span> 
+        <p class="text-gray-600">
+          Desde <span class="text-orange-600 font-bold">$30.000 ARS</span> hasta <span class="text-orange-600 font-bold">$50.000 ARS</span> 
           ($25-$35 USD) según tus necesidades
         </p>
       </div>
@@ -758,132 +867,123 @@
   </section>
 
   <!-- PROCESO -->
-  <section class="py-24 section-white">
+  <section class="section-light py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
-        <div class="divider-elegant mx-auto mb-6"></div>
-        <h3 class="display text-4xl font-bold mb-4 text-slate-800">¿Cómo trabajamos?</h3>
-        <p class="text-subtitle">Proceso simple y transparente. De tu idea a la web en línea en 7 días.</p>
+        <h2 class="text-4xl md:text-5xl mb-4">¿Cómo trabajamos?</h2>
+        <p class="text-xl max-w-2xl mx-auto">Proceso simple y transparente. De tu idea a la web en línea en 7 días.</p>
       </div>
       
       <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center group">
-          <div class="w-14 h-14 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl flex items-center justify-center text-white text-xl font-bold mx-auto mb-4 shadow-lg shadow-orange-200 group-hover:scale-110 transition">1</div>
-          <h4 class="font-bold text-slate-800 mb-2">Consulta</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">Hablamos de tu negocio y objetivos sin compromiso.</p>
+        <div class="text-center">
+          <div class="step-number">1</div>
+          <h4 class="font-bold text-gray-900 mb-2">Consulta</h4>
+          <p class="text-gray-600 text-sm">Hablamos de tu negocio y objetivos sin compromiso.</p>
         </div>
-        <div class="text-center group">
-          <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl flex items-center justify-center text-white text-xl font-bold mx-auto mb-4 shadow-lg shadow-blue-200 group-hover:scale-110 transition">2</div>
-          <h4 class="font-bold text-slate-800 mb-2">Propuesta</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">Diseño y presupuesto personalizado para vos.</p>
+        <div class="text-center">
+          <div class="step-number" style="background: #3b82f6;">2</div>
+          <h4 class="font-bold text-gray-900 mb-2">Propuesta</h4>
+          <p class="text-gray-600 text-sm">Diseño y presupuesto personalizado para vos.</p>
         </div>
-        <div class="text-center group">
-          <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center text-white text-xl font-bold mx-auto mb-4 shadow-lg shadow-green-200 group-hover:scale-110 transition">3</div>
-          <h4 class="font-bold text-slate-800 mb-2">Desarrollo</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">Actualizaciones cada 48hs para que veas el progreso.</p>
+        <div class="text-center">
+          <div class="step-number" style="background: #10b981;">3</div>
+          <h4 class="font-bold text-gray-900 mb-2">Desarrollo</h4>
+          <p class="text-gray-600 text-sm">Actualizaciones cada 48hs para que veas el progreso.</p>
         </div>
-        <div class="text-center group">
-          <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center text-white text-xl font-bold mx-auto mb-4 shadow-lg shadow-purple-200 group-hover:scale-110 transition">4</div>
-          <h4 class="font-bold text-slate-800 mb-2">Entrega</h4>
-          <p class="text-slate-500 text-sm leading-relaxed">Tu web online con capacitación incluida.</p>
+        <div class="text-center">
+          <div class="step-number" style="background: #8b5cf6;">4</div>
+          <h4 class="font-bold text-gray-900 mb-2">Entrega</h4>
+          <p class="text-gray-600 text-sm">Tu web online con capacitación incluida.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="py-24 section-light">
+  <section id="faq" class="section-gray py-24">
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-16">
-        <div class="divider-elegant mx-auto mb-6"></div>
-        <h3 class="display text-4xl font-bold mb-4 text-slate-800">Preguntas Frecuentes</h3>
-        <p class="text-subtitle">Todo lo que necesitás saber antes de empezar.</p>
+        <h2 class="text-4xl mb-4">Preguntas Frecuentes</h2>
+        <p class="text-xl">Todo lo que necesitás saber antes de empezar.</p>
       </div>
       
-      <div class="space-y-4">
-        <details class="group bg-white rounded-xl border border-slate-100 shadow-sm cursor-pointer overflow-hidden">
-          <summary class="flex justify-between items-center p-5 cursor-pointer font-semibold text-slate-700 hover:text-orange-500 transition">
-            <span>¿Cuánto tiempo tarda en estar lista la web?</span>
-            <i class="fas fa-chevron-down transition-transform group-open:rotate-180 text-slate-400 text-xs"></i>
-          </summary>
-          <div class="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
-            Entre 5 y 7 días hábiles desde que confirmás el proyecto. Si necesitás algo urgente, consultá por entrega express (3-4 días con recargo del 20%).
-          </div>
-        </details>
-        
-        <details class="group bg-white rounded-xl border border-slate-100 shadow-sm cursor-pointer overflow-hidden">
-          <summary class="flex justify-between items-center p-5 cursor-pointer font-semibold text-slate-700 hover:text-orange-500 transition">
-            <span>¿Necesito tener dominio y hosting?</span>
-            <i class="fas fa-chevron-down transition-transform group-open:rotate-180 text-slate-400 text-xs"></i>
-          </summary>
-          <div class="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
-            No es necesario. Ofrezco hosting a <strong class="text-orange-500">precio accesible según tu necesidad</strong>. Si querés un dominio personalizado, te guío en la compra (costo aparte, unos $15-20 USD/año).
-          </div>
-        </details>
-        
-        <details class="group bg-white rounded-xl border border-slate-100 shadow-sm cursor-pointer overflow-hidden">
-          <summary class="flex justify-between items-center p-5 cursor-pointer font-semibold text-slate-700 hover:text-orange-500 transition">
-            <span>¿Puedo modificar los turnos una vez entregada?</span>
-            <i class="fas fa-chevron-down transition-transform group-open:rotate-180 text-slate-400 text-xs"></i>
-          </summary>
-          <div class="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
-            ¡Por supuesto! El panel de administración te permite gestionar tu disponibilidad en cualquier momento. Es 100% autogestionable.
-          </div>
-        </details>
-        
-        <details class="group bg-white rounded-xl border border-slate-100 shadow-sm cursor-pointer overflow-hidden">
-          <summary class="flex justify-between items-center p-5 cursor-pointer font-semibold text-slate-700 hover:text-orange-500 transition">
-            <span>¿Qué pasa después de los 30 días de garantía?</span>
-            <i class="fas fa-chevron-down transition-transform group-open:rotate-180 text-slate-400 text-xs"></i>
-          </summary>
-          <div class="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
-            Ofrezco planes de mantenimiento mensual <strong class="text-orange-500">accesibles desde $30.000 a $50.000 ARS</strong> ($25-$35 USD) que incluyen soporte técnico y actualizaciones.
-          </div>
-        </details>
-        
-        <details class="group bg-white rounded-xl border border-slate-100 shadow-sm cursor-pointer overflow-hidden">
-          <summary class="flex justify-between items-center p-5 cursor-pointer font-semibold text-slate-700 hover:text-orange-500 transition">
-            <span>¿Cómo se realiza el pago?</span>
-            <i class="fas fa-chevron-down transition-transform group-open:rotate-180 text-slate-400 text-xs"></i>
-          </summary>
-          <div class="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
-            50% al confirmar, 50% al entregar. Acepto transferencia, MercadoPago, PayPal, Wise o USDT.
-          </div>
-        </details>
-      </div>
+      <details>
+        <summary>
+          <span>¿Cuánto tiempo tarda en estar lista la web?</span>
+          <i class="fas fa-chevron-down"></i>
+        </summary>
+        <div>
+          Entre 5 y 7 días hábiles desde que confirmás el proyecto. Si necesitás algo urgente, consultá por entrega express (3-4 días con recargo del 20%).
+        </div>
+      </details>
+      
+      <details>
+        <summary>
+          <span>¿Necesito tener dominio y hosting?</span>
+          <i class="fas fa-chevron-down"></i>
+        </summary>
+        <div>
+          No es necesario. Ofrezco hosting a <strong class="text-orange-600">precio accesible según tu necesidad</strong>. Si querés un dominio personalizado, te guío en la compra (costo aparte, unos $15-20 USD/año).
+        </div>
+      </details>
+      
+      <details>
+        <summary>
+          <span>¿Puedo modificar los turnos una vez entregada?</span>
+          <i class="fas fa-chevron-down"></i>
+        </summary>
+        <div>
+          ¡Por supuesto! El panel de administración te permite gestionar tu disponibilidad en cualquier momento. Es 100% autogestionable.
+        </div>
+      </details>
+      
+      <details>
+        <summary>
+          <span>¿Qué pasa después de los 30 días de garantía?</span>
+          <i class="fas fa-chevron-down"></i>
+        </summary>
+        <div>
+          Ofrezco planes de mantenimiento mensual <strong class="text-orange-600">accesibles desde $30.000 a $50.000 ARS</strong> ($25-$35 USD) que incluyen soporte técnico y actualizaciones.
+        </div>
+      </details>
+      
+      <details>
+        <summary>
+          <span>¿Cómo se realiza el pago?</span>
+          <i class="fas fa-chevron-down"></i>
+        </summary>
+        <div>
+          50% al confirmar, 50% al entregar. Acepto transferencia, MercadoPago, PayPal, Wise o USDT.
+        </div>
+      </details>
     </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="py-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800"></div>
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23FF7043\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-    
-    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-      <h3 class="display text-4xl md:text-5xl font-bold mb-6 text-white">¿Listo para tu nueva web?</h3>
-      <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto font-light">
-        Agendá una consulta gratuita de 15 minutos. Sin compromiso, te explico cómo podemos llevar tu negocio al siguiente nivel.
-      </p>
+  <!-- CTA -->
+  <section class="cta-section py-24">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2>¿Listo para tu nueva web?</h2>
+      <p class="mb-10">Agendá una consulta gratuita de 15 minutos. Sin compromiso, te explico cómo podemos llevar tu negocio al siguiente nivel.</p>
       
       <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
         <a href="https://wa.me/5492604323056?text=Hola!%20V%C3%AD%20tu%20web%20y%20quiero%20consultar%20por%20un%20proyecto" target="_blank" 
-           class="bg-white text-orange-600 px-8 py-4 rounded-full font-bold hover:bg-slate-100 transition shadow-xl inline-flex items-center justify-center gap-2 pulse-soft">
+           class="bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-xl inline-flex items-center justify-center gap-2">
           <i class="fab fa-whatsapp text-xl"></i>
           Escribir por WhatsApp
         </a>
-        <a href="mailto:FranYTTT@gmail.com" class="border border-slate-500 text-slate-300 px-8 py-4 rounded-full font-semibold hover:bg-white/5 transition inline-flex items-center justify-center gap-2">
+        <a href="mailto:FranYTTT@gmail.com" class="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-bold hover:bg-white/5 transition inline-flex items-center justify-center gap-2">
           <i class="fas fa-envelope"></i>
           Enviar Email
         </a>
       </div>
       
-      <div class="flex items-center justify-center gap-8 text-sm text-slate-400">
+      <div class="flex items-center justify-center gap-8 text-sm text-gray-400">
         <div class="flex items-center gap-2">
-          <i class="fas fa-check-circle text-green-400 text-xs"></i>
+          <i class="fas fa-check-circle text-green-400"></i>
           <span>Respuesta en 2 horas</span>
         </div>
         <div class="flex items-center gap-2">
-          <i class="fas fa-check-circle text-green-400 text-xs"></i>
+          <i class="fas fa-check-circle text-green-400"></i>
           <span>Presupuesto sin cargo</span>
         </div>
       </div>
@@ -891,82 +991,76 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-white text-slate-500 py-16 border-t border-slate-100">
+  <footer class="footer py-16">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-12 mb-12">
         <div>
           <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center text-white font-bold">FC</div>
+            <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-black font-bold">FC</div>
             <div>
-              <span class="text-slate-800 font-bold text-lg block">Francisco Caro</span>
-              <span class="text-[10px] text-orange-500 uppercase tracking-wider">Desarrollo Web</span>
+              <span class="text-white font-bold text-lg block">Francisco Caro</span>
+              <span class="text-xs text-orange-500 uppercase tracking-wider">Desarrollo Web</span>
             </div>
           </div>
-          <p class="text-sm leading-relaxed text-slate-500">Desarrollo sitios web profesionales con sistema de turnos para emprendedores y profesionales.</p>
+          <p class="text-sm leading-relaxed">Desarrollo sitios web profesionales con sistema de turnos para emprendedores y profesionales.</p>
         </div>
         <div>
-          <h5 class="text-slate-800 font-bold mb-4 text-xs uppercase tracking-wider">Servicios</h5>
+          <h5>Servicios</h5>
           <ul class="space-y-2 text-sm">
-            <li><a href="#servicios" class="hover:text-orange-500 transition">Landing Pages</a></li>
-            <li><a href="#servicios" class="hover:text-orange-500 transition">Sistemas de Turnos</a></li>
-            <li><a href="#servicios" class="hover:text-orange-500 transition">E-commerce</a></li>
-            <li><a href="#servicios" class="hover:text-orange-500 transition">Mantenimiento</a></li>
+            <li><a href="#servicios">Landing Pages</a></li>
+            <li><a href="#servicios">Sistemas de Turnos</a></li>
+            <li><a href="#servicios">E-commerce</a></li>
+            <li><a href="#servicios">Mantenimiento</a></li>
           </ul>
         </div>
         <div>
-          <h5 class="text-slate-800 font-bold mb-4 text-xs uppercase tracking-wider">Contacto</h5>
+          <h5>Contacto</h5>
           <ul class="space-y-2 text-sm">
-            <li><a href="https://wa.me/5492604323056" target="_blank" class="hover:text-orange-500 transition flex items-center gap-2"><i class="fab fa-whatsapp text-green-500"></i>+54 9 260 432-3056</a></li>
-            <li><a href="mailto:FranYTTT@gmail.com" class="hover:text-orange-500 transition flex items-center gap-2"><i class="fas fa-envelope text-orange-400"></i>FranYTTT@gmail.com</a></li>
-            <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-slate-400"></i>Mendoza, Argentina</li>
+            <li><a href="https://wa.me/5492604323056" target="_blank" class="flex items-center gap-2"><i class="fab fa-whatsapp text-green-400"></i>+54 9 260 432-3056</a></li>
+            <li><a href="mailto:FranYTTT@gmail.com" class="flex items-center gap-2"><i class="fas fa-envelope text-orange-400"></i>FranYTTT@gmail.com</a></li>
+            <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-gray-500"></i>Mendoza, Argentina</li>
           </ul>
         </div>
         <div>
-          <h5 class="text-slate-800 font-bold mb-4 text-xs uppercase tracking-wider">Redes</h5>
+          <h5>Redes</h5>
           <div class="flex gap-3">
-            <a href="https://www.instagram.com/caro_frann?igsh=MXhqeHA5aWFwYmw1NQ%3D%3D&utm_source=qr" target="_blank" class="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center hover:bg-orange-500 hover:text-white transition border border-slate-200 text-slate-600">
+            <a href="https://www.instagram.com/caro_frann?igsh=MXhqeHA5aWFwYmw1NQ%3D%3D&utm_source=qr" target="_blank" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-orange-500 hover:text-black transition text-gray-400">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#" onclick="showSocialAlert('GitHub')" class="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center hover:bg-orange-500 hover:text-white transition border border-slate-200 text-slate-600">
+            <a href="#" onclick="alert('Perfil de GitHub en construcción. Contactame por WhatsApp o Instagram.')" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-orange-500 hover:text-black transition text-gray-400">
               <i class="fab fa-github"></i>
             </a>
           </div>
         </div>
       </div>
-      <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-xs text-slate-400">&copy; 2026 Francisco Caro. Todos los derechos reservados.</p>
-        <p class="text-xs text-slate-400">Hecho con <i class="fas fa-heart text-orange-400 mx-1"></i> en Argentina</p>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-gray-500">&copy; 2026 Francisco Caro. Todos los derechos reservados.</p>
+        <p class="text-xs text-gray-500">Hecho con <i class="fas fa-heart text-orange-500 mx-1"></i> en Argentina</p>
       </div>
     </div>
   </footer>
 
   <!-- SCRIPTS -->
   <script>
-    // Exchange rate
-    const EXCHANGE_RATE = 1415;
-    
-    // Toggle precios ARS/USD
-    function showPrices(currency) {
-      const arsElements = document.querySelectorAll('.price-ars');
-      const usdElements = document.querySelectorAll('.price-usd');
-      const btnArs = document.getElementById('btn-ars');
-      const btnUsd = document.getElementById('btn-usd');
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const logoText = document.querySelector('.navbar-logo-text');
       
-      if (currency === 'ars') {
-        arsElements.forEach(el => el.classList.remove('hidden'));
-        usdElements.forEach(el => el.classList.add('hidden'));
-        btnArs.classList.add('bg-orange-500', 'text-white', 'shadow-md');
-        btnArs.classList.remove('text-slate-500');
-        btnUsd.classList.remove('bg-orange-500', 'text-white', 'shadow-md');
-        btnUsd.classList.add('text-slate-500');
+      if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+        logoText.classList.remove('text-white');
+        logoText.classList.add('text-black');
       } else {
-        arsElements.forEach(el => el.classList.add('hidden'));
-        usdElements.forEach(el => el.classList.remove('hidden'));
-        btnUsd.classList.add('bg-orange-500', 'text-white', 'shadow-md');
-        btnUsd.classList.remove('text-slate-500');
-        btnArs.classList.remove('bg-orange-500', 'text-white', 'shadow-md');
-        btnArs.classList.add('text-slate-500');
+        navbar.classList.remove('navbar-scrolled');
+        logoText.classList.add('text-white');
+        logoText.classList.remove('text-black');
       }
+    });
+    
+    // Mobile menu
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('active');
     }
     
     // Typing effect
@@ -974,16 +1068,16 @@
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    const typingElement = document.getElementById('typing-text');
     
     function type() {
       const currentWord = words[wordIndex];
+      const element = document.getElementById('typing-text');
       
       if (isDeleting) {
-        typingElement.textContent = currentWord.substring(0, charIndex - 1);
+        element.textContent = currentWord.substring(0, charIndex - 1);
         charIndex--;
       } else {
-        typingElement.textContent = currentWord.substring(0, charIndex + 1);
+        element.textContent = currentWord.substring(0, charIndex + 1);
         charIndex++;
       }
       
@@ -1003,31 +1097,35 @@
     
     setTimeout(type, 1000);
     
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('nav-scrolled');
-        navbar.classList.remove('py-5');
-        navbar.classList.add('py-3');
+    // Prices toggle
+    function showPrices(currency) {
+      const ars = document.querySelectorAll('.price-ars');
+      const usd = document.querySelectorAll('.price-usd');
+      const btnArs = document.getElementById('btn-ars');
+      const btnUsd = document.getElementById('btn-usd');
+      
+      if (currency === 'ars') {
+        ars.forEach(el => el.classList.remove('hidden'));
+        usd.forEach(el => el.classList.add('hidden'));
+        btnArs.classList.add('bg-orange-500', 'text-black');
+        btnArs.classList.remove('text-gray-500');
+        btnUsd.classList.remove('bg-orange-500', 'text-black');
+        btnUsd.classList.add('text-gray-500');
       } else {
-        navbar.classList.remove('nav-scrolled');
-        navbar.classList.remove('py-3');
-        navbar.classList.add('py-5');
+        ars.forEach(el => el.classList.add('hidden'));
+        usd.forEach(el => el.classList.remove('hidden'));
+        btnUsd.classList.add('bg-orange-500', 'text-black');
+        btnUsd.classList.remove('text-gray-500');
+        btnArs.classList.remove('bg-orange-500', 'text-black');
+        btnArs.classList.add('text-gray-500');
       }
-    });
-    
-    // Mobile menu toggle
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
     }
     
-    // Modal functions para proyectos
+    // Modal
     const projectData = {
       psicologia: {
         icon: 'Ψ',
-        iconColor: 'from-orange-400 to-red-500',
+        color: 'bg-orange-500',
         title: 'Sistema para Psicóloga',
         desc: 'Desarrollo completo de sistema de turnos para consultorio de psicología con gestión de pacientes y disponibilidad.',
         features: [
@@ -1040,7 +1138,7 @@
       },
       medico: {
         icon: '<i class="fas fa-heartbeat"></i>',
-        iconColor: 'from-blue-400 to-indigo-500',
+        color: 'bg-blue-500',
         title: 'Centro Médico Integral',
         desc: 'Plataforma de reservas para clínica con múltiples especialidades y gestión de médicos.',
         features: [
@@ -1053,7 +1151,7 @@
       },
       barberia: {
         icon: '<i class="fas fa-cut"></i>',
-        iconColor: 'from-yellow-400 to-orange-500',
+        color: 'bg-yellow-500',
         title: 'The Urban Barber',
         desc: 'Sistema completo para barbería con selección de barberos, servicios y pagos integrados.',
         features: [
@@ -1066,12 +1164,12 @@
       }
     };
     
-    function openProjectModal(project) {
+    function openModal(project) {
       const data = projectData[project];
       const modal = document.getElementById('projectModal');
       const iconDiv = document.getElementById('modalIcon');
       
-      iconDiv.className = `w-16 h-16 bg-gradient-to-br ${data.iconColor} rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4 shadow-lg`;
+      iconDiv.className = `w-16 h-16 ${data.color} rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4 shadow-lg`;
       iconDiv.innerHTML = data.icon;
       
       document.getElementById('modalTitle').textContent = data.title;
@@ -1086,44 +1184,33 @@
       document.body.style.overflow = 'hidden';
     }
     
-    function closeProjectModal(event) {
+    function closeModal(event) {
       if (!event || event.target.id === 'projectModal' || event.target.tagName === 'BUTTON') {
         document.getElementById('projectModal').classList.remove('active');
         document.body.style.overflow = 'auto';
       }
     }
     
-    // Social alert
-    function showSocialAlert(network) {
-      if (network === 'GitHub') {
-        alert('Perfil de GitHub en construcción. Contactame por WhatsApp o Instagram para ver mi trabajo.');
-      }
-    }
+    // Close modal on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
     
-    // GSAP Animations
+    // GSAP
     if (typeof gsap !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
       
-      gsap.from('.gsap-hero-text', {
+      gsap.from('.card', {
+        scrollTrigger: {
+          trigger: '#servicios',
+          start: 'top 80%'
+        },
+        y: 50,
         opacity: 0,
-        y: 30,
-        duration: 1,
-        ease: 'power3.out'
-      });
-      
-      gsap.from('.gsap-hero-image', {
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        delay: 0.2,
-        ease: 'power3.out'
+        duration: 0.6,
+        stagger: 0.1
       });
     }
-    
-    // Close modal on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeProjectModal();
-    });
   </script>
 
 </body>
