@@ -1,11 +1,540 @@
-          <!-- Proyecto 3: Tu Nuevo Cliente -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Francisco Caro | Desarrollo Web Profesional</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+    }
+    
+    .display { font-family: 'Space Grotesk', sans-serif; }
+    
+    /* Nueva fuente elegante para títulos */
+    .elegant-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    
+    /* FONDO BLANCO SIMPLE CON TOQUE DORADO MUY SUTIL */
+    .section-white {
+      background: #ffffff;
+    }
+    
+    .section-light {
+      background: #fafafa;
+    }
+    
+    /* Hero oscuro */
+    .hero-section {
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+      min-height: 100vh;
+    }
+    
+    .hero-title {
+      color: #ffffff;
+      line-height: 1.1;
+    }
+    
+    .hero-subtitle {
+      color: #e5e7eb;
+      font-size: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .btn-primary {
+      background: #f97316;
+      color: #000000;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+    }
+    
+    .btn-primary:hover {
+      background: #fb923c;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary-dark {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid #f97316;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary-dark:hover {
+      background: rgba(249, 115, 22, 0.1);
+    }
+    
+    .card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      border-color: #f97316;
+      transform: translateY(-4px);
+    }
+    
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ea580c;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .price-number {
+      color: #000000;
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    
+    .plan-featured {
+      background: #000000;
+      border: 2px solid #f97316;
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    
+    .plan-featured::before {
+      content: 'RECOMENDADO';
+      position: absolute;
+      top: 20px;
+      right: -35px;
+      background: #f97316;
+      color: #000000;
+      padding: 6px 40px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transform: rotate(45deg);
+    }
+    
+    .plan-featured .price-number { color: #ffffff; }
+    .plan-featured h4 { color: #f97316; font-weight: 700; }
+    .plan-featured p { color: #d1d5db; }
+    
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+    
+    .card .feature-list li { color: #374151; }
+    .card .feature-list i { color: #059669; }
+    .plan-featured .feature-list li { color: #e5e7eb; }
+    .plan-featured .feature-list i { color: #f97316; }
+    
+    .navbar {
+      position: fixed;
+      width: 100%;
+      z-index: 50;
+      transition: all 0.3s ease;
+      padding: 1rem 0;
+    }
+    
+    .navbar-scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 0.75rem 0;
+    }
+    
+    .navbar-scrolled .nav-link { color: #000000; }
+    .nav-link {
+      color: #ffffff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover { color: #f97316; }
+    
+    .footer {
+      background: #000000;
+      color: #d1d5db;
+    }
+    
+    .footer h5 {
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+    }
+    
+    .footer a {
+      color: #9ca3af;
+      transition: color 0.3s ease;
+    }
+    .footer a:hover { color: #f97316; }
+    
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .modal-overlay.active { display: flex; }
+    
+    .modal-content {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 500px;
+      width: 100%;
+      padding: 2.5rem;
+    }
+    
+    .typing::after {
+      content: '|';
+      animation: blink 1s infinite;
+      color: #f97316;
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #000000;
+    }
+    
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: #f97316;
+      color: #000000;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin: 0 auto 1rem;
+    }
+    
+    details {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    
+    summary {
+      padding: 1.25rem;
+      font-weight: 600;
+      color: #000000;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+    
+    summary i {
+      color: #f97316;
+      transition: transform 0.3s ease;
+    }
+    
+    details[open] summary i {
+      transform: rotate(180deg);
+    }
+    
+    details > div {
+      padding: 0 1.25rem 1.25rem;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+    
+    .cta-section {
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    }
+    
+    .mobile-menu {
+      display: none;
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      padding: 1rem;
+      position: absolute;
+      width: 100%;
+    }
+    .mobile-menu.active { display: block; }
+  </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-black font-bold text-xl">
+          FC
+        </div>
+        <span class="display font-bold text-xl text-white navbar-logo-text">Francisco<span class="text-orange-500">Caro</span></span>
+      </div>
+      
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#precios" class="nav-link">Precios</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="https://wa.me/5492604323056" target="_blank" class="btn-primary text-sm">
+          <i class="fab fa-whatsapp"></i>
+          Contactar
+        </a>
+      </div>
+      
+      <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    
+    <div class="mobile-menu md:hidden" id="mobile-menu">
+      <a href="#servicios">Servicios</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#precios">Precios</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://wa.me/5492604323056" class="btn-primary text-center mt-4 justify-center w-full">
+        <i class="fab fa-whatsapp"></i>
+        Contactar
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-section flex items-center pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-6 w-full">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 text-green-400 px-4 py-2 rounded-full text-sm font-semibold">
+            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+            Disponible para proyectos
+          </div>
+          
+          <h1 class="hero-title text-5xl md:text-7xl elegant-title">
+            Sitios web que <br>
+            <span class="text-orange-500 typing" id="typing-text">venden</span>
+          </h1>
+          
+          <p class="hero-subtitle max-w-xl">
+            Desarrollo páginas profesionales con <span class="text-orange-400 font-semibold">sistema de turnos integrado</span>. Diseños únicos que convierten visitantes en clientes.
+          </p>
+          
+          <div class="flex items-baseline gap-3 flex-wrap pt-2">
+            <span class="text-gray-400">Desde</span>
+            <span class="text-5xl font-black text-white">$50.000</span>
+            <span class="text-orange-400 font-bold text-2xl">ARS</span>
+            <span class="text-gray-500">o</span>
+            <span class="text-3xl font-bold text-white">$50</span>
+            <span class="text-orange-400 font-bold text-xl">USD</span>
+          </div>
+          
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="https://wa.me/5492604323056?text=Hola!%20V%C3%AD%20tu%20web%20y%20quiero%20consultar%20por%20un%20proyecto" target="_blank" class="btn-primary">
+              <i class="fab fa-whatsapp text-xl"></i>
+              <span>Consultar gratis</span>
+            </a>
+            <a href="#portfolio" class="btn-secondary-dark">
+              <span>Ver trabajos</span>
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+          
+          <div class="flex flex-wrap items-center gap-6 pt-4 text-sm">
+            <div class="flex items-center gap-2 text-gray-300">
+              <i class="fas fa-check-circle text-green-400"></i>
+              <span>Entrega en 7 días</span>
+            </div>
+            <div class="flex items-center gap-2 text-gray-300">
+              <i class="fas fa-shield-alt text-orange-400"></i>
+              <span>Garantía 30 días</span>
+            </div>
+            <div class="flex items-center gap-2 text-gray-300">
+              <i class="fas fa-headset text-blue-400"></i>
+              <span>Soporte accesible</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hidden lg:block relative">
+          <div class="absolute -inset-4 bg-orange-500/20 rounded-3xl blur-3xl"></div>
+          <div class="relative bg-gray-900 rounded-2xl p-6 border border-gray-700">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div class="flex-1 text-center text-xs text-gray-500">francisco-caro.vercel.app</div>
+            </div>
+            <div class="space-y-3">
+              <div class="h-4 bg-gray-700 rounded w-3/4"></div>
+              <div class="h-3 bg-gray-800 rounded w-full"></div>
+              <div class="h-3 bg-gray-800 rounded w-5/6"></div>
+              <div class="grid grid-cols-3 gap-3 mt-6">
+                <div class="h-24 bg-orange-500/20 rounded-lg border border-orange-500/30"></div>
+                <div class="h-24 bg-gray-800 rounded-lg"></div>
+                <div class="h-24 bg-gray-800 rounded-lg"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="py-12 section-light border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="stat-number">50+</div>
+          <div class="text-gray-500 text-sm uppercase font-semibold">Proyectos entregados</div>
+        </div>
+        <div>
+          <div class="stat-number">100%</div>
+          <div class="text-gray-500 text-sm uppercase font-semibold">Clientes satisfechos</div>
+        </div>
+        <div>
+          <div class="stat-number">7</div>
+          <div class="text-gray-500 text-sm uppercase font-semibold">Días de entrega</div>
+        </div>
+        <div>
+          <div class="stat-number">24/7</div>
+          <div class="text-gray-500 text-sm uppercase font-semibold">Soporte accesible</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="section-white py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Qué incluye?</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Todo lo que necesitás para tener presencia online profesional y empezar a recibir reservas.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card">
+          <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
+          <h4>Diseño Único</h4>
+          <p>Diseño personalizado según tu marca. No uso plantillas genéricas. Cada sitio es único y memorable.</p>
+        </div>
+        
+        <div class="card">
+          <div class="icon-box"><i class="fas fa-calendar-check"></i></div>
+          <h4>Sistema de Turnos</h4>
+          <p>Calendario interactivo donde tus clientes reservan directo. Notificaciones automáticas por email.</p>
+        </div>
+        
+        <div class="card">
+          <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+          <h4>100% Responsive</h4>
+          <p>Se ve perfecto en celulares, tablets y computadoras. Tus clientes pueden reservar desde cualquier lado.</p>
+        </div>
+        
+        <div class="card">
+          <div class="icon-box"><i class="fas fa-lock"></i></div>
+          <h4>Panel de Admin</h4>
+          <p>Gestioná tus turnos, disponibilidad y datos de clientes desde un panel privado con contraseña.</p>
+        </div>
+        
+        <div class="card">
+          <div class="icon-box"><i class="fas fa-rocket"></i></div>
+          <h4>Hosting Accesible</h4>
+          <p>Precio accesible según la necesidad del cliente. Dominio personalizado opcional.</p>
+        </div>
+        
+        <div class="card">
+          <div class="icon-box"><i class="fas fa-headset"></i></div>
+          <h4>Soporte Garantizado</h4>
+          <p>30 días de soporte post-entrega para ajustes. Después, soporte mensual accesible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section-light py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">Proyectos Entregados</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Webs reales y funcionando, deployadas con sistema de turnos integrado.</p>
+      </div>
+
+      <!-- PROYECTOS EN VIVO -->
+      <div class="mb-20">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="relative flex h-4 w-4">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-4 w-4 bg-green-500"></span>
+          </span>
+          <h3 class="text-2xl font-bold text-gray-900">Webs Activas</h3>
+          <span class="text-sm text-gray-500">(Visitá los sitios reales)</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+
+          <!-- Proyecto 1: Florencia Rosales -->
           <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-            <div class="relative bg-gradient-to-br from-purple-50 to-pink-100 aspect-video flex items-center justify-center border-b border-purple-100">
+            <div class="relative bg-gradient-to-br from-orange-50 to-orange-100 aspect-video flex items-center justify-center border-b border-orange-100">
               <div class="text-center p-8">
                 <div class="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  💇‍♀️
+                  🧠
                 </div>
-                <div class="inline-flex items-center gap-2 bg-white/80 px-3 py-1 rounded-full text-xs font-semibold text-purple-600 border border-purple-200">
+                <div class="inline-flex items-center gap-2 bg-white/80 px-3 py-1 rounded-full text-xs font-semibold text-orange-600 border border-orange-200">
                   <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                   En línea
                 </div>
@@ -17,21 +546,544 @@
             <div class="p-6">
               <div class="flex justify-between items-start mb-3">
                 <div>
-                  <h4 class="text-xl font-bold text-gray-900 mb-1">Nombre del Negocio</h4>
-                  <p class="text-sm text-purple-600 font-medium">Rubro • Especialidad</p>
+                  <h4 class="text-xl font-bold text-gray-900 mb-1">Lic. Florencia Rosales</h4>
+                  <p class="text-sm text-orange-600 font-medium">Psicología • Niños, Adolescentes y Adultos</p>
                 </div>
+                <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-lg font-bold">MP 057074</span>
               </div>
-              <p class="text-gray-600 text-sm mb-6">Descripción breve del sistema implementado.</p>
-              
+              <p class="text-gray-600 text-sm mb-6 line-clamp-2">Sistema completo de reservas con modalidad presencial y virtual. Panel de admin con configuración flexible de horarios cada 10 minutos.</p>
+
               <div class="flex flex-wrap gap-2 mb-6">
-                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">Feature 1</span>
-                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">Feature 2</span>
+                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">Turnos Online</span>
+                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">Panel Admin</span>
+                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">Responsive</span>
               </div>
-              
-              <a href="https://url-de-vercel.app/" target="_blank" 
-                 class="flex items-center justify-center gap-2 w-full bg-black text-white py-3 rounded-xl font-semibold hover:bg-purple-500 hover:text-white transition-colors group">
+
+              <a href="https://lic-florencia-rosales.vercel.app/" target="_blank" 
+                 class="flex items-center justify-center gap-2 w-full bg-black text-white py-3 rounded-xl font-semibold hover:bg-orange-500 hover:text-black transition-colors group">
                 <span>Visitar Web</span>
                 <i class="fas fa-external-link-alt group-hover:translate-x-1 transition-transform"></i>
               </a>
             </div>
           </div>
+
+          <!-- Proyecto 2: Salvador -->
+          <div class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+            <div class="relative bg-gradient-to-br from-blue-50 to-indigo-100 aspect-video flex items-center justify-center border-b border-blue-100">
+              <div class="text-center p-8">
+                <div class="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  🧘
+                </div>
+                <div class="inline-flex items-center gap-2 bg-white/80 px-3 py-1 rounded-full text-xs font-semibold text-blue-600 border border-blue-200">
+                  <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                  En línea
+                </div>
+              </div>
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-gray-700 shadow-sm">
+                Sistema de Turnos
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-3">
+                <div>
+                  <h4 class="text-xl font-bold text-gray-900 mb-1">Lic. Alberti Bigliante Salvador</h4>
+                  <p class="text-sm text-blue-600 font-medium">Enfoque Psicoanalítico • Adolescentes y Adultos</p>
+                </div>
+                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-lg font-bold">MN 87014</span>
+              </div>
+              <p class="text-gray-600 text-sm mb-6 line-clamp-2">Sistema inteligente con detección automática de solapamiento de turnos. Si un turno dura 40 min, bloquea automáticamente el horario de las 9:30.</p>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">Solapamiento Auto</span>
+                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">Virtual/Presencial</span>
+                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">Gestión Admin</span>
+              </div>
+
+              <a href="https://lic-salvador.vercel.app/" target="_blank" 
+                 class="flex items-center justify-center gap-2 w-full bg-black text-white py-3 rounded-xl font-semibold hover:bg-blue-500 hover:text-white transition-colors group">
+                <span>Visitar Web</span>
+                <i class="fas fa-external-link-alt group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DEMOS ADICIONALES -->
+      <div class="border-t border-gray-200 pt-16">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Demos de Referencia</h3>
+        <p class="text-center text-gray-500 mb-8 text-sm">Ejemplos de funcionalidades disponibles para otros rubros</p>
+
+        <div class="grid md:grid-cols-3 gap-8 opacity-80 hover:opacity-100 transition-opacity">
+          <div class="cursor-pointer group" onclick="openModal('psicologia')">
+            <div class="aspect-[4/3] bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl flex items-center justify-center mb-4 border border-orange-200 group-hover:border-orange-400 transition">
+              <div class="text-center p-6">
+                <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-3 shadow-lg">Ψ</div>
+                <h4 class="font-bold text-gray-900">Consultorio Psicología</h4>
+                <p class="text-sm text-orange-600 font-medium mt-1">Ver información</p>
+              </div>
+            </div>
+            <h4 class="font-bold text-gray-900 mb-1 group-hover:text-orange-600 transition">Sistema para Psicóloga</h4>
+            <p class="text-gray-600 text-sm">Calendario con disponibilidad virtual y presencial</p>
+          </div>
+
+          <div class="cursor-pointer group" onclick="openModal('medico')">
+            <div class="aspect-[4/3] bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl flex items-center justify-center mb-4 border border-blue-200 group-hover:border-blue-400 transition">
+              <div class="text-center p-6">
+                <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-3 shadow-lg"><i class="fas fa-heartbeat"></i></div>
+                <h4 class="font-bold text-gray-900">Centro Médico</h4>
+                <p class="text-sm text-blue-600 font-medium mt-1">Ver información</p>
+              </div>
+            </div>
+            <h4 class="font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition">Clínica Médica</h4>
+            <p class="text-gray-600 text-sm">Reservas por especialidad y recordatorios</p>
+          </div>
+
+          <div class="cursor-pointer group" onclick="openModal('barberia')">
+            <div class="aspect-[4/3] bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl flex items-center justify-center mb-4 border border-amber-200 group-hover:border-amber-400 transition">
+              <div class="text-center p-6">
+                <div class="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-3 shadow-lg"><i class="fas fa-cut"></i></div>
+                <h4 class="font-bold text-gray-900">Barbería Premium</h4>
+                <p class="text-sm text-amber-600 font-medium mt-1">Ver información</p>
+              </div>
+            </div>
+            <h4 class="font-bold text-gray-900 mb-1 group-hover:text-amber-600 transition">The Urban Barber</h4>
+            <p class="text-gray-600 text-sm">Sistema de barberos y pagos integrados</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- MODAL -->
+  <div id="projectModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div id="modalIcon" class="w-16 h-16 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4 shadow-lg"></div>
+      <h3 id="modalTitle" class="text-2xl font-bold mb-4"></h3>
+      <p id="modalDesc" class="text-gray-600 mb-6"></p>
+      
+      <div class="bg-gray-50 rounded-xl p-4 mb-6">
+        <h4 class="font-semibold text-gray-900 mb-3 text-sm uppercase">Características implementadas:</h4>
+        <ul id="modalFeatures" class="space-y-2 text-sm text-gray-600"></ul>
+      </div>
+      
+      <div class="flex gap-3">
+        <a href="https://wa.me/5492604323056?text=Hola!%20Vi%20el%20proyecto%20de%20tu%20portfolio%20y%20quiero%20algo%20similar" target="_blank" class="flex-1 bg-orange-500 text-black text-center py-3 rounded-xl font-bold hover:bg-orange-400 transition">
+          Quiero algo similar
+        </a>
+        <button onclick="closeModal()" class="px-6 py-3 border border-gray-200 rounded-xl text-gray-700 hover:bg-gray-50 transition font-semibold">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRECIOS -->
+  <section id="precios" class="section-white py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">Inversión</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Precios transparentes. Sin costos ocultos.</p>
+        <p class="text-sm text-gray-500 mt-2">Cotización referencial: $1,200 ARS/USD (actualizable)</p>
+        
+        <div class="flex justify-center mt-8">
+          <div class="bg-gray-100 p-1 rounded-full inline-flex">
+            <button onclick="showPrices('ars')" id="btn-ars" class="px-6 py-2 rounded-full bg-orange-500 text-black font-bold text-sm shadow-md transition">Pesos ARS</button>
+            <button onclick="showPrices('usd')" id="btn-usd" class="px-6 py-2 rounded-full font-medium text-gray-500 hover:text-gray-900 transition text-sm">Dólares USD</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- LOS 3 PLANES -->
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+        
+        <!-- PLAN 1 -->
+        <div class="card">
+          <div class="mb-6">
+            <h4 class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2">Landing Page</h4>
+            <div class="price-ars">
+              <span class="price-number">$50.000</span>
+              <span class="text-gray-400 text-lg"> ARS</span>
+            </div>
+            <div class="price-usd hidden">
+              <span class="price-number">$42</span>
+              <span class="text-gray-400 text-lg"> USD</span>
+            </div>
+          </div>
+          
+          <p class="text-gray-600 mb-6 text-sm">Página única profesional con información de tu negocio.</p>
+          
+          <ul class="feature-list mb-8">
+            <li><i class="fas fa-check text-green-500"></i><span>Diseño personalizado único</span></li>
+            <li><i class="fas fa-check text-green-500"></i><span>Responsive mobile-first</span></li>
+            <li><i class="fas fa-check text-green-500"></i><span>Formulario de contacto</span></li>
+            <li><i class="fas fa-check text-green-500"></i><span>Hosting accesible</span></li>
+            <li><i class="fas fa-times text-red-400"></i><span class="text-gray-400">Sistema de turnos</span></li>
+          </ul>
+          
+          <a href="https://wa.me/5492604323056?text=Hola!%20Me%20interesa%20el%20Plan%20Landing%20Page" target="_blank" class="block w-full border-2 border-gray-200 text-gray-700 text-center py-3 rounded-xl font-bold hover:border-orange-500 hover:text-orange-600 transition">
+            Consultar
+          </a>
+        </div>
+        
+        <!-- PLAN 2 DESTACADO -->
+        <div class="plan-featured">
+          <div class="mb-6">
+            <h4>Con Turnos</h4>
+            <div class="price-ars">
+              <span class="price-number">$70.000</span>
+              <span class="text-orange-400 text-lg"> ARS</span>
+            </div>
+            <div class="price-usd hidden">
+              <span class="price-number">$58</span>
+              <span class="text-orange-400 text-lg"> USD</span>
+            </div>
+          </div>
+          
+          <p class="text-sm mb-6">Sitio completo con sistema de reservas. Ideal para profesionales y consultorios.</p>
+          
+          <ul class="feature-list mb-8">
+            <li><i class="fas fa-check"></i><span>Todo del plan anterior</span></li>
+            <li><i class="fas fa-check"></i><span class="text-orange-400 font-semibold">Sistema de turnos completo</span></li>
+            <li><i class="fas fa-check"></i><span>Panel de administración</span></li>
+            <li><i class="fas fa-check"></i><span>Múltiples secciones</span></li>
+            <li><i class="fas fa-check"></i><span>Notificaciones por email</span></li>
+          </ul>
+          
+          <a href="https://wa.me/5492604323056?text=Hola!%20Me%20interesa%20el%20Plan%20Con%20Turnos" target="_blank" class="block w-full bg-orange-500 text-black text-center py-3 rounded-xl font-bold hover:bg-orange-400 transition">
+            Elegir Plan
+          </a>
+        </div>
+        
+        <!-- PLAN 3 -->
+        <div class="card">
+          <div class="mb-6">
+            <h4 class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2">Premium</h4>
+            <div class="price-ars">
+              <span class="price-number">$100.000</span>
+              <span class="text-gray-400 text-lg"> ARS</span>
+            </div>
+            <div class="price-usd hidden">
+              <span class="price-number">$83</span>
+              <span class="text-gray-400 text-lg"> USD</span>
+            </div>
+          </div>
+          
+          <p class="text-gray-600 mb-6 text-sm">Funcionalidades avanzadas y múltiples profesionales.</p>
+          
+          <ul class="feature-list mb-8">
+            <li><i class="fas fa-check text-green-500"></i><span>Todo del plan Con Turnos</span></li>
+            <li><i class="fas fa-check text-green-500"></i><span>Múltiples profesionales</span></li>
+            <li><i class="fas fa-check text-green-500"></i><span>Pagos online integrados</span></li>
+            <li><i class="fas fa-check text-green-500"></i><span>WhatsApp API</span></li>
+            <li><i class="fas fa-check text-green-500"></i><span>Soporte prioritario 6 meses</span></li>
+          </ul>
+          
+          <a href="https://wa.me/5492604323056?text=Hola!%20Me%20interesa%20el%20Plan%20Premium" target="_blank" class="block w-full border-2 border-gray-200 text-gray-700 text-center py-3 rounded-xl font-bold hover:border-orange-500 hover:text-orange-600 transition">
+            Consultar
+          </a>
+        </div>
+        
+      </div>
+      
+      <!-- SOPORTE -->
+      <div class="text-center mt-12 p-6 bg-gray-50 rounded-2xl max-w-2xl mx-auto border border-gray-200">
+        <div class="flex items-center justify-center gap-2 mb-2">
+          <i class="fas fa-headset text-orange-500"></i>
+          <span class="font-bold text-gray-900">Soporte mensual accesible</span>
+        </div>
+        <p class="text-gray-600">
+          Desde <span class="text-orange-600 font-bold">$12.000 ARS</span> hasta <span class="text-orange-600 font-bold">$24.000 ARS</span> 
+          ($10-$20 USD) según tus necesidades
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="section-light py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Cómo trabajamos?</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Proceso simple y transparente. De tu idea a la web en línea en 7 días.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="step-number">1</div>
+          <h4 class="font-bold text-gray-900 mb-2">Consulta</h4>
+          <p class="text-gray-600 text-sm">Hablamos de tu negocio y objetivos sin compromiso.</p>
+        </div>
+        <div class="text-center">
+          <div class="step-number" style="background: #3b82f6;">2</div>
+          <h4 class="font-bold text-gray-900 mb-2">Propuesta</h4>
+          <p class="text-gray-600 text-sm">Diseño y presupuesto personalizado para vos.</p>
+        </div>
+        <div class="text-center">
+          <div class="step-number" style="background: #10b981;">3</div>
+          <h4 class="font-bold text-gray-900 mb-2">Desarrollo</h4>
+          <p class="text-gray-600 text-sm">Actualizaciones cada 48hs para que veas el progreso.</p>
+        </div>
+        <div class="text-center">
+          <div class="step-number" style="background: #8b5cf6;">4</div>
+          <h4 class="font-bold text-gray-900 mb-2">Entrega</h4>
+          <p class="text-gray-600 text-sm">Tu web online con capacitación incluida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section-white py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4 elegant-title">Preguntas Frecuentes</h2>
+        <p class="text-xl text-gray-600">Todo lo que necesitás saber antes de empezar.</p>
+      </div>
+      
+      <details>
+        <summary>
+          <span>¿Cuánto tiempo tarda en estar lista la web?</span>
+          <i class="fas fa-chevron-down"></i>
+        </summary>
+        <div>Entre 5 y 7 días hábiles desde que confirmás el proyecto. Si necesitás algo urgente, consultá por entrega express (3-4 días con recargo del 20%).</div>
+      </details>
+      
+      <details>
+        <summary>
+          <span>¿Necesito tener dominio y hosting?</span>
+          <i class="fas fa-chevron-down"></i>
+        </summary>
+        <div>No es necesario. Ofrezco hosting a <strong class="text-orange-600">precio accesible según tu necesidad</strong>. Si querés un dominio personalizado, te guío en la compra (costo aparte, unos $15-20 USD/año).</div>
+      </details>
+      
+      <details>
+        <summary>
+          <span>¿Puedo modificar los turnos una vez entregada?</span>
+          <i class="fas fa-chevron-down"></i>
+        </summary>
+        <div>¡Por supuesto! El panel de administración te permite gestionar tu disponibilidad en cualquier momento. Es 100% autogestionable.</div>
+      </details>
+      
+      <details>
+        <summary>
+          <span>¿Qué pasa después de los 30 días de garantía?</span>
+          <i class="fas fa-chevron-down"></i>
+        </summary>
+        <div>Ofrezco planes de mantenimiento mensual <strong class="text-orange-600">accesibles desde $12.000 a $24.000 ARS</strong> ($10-$20 USD) que incluyen soporte técnico y actualizaciones.</div>
+      </details>
+      
+      <details>
+        <summary>
+          <span>¿Cómo se realiza el pago?</span>
+          <i class="fas fa-chevron-down"></i>
+        </summary>
+        <div>50% al confirmar, 50% al entregar. Acepto transferencia, MercadoPago, PayPal, Wise o USDT.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section py-24">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white elegant-title">¿Listo para tu nueva web?</h2>
+      <p class="text-xl text-gray-300 mb-10">Agendá una consulta gratuita de 15 minutos. Sin compromiso, te explico cómo podemos llevar tu negocio al siguiente nivel.</p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <a href="https://wa.me/5492604323056?text=Hola!%20V%C3%AD%20tu%20web%20y%20quiero%20consultar%20por%20un%20proyecto" target="_blank" class="bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-xl inline-flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp text-xl"></i>
+          Escribir por WhatsApp
+        </a>
+        <a href="mailto:FranYTTT@gmail.com" class="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-full font-bold hover:bg-white/5 transition inline-flex items-center justify-center gap-2">
+          <i class="fas fa-envelope"></i>
+          Enviar Email
+        </a>
+      </div>
+      
+      <div class="flex items-center justify-center gap-8 text-sm text-gray-400">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-check-circle text-green-400"></i>
+          <span>Respuesta en 2 horas</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-check-circle text-green-400"></i>
+          <span>Presupuesto sin cargo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-black font-bold">FC</div>
+            <div>
+              <span class="text-white font-bold text-lg block">Francisco Caro</span>
+              <span class="text-xs text-orange-500 uppercase tracking-wider">Desarrollo Web</span>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed">Desarrollo sitios web profesionales con sistema de turnos para emprendedores y profesionales.</p>
+        </div>
+        <div>
+          <h5>Servicios</h5>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#servicios">Landing Pages</a></li>
+            <li><a href="#servicios">Sistemas de Turnos</a></li>
+            <li><a href="#servicios">E-commerce</a></li>
+            <li><a href="#servicios">Mantenimiento</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contacto</h5>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://wa.me/5492604323056" target="_blank" class="flex items-center gap-2"><i class="fab fa-whatsapp text-green-400"></i>+54 9 260 432-3056</a></li>
+            <li><a href="mailto:FranYTTT@gmail.com" class="flex items-center gap-2"><i class="fas fa-envelope text-orange-400"></i>FranYTTT@gmail.com</a></li>
+            <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-gray-500"></i>Mendoza, Argentina</li>
+          </ul>
+        </div>
+        <div>
+          <h5>Redes</h5>
+          <div class="flex gap-3">
+            <a href="https://www.instagram.com/caro_frann?igsh=MXhqeHA5aWFwYmw1NQ%3D%3D&utm_source=qr" target="_blank" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-orange-500 hover:text-black transition text-gray-400">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" onclick="alert('Perfil de GitHub en construcción. Contactame por WhatsApp o Instagram.')" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-orange-500 hover:text-black transition text-gray-400">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-gray-500">&copy; 2026 Francisco Caro. Todos los derechos reservados.</p>
+        <p class="text-xs text-gray-500">Hecho con <i class="fas fa-heart text-orange-500 mx-1"></i> en Argentina</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const logoText = document.querySelector('.navbar-logo-text');
+      
+      if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+        logoText.classList.remove('text-white');
+        logoText.classList.add('text-black');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+        logoText.classList.add('text-white');
+        logoText.classList.remove('text-black');
+      }
+    });
+    
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('active');
+    }
+    
+    // Typing
+    const words = ['venden', 'conectan', 'crecen', 'destacan'];
+    let wordIndex = 0, charIndex = 0, isDeleting = false;
+    
+    function type() {
+      const currentWord = words[wordIndex];
+      const element = document.getElementById('typing-text');
+      
+      if (isDeleting) {
+        element.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        element.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+      
+      let typeSpeed = isDeleting ? 50 : 100;
+      
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+      }
+      
+      setTimeout(type, typeSpeed);
+    }
+    setTimeout(type, 1000);
+    
+    // Prices toggle
+    function showPrices(currency) {
+      const ars = document.querySelectorAll('.price-ars');
+      const usd = document.querySelectorAll('.price-usd');
+      const btnArs = document.getElementById('btn-ars');
+      const btnUsd = document.getElementById('btn-usd');
+      
+      if (currency === 'ars') {
+        ars.forEach(el => el.classList.remove('hidden'));
+        usd.forEach(el => el.classList.add('hidden'));
+        btnArs.classList.add('bg-orange-500', 'text-black');
+        btnArs.classList.remove('text-gray-500');
+        btnUsd.classList.remove('bg-orange-500', 'text-black');
+        btnUsd.classList.add('text-gray-500');
+      } else {
+        ars.forEach(el => el.classList.add('hidden'));
+        usd.forEach(el => el.classList.remove('hidden'));
+        btnUsd.classList.add('bg-orange-500', 'text-black');
+        btnUsd.classList.remove('text-gray-500');
+        btnArs.classList.remove('bg-orange-500', 'text-black');
+        btnArs.classList.add('text-gray-500');
+      }
+    }
+    
+    // Modal
+    const projectData = {
+      psicologia: {
+        icon: 'Ψ',
+        color: 'bg-orange-500',
+        title: 'Sistema para Psicóloga',
+        desc: 'Desarrollo completo de sistema de turnos para consultorio de psicología con gestión de pacientes y disponibilidad.',
+        features: ['Calendario interactivo con disponibilidad virtual y presencial', 'Panel de administración privado', 'Notificaciones automáticas por email', 'Historial de pacientes y sesiones', 'Diseño profesional y calming']
+      },
+      medico: {
+        icon: '<i class="fas fa-heartbeat"></i>',
+        color: 'bg-blue-500',
+        title: 'Centro Médico Integral',
+        desc: 'Plataforma de reservas para clínica con múltiples especialidades y gestión de médicos.',
+        features: ['Reservas por especialidad médica', 'Gestión de múltiples profesionales', 'Recordatorios automáticos', 'Historial clínico básico', 'Integración con WhatsApp Business']
+      },
+      barberia: {
+        icon: '<i class="fas fa-cut"></i>',
+        color: 'bg-amber-500',
+        title: 'The Urban Barber',
+        desc: 'Sistema completo para barbería con selección de barberos, servicios y pagos integrados.',
+        features: ['Selección de barbero por especialidad', 'Catálogo de servicios con precios', 'Sistema de puntos y fidelización', 'Pagos online integrados', 'Galería de cortes y estilos']
+      }
+    };
+    
+    function openModal(project) {
+      const data = projectData[project];
+      document.getElementById('modalIcon').className = `w-16 h-16 ${data.color} rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4 shadow-lg`;
+      document.getElementById('modalIcon').innerHTML = data.icon;
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalDesc').textContent = data.desc;
+      document.getElementById('modalFeatures').innerHTML = data.features.map(f => `<li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1 text-xs"></i><span>${f}</span></li>`).join('');
+      document.getElementById('projectModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(event) {
+      if (!event || event.target.id === 'projectModal' || event.target.tagName === 'BUTTON') {
+        document.getElementById('projectModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+    
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  </script>
+
+</body>
+</html>
