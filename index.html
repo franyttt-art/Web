@@ -574,6 +574,9 @@
       transition: all 0.3s ease;
       flex-shrink: 0;
       width: 100%;
+      height: auto;
+      min-height: min-content;
+      overflow: visible;
     }
     
     @media (min-width: 768px) {
@@ -933,6 +936,7 @@
       -webkit-overflow-scrolling: touch;
       padding: 1rem 0;
       scrollbar-width: none;
+      align-items: stretch;
     }
     
     .testimonials-carousel::-webkit-scrollbar {
