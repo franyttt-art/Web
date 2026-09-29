@@ -428,6 +428,18 @@
     .hero-dots { display: flex; gap: 6px; padding-bottom: 4px; }
     .hero-dot { width: 6px; height: 6px; border-radius: 999px; background: #3f3f46; transition: all 0.4s ease; }
     .hero-dot.active { width: 22px; background: #f97316; }
+    .hero-section { overflow-x: clip; }
+    @media (max-width: 640px) {
+      .hero-frame { padding: 10px; border-radius: 16px; }
+      .hero-frame-glow { inset: -12px; }
+      .hero-frame-bar { gap: 8px; margin-bottom: 10px; }
+      .hero-frame-dots span { width: 7px; height: 7px; }
+      .hero-frame-url { font-size: 11px; padding: 4px 10px; }
+      .hero-screen { border-radius: 10px; }
+      .hero-caption { padding: 12px 4px 2px; }
+      .hero-caption-name { font-size: 14px; }
+      .hero-caption-kind { font-size: 11px; }
+    }
 
     .portfolio-card .content {
       padding: 1.5rem;
@@ -1553,7 +1565,7 @@
           </div>
         </div>
         
-        <div class="hidden lg:block relative gsap-reveal-right">
+        <div class="relative gsap-reveal-right">
           <div class="hero-frame-glow"></div>
           <div class="hero-frame">
             <div class="hero-frame-bar">
