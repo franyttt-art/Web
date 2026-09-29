@@ -9,35 +9,6 @@
   <meta name="description" content="Gracias por contactarnos. Te responderemos en menos de 24 horas.">
   <meta name="robots" content="noindex, follow">
   
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID');
-    // Evento de conversión
-    gtag('event', 'conversion', {
-      'send_to': 'GA_MEASUREMENT_ID',
-      'event_category': 'Lead',
-      'event_label': 'Form Submitted'
-    });
-  </script>
-  
-  <!-- Meta Pixel (Facebook) -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'META_PIXEL_ID');
-    fbq('track', 'PageView');
-    fbq('track', 'Lead');
-  </script>
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -245,17 +216,7 @@
     </p>
     
     <!-- Info cards -->
-    <div class="grid md:grid-cols-2 gap-6 mb-8">
-      <div class="info-card text-left">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 bg-orange-500/20 rounded-full flex items-center justify-center">
-            <i class="fas fa-envelope text-orange-400"></i>
-          </div>
-          <h3 class="text-white font-bold">Revisá tu email</h3>
-        </div>
-        <p class="text-gray-400 text-sm">Te enviamos una copia de tu consulta. Si no lo ves, revisá la carpeta de spam.</p>
-      </div>
-      
+    <div class="max-w-md mx-auto mb-8">
       <div class="info-card text-left">
         <div class="flex items-center gap-3 mb-3">
           <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
