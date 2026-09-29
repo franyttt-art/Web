@@ -2500,6 +2500,7 @@
             <i class="fas fa-paper-plane"></i>
             Enviar consulta
           </button>
+          <p id="form-status" class="hidden text-center text-sm mt-4 text-red-500"></p>
           
           <p class="text-center text-sm text-gray-500 mt-4">
             <i class="fas fa-lock mr-1"></i>
@@ -3035,7 +3036,35 @@
       });
     });
     
-    document.getElementById('contact-form')?.addEventListener('submit', () => {
+    document.getElementById('contact-form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const btn = form.querySelector('button[type="submit"]');
+      const status = document.getElementById('form-status');
+      const btnHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      status.classList.add('hidden');
+      try {
+        const data = Object.fromEntries(new FormData(form));
+        delete data.redirect;
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || !json.success) throw new Error(json.message || ('Error ' + res.status));
+        window.location.href = '/gracias.html';
+      } catch (err) {
+        console.error('Form error:', err);
+        status.innerHTML = 'No se pudo enviar la consulta (' + (err.message || 'error de conexión') +
+          '). Escribinos por <a href="https://wa.me/5492604323056" target="_blank" rel="noopener noreferrer" class="underline font-semibold">WhatsApp</a> y te respondemos al toque.';
+        status.classList.remove('hidden');
+        btn.disabled = false;
+        btn.innerHTML = btnHtml;
+        return;
+      }
       if (typeof gtag !== 'undefined') {
         gtag('event', 'conversion', {
           'send_to': 'GA_MEASUREMENT_ID',
