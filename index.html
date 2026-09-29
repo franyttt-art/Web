@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,8 +50,10 @@
   </script>
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -287,6 +289,7 @@
       background: rgba(15, 15, 15, 0.98);
     }
     [data-theme="dark"] .navbar-scrolled .navbar-logo-text { color: #ffffff !important; }
+    .footer .btn-primary, .footer .btn-primary i { color: #000000 !important; }
     
     .navbar-scrolled .nav-link { color: var(--text-primary); }
     .nav-link {
@@ -1061,7 +1064,8 @@
     
     @media (min-width: 768px) {
       .testimonials-carousel .testimonial-card {
-        min-width: auto;
+        flex: 1 1 0;
+        min-width: 0;
         max-width: none;
       }
     }
@@ -1411,9 +1415,6 @@
           <i class="fab fa-whatsapp"></i>
           Consultar gratis
         </a>
-        <button class="theme-toggle nav-theme-btn" onclick="toggleTheme()" title="Cambiar modo claro/oscuro" aria-label="Cambiar tema">
-          <i class="fas fa-moon" id="theme-icon-desktop"></i>
-        </button>
       </div>
       
       <button class="md:hidden text-white text-2xl" id="mobile-toggle" aria-label="Abrir menú">
@@ -1431,9 +1432,6 @@
         <i class="fab fa-whatsapp"></i>
         Consultar gratis
       </a>
-      <button class="theme-toggle mx-auto mt-4" onclick="toggleTheme()" title="Cambiar modo claro/oscuro" aria-label="Cambiar tema">
-        <i class="fas fa-moon" id="theme-icon-mobile"></i>
-      </button>
     </div>
   </nav>
 
@@ -1531,7 +1529,7 @@
         </div>
         <div class="gsap-reveal">
           <div class="stat-number" data-target="100">0</div>
-          <div class="text-gray-500 text-sm uppercase font-semibold">% Clientes satisfechos</div>
+          <div class="text-gray-500 text-sm uppercase font-semibold">Clientes satisfechos</div>
         </div>
         <div class="gsap-reveal">
           <div class="stat-number" data-target="7">0</div>
@@ -1943,7 +1941,7 @@
                 <span class="tag">Panel Admin</span>
                 <span class="tag">Responsive</span>
               </div>
-              <a href="https://lic-florencia-rosales.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-portfolio">
+              <a href="https://lic-florencia-rosales.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-portfolio" style="background: #f97316;">
                 <span>Visitar Web</span>
                 <i class="fas fa-external-link-alt"></i>
               </a>
@@ -1979,7 +1977,7 @@
                 <span class="tag">Virtual/Presencial</span>
                 <span class="tag">Gestión Admin</span>
               </div>
-              <a href="https://lic-salvador.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-portfolio" style="background: #3b82f6;">
+              <a href="https://lic-salvador.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-portfolio" style="background: #f97316;">
                 <span>Visitar Web</span>
                 <i class="fas fa-external-link-alt"></i>
               </a>
@@ -2015,7 +2013,7 @@
                 <span class="tag">Catálogo</span>
                 <span class="tag">Reservas</span>
               </div>
-              <a href="https://club-de-la-bodega.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-portfolio" style="background: #d97706;">
+              <a href="https://club-de-la-bodega.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-portfolio" style="background: #f97316;">
                 <span>Visitar Web</span>
                 <i class="fas fa-external-link-alt"></i>
               </a>
@@ -2051,7 +2049,7 @@
                 <span class="tag">Estilistas</span>
                 <span class="tag">Servicios</span>
               </div>
-              <a href="https://seven-lac-three.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-portfolio" style="background: #7c3aed;">
+              <a href="https://seven-lac-three.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-portfolio" style="background: #f97316;">
                 <span>Visitar Web</span>
                 <i class="fas fa-external-link-alt"></i>
               </a>
@@ -2070,9 +2068,9 @@
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">Precios transparentes. Sin costos ocultos.</p>
         
         <!-- Precio desde destacado -->
-        <div class="mt-8 inline-flex items-center gap-3 bg-orange-50/60 border border-orange-200/60 px-5 py-2.5 rounded-full">
+        <div class="mt-8 inline-flex items-center gap-3 border border-orange-500/40 px-5 py-2.5 rounded-full" style="background: rgba(249,115,22,0.1);">
           <i class="fas fa-tag text-orange-500 text-sm"></i>
-          <span class="text-orange-700/90 text-sm font-medium">Desde <span class="font-semibold text-orange-600 text-base ml-1">$60.000 ARS</span></span>
+          <span class="text-sm font-medium" style="color: #fdba74;">Desde <span class="font-semibold text-base ml-1" style="color: #fb923c;">$60.000 ARS</span></span>
         </div>
 
         <!-- Fila sutil: dólar + selector moneda + pdf -->
@@ -2447,36 +2445,8 @@
   </a>
 
   <script>
-    // ===================== MODO OSCURO =====================
-    function toggleTheme() {
-      const html = document.documentElement;
-      const icons = document.querySelectorAll('[id^="theme-icon"]');
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      
-      icons.forEach(icon => {
-        if (newTheme === 'dark') {
-          icon.classList.remove('fa-moon');
-          icon.classList.add('fa-sun');
-        } else {
-          icon.classList.remove('fa-sun');
-          icon.classList.add('fa-moon');
-        }
-      });
-    }
-    
-    // Restaurar tema guardado
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    if (savedTheme === 'dark') {
-      document.querySelectorAll('[id^="theme-icon"]').forEach(icon => {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      });
-    }
+    // Modo oscuro fijo
+    document.documentElement.setAttribute('data-theme', 'dark');
 
     // ===================== NAVBAR SCROLL =====================
     window.addEventListener('scroll', () => {
@@ -2837,7 +2807,7 @@
             start: 'top 85%'
           },
           onUpdate: function() {
-            counter.textContent = Math.ceil(this.targets()[0].textContent) + (target === 100 ? '%' : target === 24 ? '/7' : '+');
+            counter.textContent = Math.ceil(this.targets()[0].textContent) + (target === 100 ? '%' : target === 50 ? '+' : '');
           }
         }
       );
