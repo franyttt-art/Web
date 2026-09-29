@@ -2484,13 +2484,20 @@
       const urlBox = url ? url.parentElement : null;
       if (shots.length < 2 || !url) return;
       let i = 0;
-      setInterval(() => {
-        shots[i].classList.remove('active');
+      // Fade the current site out to black and only then fade the next one in,
+      // so two sites are never visible at the same time.
+      const showNext = () => {
+        const out = shots[i];
+        out.classList.remove('active');
         dots[i]?.classList.remove('active');
         if (caption) caption.style.opacity = 0;
         if (urlBox) urlBox.style.opacity = 0;
         const next = (i + 1) % shots.length;
-        setTimeout(() => {
+        let done = false;
+        const reveal = () => {
+          if (done) return;
+          done = true;
+          out.removeEventListener('transitionend', onEnd);
           i = next;
           shots[i].classList.add('active');
           dots[i]?.classList.add('active');
@@ -2499,8 +2506,13 @@
           if (kind) kind.textContent = shots[i].dataset.kind;
           if (caption) caption.style.opacity = 1;
           if (urlBox) urlBox.style.opacity = 1;
-        }, 650);
-      }, 4500);
+          setTimeout(showNext, 4500);
+        };
+        const onEnd = (e) => { if (e.propertyName === 'opacity') setTimeout(reveal, 80); };
+        out.addEventListener('transitionend', onEnd);
+        setTimeout(reveal, 1500); // fallback if transitionend never fires
+      };
+      setTimeout(showNext, 4500);
     })();
 
     // ===================== NAVBAR SCROLL =====================
