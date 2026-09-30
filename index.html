@@ -447,6 +447,13 @@
       .icon-box, .benefit-icon { width: 46px !important; height: 46px !important; font-size: 1.1rem !important; }
       .stat-number { font-size: 2rem !important; }
       .grid.gap-8:not(.m-swipe) { gap: 0.9rem !important; }
+      /* ¿Qué incluye? como mini-íconos en 2 columnas */
+      .m-mini { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+      .m-mini .card { padding: 14px 10px !important; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; }
+      .m-mini .card:hover { transform: none; }
+      .m-mini .card p { display: none; }
+      .m-mini .icon-box { width: 40px !important; height: 40px !important; margin: 0 !important; }
+      .m-mini .card h4 { font-size: 0.95rem !important; margin: 0 !important; line-height: 1.2; }
     }
     /* Franja software y apps */
     .soft-strip { margin-top: 3rem; text-align: center; }
@@ -1683,7 +1690,7 @@
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">Todo lo que necesitás para vender online.</p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 m-mini">
         <div class="card gsap-reveal">
           <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
           <h4 class="font-bold text-lg mb-2">Diseño Único</h4>
