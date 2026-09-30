@@ -423,6 +423,17 @@
     }
     @keyframes zw-shine { 0%, 55% { background-position: 100% 0; } 90%, 100% { background-position: 0% 0; } }
     @media (prefers-reduced-motion: reduce) { .logo-shine::after { animation: none; opacity: 0; } }
+    /* Celular: tarjetas deslizables hacia el costado */
+    .swipe-hint { display: none; }
+    @media (max-width: 767px) {
+      .m-swipe { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px !important;
+        margin-left: -24px; margin-right: -24px; padding: 8px 24px 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch; align-items: stretch !important; }
+      .m-swipe::-webkit-scrollbar { display: none; }
+      .m-swipe > * { flex: 0 0 85%; scroll-snap-align: center; margin: 0 !important; }
+      .swipe-hint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: #9ca3af; margin: -4px 0 8px; }
+      .swipe-hint i { font-size: 10px; animation: swipe-nudge 1.6s ease-in-out infinite; }
+      @keyframes swipe-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+    }
     /* Franja software y apps */
     .soft-strip { margin-top: 3rem; text-align: center; }
     .soft-strip h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; }
@@ -1655,44 +1666,44 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-10 gsap-reveal">
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Qué incluye?</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Todo lo que necesitás para tener presencia online profesional y empezar a recibir reservas.</p>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Todo lo que necesitás para vender online.</p>
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="card gsap-reveal">
           <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
           <h4 class="font-bold text-lg mb-2">Diseño Único</h4>
-          <p class="text-gray-600">Diseño personalizado según tu marca. No uso plantillas genéricas. Cada sitio es único y memorable.</p>
+          <p class="text-gray-600">Hecho a medida de tu marca, sin plantillas.</p>
         </div>
         
         <div class="card gsap-reveal">
           <div class="icon-box"><i class="fas fa-calendar-check"></i></div>
           <h4 class="font-bold text-lg mb-2">Sistema de Turnos</h4>
-          <p class="text-gray-600">Calendario interactivo donde tus clientes reservan directo. Notificaciones automáticas por email.</p>
+          <p class="text-gray-600">Tus clientes reservan solos, con aviso por email.</p>
         </div>
         
         <div class="card gsap-reveal">
           <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
           <h4 class="font-bold text-lg mb-2">100% Responsive</h4>
-          <p class="text-gray-600">Se ve perfecto en celulares, tablets y computadoras. Tus clientes pueden reservar desde cualquier lado.</p>
+          <p class="text-gray-600">Perfecto en celular, tablet y compu.</p>
         </div>
         
         <div class="card gsap-reveal">
           <div class="icon-box"><i class="fas fa-lock"></i></div>
           <h4 class="font-bold text-lg mb-2">Panel de Admin</h4>
-          <p class="text-gray-600">Gestioná tus turnos, disponibilidad y datos de clientes desde un panel privado con contraseña.</p>
+          <p class="text-gray-600">Manejá turnos y clientes desde un panel privado.</p>
         </div>
         
         <div class="card gsap-reveal">
           <div class="icon-box"><i class="fas fa-rocket"></i></div>
           <h4 class="font-bold text-lg mb-2">Hosting Accesible</h4>
-          <p class="text-gray-600">Precio accesible según la necesidad del cliente. Dominio personalizado opcional.</p>
+          <p class="text-gray-600">Precio accesible y dominio propio opcional.</p>
         </div>
         
         <div class="card gsap-reveal">
           <div class="icon-box"><i class="fas fa-headset"></i></div>
           <h4 class="font-bold text-lg mb-2">Mantenimiento Mensual</h4>
-          <p class="text-gray-600">Soporte técnico y actualizaciones desde $25.000 ARS mensual según el plan elegido.</p>
+          <p class="text-gray-600">Soporte y actualizaciones desde $25.000 ARS por mes.</p>
         </div>
       </div>
 
@@ -1713,16 +1724,17 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-10 gsap-reveal">
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Por qué elegirnos?</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Nos diferenciamos por nuestra experiencia, velocidad y compromiso con cada proyecto.</p>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Rápidos, únicos y comprometidos.</p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8">
+      <p class="swipe-hint">Deslizá para ver más <i class="fas fa-arrow-right"></i></p>
+      <div class="grid md:grid-cols-3 gap-8 m-swipe">
         <div class="benefit-card text-center gsap-reveal">
           <div class="benefit-icon mx-auto">
             <i class="fas fa-shipping-fast"></i>
           </div>
           <h4 class="text-xl font-bold text-gray-900 mb-3">Entrega en 3 a 5 días</h4>
-          <p class="text-gray-600">Sabemos que el tiempo es dinero. Tu web lista y funcionando en una semana. Sin excusas, sin demoras.</p>
+          <p class="text-gray-600">Tu web lista y funcionando en días, sin demoras.</p>
         </div>
         
         <div class="benefit-card text-center gsap-reveal">
@@ -1730,7 +1742,7 @@
             <i class="fas fa-gem"></i>
           </div>
           <h4 class="text-xl font-bold text-gray-900 mb-3">Diseño único</h4>
-          <p class="text-gray-600">Cada web es diseñada exclusivamente para tu marca. No usamos plantillas ni diseños repetidos.</p>
+          <p class="text-gray-600">Diseñada solo para tu marca, sin plantillas.</p>
         </div>
         
         <div class="benefit-card text-center gsap-reveal">
@@ -1738,7 +1750,7 @@
             <i class="fas fa-headset"></i>
           </div>
           <h4 class="text-xl font-bold text-gray-900 mb-3">Mantenimiento flexible</h4>
-          <p class="text-gray-600">Soporte técnico disponible desde $25.000 ARS mensual. Incluye actualizaciones y ajustes.</p>
+          <p class="text-gray-600">Soporte y ajustes desde $25.000 ARS por mes.</p>
         </div>
       </div>
     </div>
@@ -1749,7 +1761,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-8 gsap-reveal">
         <h3 class="text-xl font-semibold text-gray-600 mb-2">Confiaron en nosotros</h3>
-        <p class="text-gray-500">Empresas y profesionales que ya tienen su web profesional</p>
+        <p class="text-gray-500">Profesionales que ya tienen su web</p>
       </div>
       
       <div class="flex flex-wrap justify-center items-center gap-12 md:gap-16 gsap-reveal">
@@ -1778,7 +1790,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-10 gsap-reveal">
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">Lo que dicen nuestros clientes</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Historias reales de profesionales que transformaron su negocio con una web profesional.</p>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Historias reales de nuestros clientes.</p>
       </div>
       
       <div class="testimonials-carousel" id="testimonials-carousel">
@@ -1867,15 +1879,16 @@
           Retorno de inversión
         </div>
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Por qué invertir en tu web?</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Una página web profesional no es un gasto, es una inversión que se paga sola. Acá te mostramos los números:</p>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Tu web no es un gasto: se paga sola.</p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <p class="swipe-hint">Deslizá para ver más <i class="fas fa-arrow-right"></i></p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 m-swipe">
         
         <div class="benefit-card gsap-reveal">
           <div class="benefit-icon"><i class="fas fa-hand-holding-usd"></i></div>
           <h4 class="text-xl font-bold text-gray-900 mb-3">Ahorrá el sueldo de una asistente</h4>
-          <p class="text-gray-600 mb-4">Una recepcionista te cuesta aproximadamente <strong class="text-gray-900">$250.000 - $400.000 ARS</strong> por mes. Tu web trabaja 24/7 por menos de lo que cuesta una semana de sueldo.</p>
+          <p class="text-gray-600 mb-4">Una recepcionista cuesta <strong class="text-gray-900">$250.000 - $400.000 ARS</strong> por mes. Tu web atiende 24/7 por mucho menos.</p>
           <div class="savings-badge">
             <i class="fas fa-piggy-bank mr-1"></i>
             Ahorro anual: $3.000.000+ ARS
@@ -1885,7 +1898,7 @@
         <div class="benefit-card gsap-reveal">
           <div class="benefit-icon"><i class="fas fa-phone-slash"></i></div>
           <h4 class="text-xl font-bold text-gray-900 mb-3">Dejá de perder clientes</h4>
-          <p class="text-gray-600 mb-4">El 60% de las personas cuelgan si no atienden en 3 timbres. Tu web nunca "está ocupada" ni descansa. Cada llamada perdida es un cliente que va con tu competencia.</p>
+          <p class="text-gray-600 mb-4">Tu web nunca está ocupada. Cada llamada perdida es un cliente para tu competencia.</p>
           <div class="savings-badge">
             <i class="fas fa-user-plus mr-1"></i>
             +3 a 5 clientes nuevos/semana
@@ -1895,7 +1908,7 @@
         <div class="benefit-card gsap-reveal">
           <div class="benefit-icon"><i class="fas fa-bell"></i></div>
           <h4 class="text-xl font-bold text-gray-900 mb-3">Menos cancelaciones de último momento</h4>
-          <p class="text-gray-600 mb-4">Los recordatorios automáticos por email reducen las inasistencias hasta un 40%. Cada turno cumplido es dinero que no perdés por un olvido.</p>
+          <p class="text-gray-600 mb-4">Los recordatorios automáticos reducen las inasistencias hasta un 40%.</p>
           <div class="savings-badge">
             <i class="fas fa-calendar-check mr-1"></i>
             -40% de inasistencias
@@ -1918,7 +1931,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-10 gsap-reveal">
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">Algunos de nuestros proyectos</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Webs reales y funcionando, desplegadas con sistema de turnos integrado.</p>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Webs reales, funcionando hoy.</p>
       </div>
 
       <div class="mb-8">
@@ -1931,7 +1944,8 @@
           <span class="text-sm text-gray-500">(Click para visitar)</span>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
+        <p class="swipe-hint">Deslizá para ver más <i class="fas fa-arrow-right"></i></p>
+        <div class="grid md:grid-cols-2 gap-8 m-swipe">
           <div class="portfolio-card gsap-reveal">
             <div class="preview bg-gradient-to-br from-orange-50 to-orange-100 border-b border-orange-100">
               <img src="/img/florencia.webp" alt="Web de Lic. Florencia Rosales" loading="lazy" width="800" height="500" class="portfolio-shot">
@@ -1947,11 +1961,11 @@
               <div class="flex justify-between items-start mb-3">
                 <div>
                   <h4 class="text-xl font-bold text-gray-900 mb-1">Lic. Florencia Rosales</h4>
-                  <p class="text-sm text-orange-600 font-medium">Psicología • La Plata • Niños, Adolescentes y Adultos</p>
+                  <p class="text-sm text-orange-600 font-medium">Psicología • La Plata</p>
                 </div>
                 <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-lg font-bold">MP 057074</span>
               </div>
-              <p class="text-gray-600 text-sm mb-4">Sistema completo de reservas con modalidad presencial y virtual. Panel de admin con configuración flexible.</p>
+              <p class="text-gray-600 text-sm mb-4">Reservas presenciales y virtuales, con panel de admin.</p>
               <div class="flex flex-wrap gap-2 mb-4">
                 <span class="tag">Turnos Online</span>
                 <span class="tag">Panel Admin</span>
@@ -1979,11 +1993,11 @@
               <div class="flex justify-between items-start mb-3">
                 <div>
                   <h4 class="text-xl font-bold text-gray-900 mb-1">Lic. Alberti Bigliante Salvador</h4>
-                  <p class="text-sm text-blue-600 font-medium">Enfoque Psicoanalítico • Adolescentes y Adultos</p>
+                  <p class="text-sm text-blue-600 font-medium">Psicoanálisis • Mendoza</p>
                 </div>
                 <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-lg font-bold">MN 87014</span>
               </div>
-              <p class="text-gray-600 text-sm mb-4">Sistema inteligente con detección automática de solapamiento de turnos.</p>
+              <p class="text-gray-600 text-sm mb-4">Turnos online sin superposiciones.</p>
               <div class="flex flex-wrap gap-2 mb-4">
                 <span class="tag">Solapamiento Auto</span>
                 <span class="tag">Virtual/Presencial</span>
@@ -2015,7 +2029,7 @@
                 </div>
                 <span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded-lg font-bold">Tienda Online</span>
               </div>
-              <p class="text-gray-600 text-sm mb-4">Plataforma de venta de vinos con catálogo interactivo, carrito de compras y sistema de reservas.</p>
+              <p class="text-gray-600 text-sm mb-4">Venta de vinos con catálogo, carrito y reservas.</p>
               <div class="flex flex-wrap gap-2 mb-4">
                 <span class="tag">E-commerce</span>
                 <span class="tag">Catálogo</span>
@@ -2047,7 +2061,7 @@
                 </div>
                 <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-lg font-bold">Peluquería</span>
               </div>
-              <p class="text-gray-600 text-sm mb-4">Sistema de reservas para peluquería con catálogo de servicios, selección de estilistas y gestión de horarios.</p>
+              <p class="text-gray-600 text-sm mb-4">Reservas con servicios, estilistas y horarios.</p>
               <div class="flex flex-wrap gap-2 mb-4">
                 <span class="tag">Reservas Online</span>
                 <span class="tag">Estilistas</span>
@@ -2097,7 +2111,8 @@
       </div>
       
       <!-- TARJETAS DE PRECIOS -->
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start mb-16">
+      <p class="swipe-hint">Deslizá para ver más <i class="fas fa-arrow-right"></i></p>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start mb-16 m-swipe" id="plans-swipe">
         
         <div class="card gsap-reveal">
           <div class="mb-6">
@@ -2112,7 +2127,7 @@
             </div>
           </div>
           
-          <p class="text-gray-600 mb-6 text-sm">Página única profesional con información de tu negocio.</p>
+          <p class="text-gray-600 mb-6 text-sm">Una página con toda la info de tu negocio.</p>
           
           <ul class="feature-list mb-8">
             <li><i class="fas fa-check text-green-500"></i><span>Diseño personalizado único</span></li>
@@ -2140,7 +2155,7 @@
             </div>
           </div>
           
-          <p class="text-sm mb-6">Sitio completo con sistema de reservas. Ideal para profesionales y consultorios.</p>
+          <p class="text-sm mb-6">Sitio completo con reservas online.</p>
           
           <ul class="feature-list mb-8">
             <li><i class="fas fa-check"></i><span>Todo del plan anterior</span></li>
@@ -2204,7 +2219,7 @@
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-10 gsap-reveal">
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Cómo trabajamos?</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Proceso simple y transparente. De tu idea a la web en línea en 3 a 5 días.</p>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">De tu idea a la web en 3 a 5 días.</p>
       </div>
       
       <div class="grid md:grid-cols-4 gap-8">
@@ -2221,7 +2236,7 @@
         <div class="text-center gsap-reveal">
           <div class="step-number" style="background: #10b981;">3</div>
           <h4 class="font-bold text-gray-900 mb-2">Revisión</h4>
-          <p class="text-gray-600 text-sm">Ves el progreso y solicitas los ajustes que necesites.</p>
+          <p class="text-gray-600 text-sm">Ves el avance y pedís ajustes.</p>
         </div>
         <div class="text-center gsap-reveal">
           <div class="step-number" style="background: #8b5cf6;">4</div>
@@ -2241,7 +2256,7 @@
           Calculadora de retorno
         </div>
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Cuánto podés ganar?</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Calculá cuánto tiempo te toma recuperar tu inversión con tu propia web.</p>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Calculá en cuánto recuperás tu inversión.</p>
       </div>
       
       <div class="calculator-section gsap-scale">
@@ -2300,7 +2315,7 @@
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-10 gsap-reveal">
         <h2 class="text-4xl font-bold mb-4 elegant-title">Preguntas Frecuentes</h2>
-        <p class="text-xl text-gray-600">Todo lo que necesitás saber antes de empezar.</p>
+        <p class="text-xl text-gray-600">Lo que necesitás saber.</p>
       </div>
       
       <details class="gsap-reveal">
@@ -2350,7 +2365,7 @@
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-10 gsap-reveal">
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Listo para tu proyecto?</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Completá el formulario y te contactamos en menos de 24 horas.</p>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Te respondemos en menos de 24 horas.</p>
       </div>
       
       <div class="bg-white rounded-3xl shadow-xl border border-gray-200 p-8 md:p-12 gsap-scale">
@@ -2841,6 +2856,14 @@
         entries.forEach(e => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
       }, { threshold: 0.6 });
       counters.forEach(el => io.observe(el));
+    })();
+    
+    // Celular: arrancar los planes mostrando el recomendado
+    (() => {
+      const plans = document.getElementById('plans-swipe');
+      if (!plans || window.innerWidth >= 768 || plans.children.length < 2) return;
+      const mid = plans.children[1];
+      plans.scrollLeft = mid.offsetLeft - (plans.clientWidth - mid.clientWidth) / 2;
     })();
     
     // ===================== TRACKING =====================
