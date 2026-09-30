@@ -2820,26 +2820,28 @@
       );
     });
     
-    // Contadores animados
-    gsap.utils.toArray('.stat-number').forEach(counter => {
-      const target = parseInt(counter.dataset.target);
-      gsap.fromTo(counter,
-        { textContent: 0 },
-        {
-          textContent: target,
-          duration: 2,
-          ease: 'power1.out',
-          snap: { textContent: 1 },
-          scrollTrigger: {
-            trigger: counter,
-            start: 'top 85%'
-          },
-          onUpdate: function() {
-            counter.textContent = Math.ceil(this.targets()[0].textContent) + (target === 100 ? '%' : target === 50 ? '+' : '');
-          }
-        }
-      );
-    });
+    // Contadores animados: suben desde 0 cuando la franja aparece en pantalla
+    (() => {
+      const counters = document.querySelectorAll('.stat-number');
+      const suffix = t => t === 100 ? '%' : t === 50 ? '+' : '';
+      const run = el => {
+        const target = parseInt(el.dataset.target);
+        const start = performance.now(), dur = 2000;
+        const step = now => {
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target) + suffix(target);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+      counters.forEach(el => { el.textContent = '0' + suffix(parseInt(el.dataset.target)); });
+      if (!('IntersectionObserver' in window)) { counters.forEach(run); return; }
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.6 });
+      counters.forEach(el => io.observe(el));
+    })();
     
     // ===================== TRACKING =====================
     document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
