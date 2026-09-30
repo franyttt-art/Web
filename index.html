@@ -409,6 +409,8 @@
     /* Barra vacía: no mostramos los links de vercel */
     .hero-frame-url { min-height: 28px; }
     .hero-frame-url i, #hero-shot-url { display: none; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 900px; margin: 0 auto; }
+    @media (min-width: 768px) { .stats-grid { gap: 2rem; } }
     /* Franja software y apps */
     .soft-strip { margin-top: 3rem; text-align: center; }
     .soft-strip h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; }
@@ -1573,10 +1575,6 @@
               <i class="fas fa-check-circle text-green-400"></i>
               <span>Entrega en 3 a 5 días</span>
             </div>
-            <div class="flex items-center gap-2 text-gray-300">
-              <i class="fas fa-shield-alt text-orange-400"></i>
-              <span>Garantía 30 días</span>
-            </div>
           </div>
         </div>
         
@@ -1620,7 +1618,7 @@
   <!-- STATS -->
   <section class="py-12 section-light border-y border-gray-100">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="stats-grid text-center">
         <div class="gsap-reveal">
           <div class="stat-number" data-target="50">0</div>
           <div class="text-gray-500 text-sm uppercase font-semibold">Proyectos entregados</div>
@@ -1632,10 +1630,6 @@
         <div class="gsap-reveal">
           <div class="stat-number" data-target="5">0</div>
           <div class="text-gray-500 text-sm uppercase font-semibold">Días máx. de entrega</div>
-        </div>
-        <div class="gsap-reveal">
-          <div class="stat-number" data-target="30">0</div>
-          <div class="text-gray-500 text-sm uppercase font-semibold">Días de garantía</div>
         </div>
       </div>
     </div>
@@ -1766,10 +1760,6 @@
   <section id="porque-elegirnos" class="section-white py-14">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-10 gsap-reveal">
-        <div class="trust-badge mb-4">
-          <i class="fas fa-award"></i>
-          <span>Garantía de satisfacción 30 días</span>
-        </div>
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Por qué elegirnos?</h2>
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">Nos diferenciamos por nuestra experiencia, velocidad y compromiso con cada proyecto.</p>
       </div>
@@ -1922,7 +1912,7 @@
       <div class="text-center mb-10 gsap-reveal">
         <div class="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
           <i class="fas fa-chart-line"></i>
-          ROI garantizado
+          Retorno de inversión
         </div>
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Por qué invertir en tu web?</h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">Una página web profesional no es un gasto, es una inversión que se paga sola. Acá te mostramos los números:</p>
@@ -2324,7 +2314,7 @@
       
       <details class="gsap-reveal">
         <summary>
-          <span>¿Qué pasa después de los 30 días de garantía?</span>
+          <span>¿Cuánto cuesta el mantenimiento?</span>
           <i class="fas fa-chevron-down"></i>
         </summary>
         <div>El mantenimiento mensual con soporte técnico y actualizaciones tiene un costo de <strong class="text-orange-600">$25.000 o $30.000 ARS</strong> según el plan contratado.</div>
