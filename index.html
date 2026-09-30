@@ -448,6 +448,18 @@
       .icon-box, .benefit-icon { width: 46px !important; height: 46px !important; font-size: 1.1rem !important; }
       .stat-number { font-size: 2rem !important; }
       .grid.gap-8:not(.m-swipe) { gap: 0.9rem !important; }
+      /* ¿Cómo trabajamos? en 2x2 */
+      .m-steps { grid-template-columns: 1fr 1fr !important; gap: 1.25rem 0.9rem !important; }
+      .m-steps .step-number { width: 40px !important; height: 40px !important; font-size: 1rem !important; margin-bottom: 0.5rem !important; }
+      .m-steps h4 { margin-bottom: 0.25rem !important; }
+      /* Pie de página compacto */
+      .m-footer { padding-top: 2rem !important; padding-bottom: 1.5rem !important; }
+      .m-foot { grid-template-columns: 1fr auto !important; gap: 1.25rem 1rem !important; margin-bottom: 1.25rem !important; }
+      .m-foot > div:nth-child(1) { grid-column: 1 / -1; }
+      .m-foot > div:nth-child(1) > p, .m-foot > div:nth-child(2), .m-foot > div:nth-child(4) .mt-6 { display: none !important; }
+      .m-foot > div:nth-child(1) > div { margin-bottom: 0 !important; }
+      .m-foot h5 { margin-bottom: 0.6rem !important; }
+      .m-footer .border-t { padding-top: 1rem !important; }
       /* ¿Qué incluye? como mini-íconos en 2 columnas */
       .m-mini { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
       .m-mini .card { padding: 14px 10px !important; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; }
@@ -2244,7 +2256,7 @@
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">De tu idea a la web en 3 a 5 días.</p>
       </div>
       
-      <div class="grid md:grid-cols-4 gap-8">
+      <div class="grid md:grid-cols-4 gap-8 m-steps">
         <div class="text-center gsap-reveal">
           <div class="step-number">1</div>
           <h4 class="font-bold text-gray-900 mb-2">Consulta</h4>
@@ -2460,9 +2472,9 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer py-16">
+  <footer class="footer py-16 m-footer">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div class="grid md:grid-cols-4 gap-12 mb-12 m-foot">
         <div>
           <div class="flex items-center gap-3 mb-6">
             <img src="/logo-escudo.webp" width="160" height="160" alt="ZafiroWeb" class="w-10 h-10 object-contain">
