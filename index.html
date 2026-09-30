@@ -903,8 +903,9 @@
     [data-theme="dark"] .text-amber-600 { color: #fbbf24 !important; }
     [data-theme="dark"] .text-purple-600 { color: #c084fc !important; }
 
-    [data-theme="dark"] #btn-usd:hover { color: #f3f4f6 !important; }
-    [data-theme="dark"] #btn-ars { color: #000000 !important; }
+    #btn-ars, #btn-usd { color: #9ca3af !important; background: transparent !important; }
+    #btn-ars:hover, #btn-usd:hover { color: #f3f4f6 !important; }
+    #btn-ars.cur-on, #btn-usd.cur-on { background: #f97316 !important; color: #000000 !important; }
 
     [data-theme="dark"] .save-budget-btn {
       background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
@@ -1570,7 +1571,7 @@
             </div>
             <div class="flex items-center gap-2 text-gray-300">
               <i class="fas fa-check-circle text-green-400"></i>
-              <span>Entrega en 7 días</span>
+              <span>Entrega en 3 a 5 días</span>
             </div>
             <div class="flex items-center gap-2 text-gray-300">
               <i class="fas fa-shield-alt text-orange-400"></i>
@@ -1629,8 +1630,8 @@
           <div class="text-gray-500 text-sm uppercase font-semibold">Clientes satisfechos</div>
         </div>
         <div class="gsap-reveal">
-          <div class="stat-number" data-target="7">0</div>
-          <div class="text-gray-500 text-sm uppercase font-semibold">Días de entrega</div>
+          <div class="stat-number" data-target="5">0</div>
+          <div class="text-gray-500 text-sm uppercase font-semibold">Días máx. de entrega</div>
         </div>
         <div class="gsap-reveal">
           <div class="stat-number" data-target="30">0</div>
@@ -1682,7 +1683,7 @@
         <div class="card gsap-reveal">
           <div class="icon-box"><i class="fas fa-headset"></i></div>
           <h4 class="font-bold text-lg mb-2">Mantenimiento Mensual</h4>
-          <p class="text-gray-600">Soporte técnico y actualizaciones desde $15.000 ARS mensual según el plan elegido.</p>
+          <p class="text-gray-600">Soporte técnico y actualizaciones desde $25.000 ARS mensual según el plan elegido.</p>
         </div>
       </div>
 
@@ -1778,7 +1779,7 @@
           <div class="benefit-icon mx-auto">
             <i class="fas fa-shipping-fast"></i>
           </div>
-          <h4 class="text-xl font-bold text-gray-900 mb-3">Entrega en 7 días</h4>
+          <h4 class="text-xl font-bold text-gray-900 mb-3">Entrega en 3 a 5 días</h4>
           <p class="text-gray-600">Sabemos que el tiempo es dinero. Tu web lista y funcionando en una semana. Sin excusas, sin demoras.</p>
         </div>
         
@@ -1795,7 +1796,7 @@
             <i class="fas fa-headset"></i>
           </div>
           <h4 class="text-xl font-bold text-gray-900 mb-3">Mantenimiento flexible</h4>
-          <p class="text-gray-600">Soporte técnico disponible desde $15.000 ARS mensual. Incluye actualizaciones y ajustes.</p>
+          <p class="text-gray-600">Soporte técnico disponible desde $25.000 ARS mensual. Incluye actualizaciones y ajustes.</p>
         </div>
       </div>
     </div>
@@ -2134,7 +2135,7 @@
           <span class="text-sm font-medium" style="color: #fdba74;">Desde <span class="font-semibold text-base ml-1" style="color: #fb923c;">$60.000 ARS</span></span>
         </div>
 
-        <!-- Fila sutil: dólar + selector moneda + pdf -->
+        <!-- Fila sutil: dólar + selector moneda -->
         <div class="mt-6 flex flex-col md:flex-row items-center justify-center gap-4">
           <!-- Dólar tiempo real -->
           <div class="dollar-badge" id="dollar-badge" style="padding: 0.4rem 0.9rem; font-size: 0.8rem;">
@@ -2146,22 +2147,11 @@
 
           <!-- Selector moneda minimalista -->
           <div class="inline-flex items-center border border-gray-200 rounded-full overflow-hidden text-sm">
-            <button onclick="showPrices('ars')" id="btn-ars" class="px-4 py-1.5 bg-orange-500 text-black font-semibold transition">ARS</button>
-            <button onclick="showPrices('usd')" id="btn-usd" class="px-4 py-1.5 text-gray-500 hover:text-gray-900 transition bg-transparent">USD</button>
+            <button onclick="showPrices('ars')" id="btn-ars" class="cur-on px-4 py-1.5 font-semibold transition">ARS</button>
+            <button onclick="showPrices('usd')" id="btn-usd" class="px-4 py-1.5 font-semibold transition">USD</button>
           </div>
-
-          <span class="hidden md:inline text-gray-300">·</span>
-
-          <!-- Botón guardar presupuesto -->
-          <button onclick="guardarPresupuesto()" class="save-budget-btn">
-            <i class="fas fa-file-pdf text-sm"></i>
-            Descargar PDF
-          </button>
         </div>
 
-        <div class="mt-2 text-center">
-          <span class="text-xs text-gray-400" id="last-update">--</span>
-        </div>
       </div>
       
       <!-- TARJETAS DE PRECIOS -->
@@ -2260,7 +2250,7 @@
         </div>
         <p class="text-gray-600">
           Soporte técnico y actualizaciones según tu plan: 
-          <span class="text-orange-600 font-bold">$15.000 / $25.000 / $30.000 ARS</span> mensual
+          <span class="text-orange-600 font-bold">$25.000 / $30.000 ARS</span> mensual
         </p>
       </div>
     </div>
@@ -2272,7 +2262,7 @@
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-10 gsap-reveal">
         <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Cómo trabajamos?</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Proceso simple y transparente. De tu idea a la web en línea en 7 días.</p>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Proceso simple y transparente. De tu idea a la web en línea en 3 a 5 días.</p>
       </div>
       
       <div class="grid md:grid-cols-4 gap-8">
@@ -2313,7 +2303,7 @@
           <span>¿Cuánto tiempo tarda en estar lista la web?</span>
           <i class="fas fa-chevron-down"></i>
         </summary>
-        <div>Entre 5 y 7 días hábiles desde que confirmás el proyecto. Si necesitás algo urgente, consultá por entrega express (3-4 días con recargo del 20%).</div>
+        <div>Entre 3 y 5 días hábiles desde que confirmás el proyecto. Si necesitás algo urgente, consultá por entrega express con un recargo de solo el 5%.</div>
       </details>
       
       <details class="gsap-reveal">
@@ -2337,7 +2327,7 @@
           <span>¿Qué pasa después de los 30 días de garantía?</span>
           <i class="fas fa-chevron-down"></i>
         </summary>
-        <div>El mantenimiento mensual con soporte técnico y actualizaciones tiene un costo de <strong class="text-orange-600">$15.000, $25.000 o $30.000 ARS</strong> según el plan contratado.</div>
+        <div>El mantenimiento mensual con soporte técnico y actualizaciones tiene un costo de <strong class="text-orange-600">$25.000 o $30.000 ARS</strong> según el plan contratado.</div>
       </details>
       
       <details class="gsap-reveal">
@@ -2345,7 +2335,7 @@
           <span>¿Cómo se realiza el pago?</span>
           <i class="fas fa-chevron-down"></i>
         </summary>
-        <div>50% al confirmar, 50% al entregar. Acepto transferencia, MercadoPago, PayPal, Wise o USDT.</div>
+        <div>50% al confirmar, 50% al entregar. Acepto transferencia y MercadoPago.</div>
       </details>
     </div>
   </section>
@@ -2630,21 +2620,11 @@
       const btnArs = document.getElementById('btn-ars');
       const btnUsd = document.getElementById('btn-usd');
       
-      if (currency === 'ars') {
-        ars.forEach(el => el.classList.remove('hidden'));
-        usd.forEach(el => el.classList.add('hidden'));
-        btnArs.classList.add('bg-orange-500', 'text-black');
-        btnArs.classList.remove('text-gray-500');
-        btnUsd.classList.remove('bg-orange-500', 'text-black');
-        btnUsd.classList.add('text-gray-500');
-      } else {
-        ars.forEach(el => el.classList.add('hidden'));
-        usd.forEach(el => el.classList.remove('hidden'));
-        btnUsd.classList.add('bg-orange-500', 'text-black');
-        btnUsd.classList.remove('text-gray-500');
-        btnArs.classList.remove('bg-orange-500', 'text-black');
-        btnArs.classList.add('text-gray-500');
-      }
+      const isArs = currency === 'ars';
+      ars.forEach(el => el.classList.toggle('hidden', !isArs));
+      usd.forEach(el => el.classList.toggle('hidden', isArs));
+      btnArs.classList.toggle('cur-on', isArs);
+      btnUsd.classList.toggle('cur-on', !isArs);
     }
     
     // ===================== CALCULADORA ROI =====================
@@ -2728,7 +2708,6 @@
       const badge = document.getElementById('dollar-badge');
       const icon = document.getElementById('dollar-icon');
       const text = document.getElementById('dollar-text');
-      const lastUpdate = document.getElementById('last-update');
       
       icon.classList.add('updating');
       
@@ -2739,7 +2718,6 @@
         dollarRate = data.blue.value_avg;
         
         text.textContent = `Dólar Blue: $${dollarRate.toLocaleString('es-AR')} ARS`;
-        lastUpdate.textContent = new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
         
         // Actualizar precios en USD
         document.querySelectorAll('.price-number[data-ars]').forEach(el => {
@@ -2749,7 +2727,6 @@
         });
       } catch (error) {
         text.textContent = `Dólar Blue: $${dollarRate.toLocaleString('es-AR')} ARS (estimado)`;
-        lastUpdate.textContent = 'Actualización fallida';
       }
       
       icon.classList.remove('updating');
@@ -2759,89 +2736,6 @@
     fetchDollarRate();
     // Actualizar cada 5 minutos
     setInterval(fetchDollarRate, 300000);
-    
-    // ===================== GUARDAR PRESUPUESTO =====================
-    function cargarScript(src) {
-      return new Promise((resolve, reject) => {
-        const el = document.createElement('script');
-        el.src = src;
-        el.onload = resolve;
-        el.onerror = reject;
-        document.head.appendChild(el);
-      });
-    }
-
-    async function guardarPresupuesto() {
-      if (!window.jspdf) {
-        try {
-          await cargarScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
-          await cargarScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js');
-        } catch (e) {
-          console.error('No se pudo cargar el generador de PDF', e);
-          return;
-        }
-      }
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-      const fecha = new Date().toLocaleDateString('es-AR');
-      const cotizacion = dollarRate.toLocaleString('es-AR');
-
-      // Encabezado
-      doc.setFillColor(249, 115, 22);
-      doc.rect(0, 0, 210, 35, 'F');
-      doc.setTextColor(255, 255, 255);
-      doc.setFontSize(22);
-      doc.text('PRESUPUESTO ZAFIROWEB', 105, 20, { align: 'center' });
-      doc.setFontSize(10);
-      doc.text(`Fecha: ${fecha}`, 105, 28, { align: 'center' });
-
-      // Tabla de planes
-      doc.autoTable({
-        startY: 45,
-        head: [['Plan', 'Precio ARS', 'Incluye']],
-        body: [
-          ['Landing Page', '$60.000', 'Diseño personalizado, responsive, formulario de contacto, SEO basico'],
-          ['Con Turnos', '$84.000', 'Todo Landing + sistema de turnos, panel admin, notificaciones por email'],
-          ['Premium', '$120.000', 'Todo Con Turnos + multiples profesionales, pagos online, WhatsApp API']
-        ],
-        headStyles: { fillColor: [249, 115, 22], textColor: 255, fontStyle: 'bold' },
-        alternateRowStyles: { fillColor: [245, 245, 245] },
-        styles: { fontSize: 10, cellPadding: 3, valign: 'middle' },
-        columnStyles: { 0: { cellWidth: 35 }, 1: { cellWidth: 30 }, 2: { cellWidth: 'auto' } }
-      });
-
-      let finalY = doc.lastAutoTable.finalY + 10;
-
-      // Mantenimiento
-      doc.setTextColor(50, 50, 50);
-      doc.setFontSize(12);
-      doc.text('Mantenimiento mensual', 14, finalY);
-      doc.setFontSize(10);
-      doc.text('Landing: $15.000 ARS  |  Con Turnos: $25.000 ARS  |  Premium: $30.000 ARS', 14, finalY + 6);
-
-      finalY += 18;
-
-      // Contacto
-      doc.setFontSize(12);
-      doc.text('Contacto', 14, finalY);
-      doc.setFontSize(10);
-      doc.setTextColor(80, 80, 80);
-      doc.text('WhatsApp: +54 9 260 432-3056', 14, finalY + 6);
-      doc.text('Email: FranYTTT@gmail.com', 14, finalY + 11);
-      doc.text(`Cotizacion dolar referencia: $${cotizacion} ARS`, 14, finalY + 16);
-
-      // Pie de pagina
-      doc.setFontSize(9);
-      doc.setTextColor(150, 150, 150);
-      doc.text('Precios sujetos a modificacion sin previo aviso. Validez: 15 dias.', 105, 285, { align: 'center' });
-
-      doc.save(`Presupuesto_ZafiroWeb_${new Date().toISOString().split('T')[0]}.pdf`);
-
-      // Tracking
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'download', { event_category: 'Budget', event_label: 'PDF Download' });
-      }
-    }
     
     // ===================== GSAP ANIMATIONS =====================
     gsap.registerPlugin(ScrollTrigger);
