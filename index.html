@@ -440,6 +440,10 @@
     .hero-caption-kicker { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #fbbf24; opacity: 0.8; }
     .hero-caption-name { color: #fff; font-weight: 600; font-size: 15px; margin-top: 4px; }
     .hero-caption-kind { color: #71717a; font-size: 12px; margin-top: 2px; }
+    .hero-live { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; font-weight: 600; color: #fb923c; transition: color .2s ease; }
+    .hero-live:hover { color: #fdba74; }
+    .hero-live i { font-size: 10px; }
+    .hero-screen { cursor: pointer; }
     .hero-dots { display: flex; gap: 6px; padding-bottom: 4px; }
     .hero-dot { width: 6px; height: 6px; border-radius: 999px; background: #3f3f46; transition: all 0.4s ease; }
     .hero-dot.active { width: 22px; background: #f97316; }
@@ -1496,10 +1500,9 @@
       
       <div class="hidden md:flex items-center gap-6">
         <a href="#servicios" class="nav-link">Servicios</a>
-        <a href="#beneficios" class="nav-link">Beneficios</a>
-        <a href="#portfolio" class="nav-link">Portafolio</a>
-        <a href="#calculadora" class="nav-link">Calculadora</a>
+        <a href="#portfolio" class="nav-link">Trabajos</a>
         <a href="#precios" class="nav-link">Precios</a>
+        <a href="#faq" class="nav-link">Preguntas</a>
         <a href="#contacto" class="btn-primary text-sm">
           <i class="fab fa-whatsapp"></i>
           Consultar gratis
@@ -1513,10 +1516,9 @@
     
     <div class="mobile-menu md:hidden" id="mobile-menu">
       <a href="#servicios">Servicios</a>
-      <a href="#beneficios">Beneficios</a>
-      <a href="#portfolio">Portafolio</a>
-      <a href="#calculadora">Calculadora</a>
+      <a href="#portfolio">Trabajos</a>
       <a href="#precios">Precios</a>
+      <a href="#faq">Preguntas</a>
       <a href="#contacto" class="btn-primary text-center mt-4 justify-center w-full" style="color: black;">
         <i class="fab fa-whatsapp"></i>
         Consultar gratis
@@ -1600,6 +1602,7 @@
                 <div class="hero-caption-kicker">Proyecto real</div>
                 <div class="hero-caption-name" id="hero-shot-name">Club de la Bodega</div>
                 <div class="hero-caption-kind" id="hero-shot-kind">E-commerce · Mendoza</div>
+                <a href="https://club-de-la-bodega.vercel.app/" target="_blank" rel="noopener noreferrer" class="hero-live" id="hero-shot-link">Ver en vivo <i class="fas fa-arrow-up-right-from-square"></i></a>
               </div>
               <div class="hero-dots">
                 <span class="hero-dot active"></span>
@@ -1688,69 +1691,6 @@
           <div class="soft-item"><i class="fas fa-cogs"></i><div><b>Software a medida</b><span>Stock, ventas y clientes</span></div></div>
           <div class="soft-item"><i class="fas fa-chart-line"></i><div><b>Panel y reportes</b><span>Números al instante</span></div></div>
           <div class="soft-item"><i class="fas fa-plug"></i><div><b>Integraciones</b><span>WhatsApp y Mercado Pago</span></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CALCULADORA ROI -->
-  <section id="calculadora" class="section-light py-14">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center mb-8 gsap-reveal">
-        <div class="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-          <i class="fas fa-calculator"></i>
-          Calculadora de retorno
-        </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Cuánto podés ganar?</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Calculá cuánto tiempo te toma recuperar tu inversión con tu propia web.</p>
-      </div>
-      
-      <div class="calculator-section gsap-scale">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="space-y-6">
-            <div>
-              <label class="block text-gray-300 mb-2 font-medium">¿Cuántos clientes atendés por semana?</label>
-              <input type="number" id="clientes-semana" class="calculator-input" placeholder="Ej: 20" min="1">
-            </div>
-            
-            <div>
-              <label class="block text-gray-300 mb-2 font-medium">¿Cuánto cobrás por servicio? ($ ARS)</label>
-              <input type="number" id="precio-servicio" class="calculator-input" placeholder="Ej: 5000" min="1">
-            </div>
-            
-            <div>
-              <label class="block text-gray-300 mb-2 font-medium">¿Cuántos turnos perdés por no tener web?</label>
-              <input type="number" id="turnos-perdidos" class="calculator-input" placeholder="Ej: 5" min="0">
-            </div>
-            
-            <button onclick="calcularROI()" class="btn-primary w-full justify-center">
-              <i class="fas fa-calculator"></i>
-              Calcular mi retorno
-            </button>
-          </div>
-          
-          <div class="flex flex-col justify-center">
-            <div id="calculator-result" class="calculator-result" style="display: none;">
-              <p class="text-gray-400 mb-2">Recuperás tu inversión en:</p>
-              <div class="calculator-result-number" id="dias-retorno">--</div>
-              <p class="text-xl text-white mt-2">días</p>
-              
-              <div class="mt-6 pt-6 border-t border-white/20">
-                <p class="text-gray-400 text-sm mb-1">Ganancia adicional mensual estimada:</p>
-                <p class="text-2xl font-bold text-green-400" id="ganancia-mensual">$0 ARS</p>
-              </div>
-              
-              <a href="#contacto" class="btn-primary w-full justify-center mt-6">
-                <i class="fab fa-whatsapp"></i>
-                Quiero empezar
-              </a>
-            </div>
-            
-            <div id="calculator-placeholder" class="text-center text-gray-500">
-              <i class="fas fa-chart-line text-6xl mb-4 opacity-50"></i>
-              <p>Completá los datos para ver tu proyección</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -2280,6 +2220,69 @@
     </div>
   </section>
 
+  <!-- CALCULADORA ROI -->
+  <section id="calculadora" class="section-light py-14">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-8 gsap-reveal">
+        <div class="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <i class="fas fa-calculator"></i>
+          Calculadora de retorno
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Cuánto podés ganar?</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Calculá cuánto tiempo te toma recuperar tu inversión con tu propia web.</p>
+      </div>
+      
+      <div class="calculator-section gsap-scale">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="space-y-6">
+            <div>
+              <label class="block text-gray-300 mb-2 font-medium">¿Cuántos clientes atendés por semana?</label>
+              <input type="number" id="clientes-semana" class="calculator-input" placeholder="Ej: 20" min="1">
+            </div>
+            
+            <div>
+              <label class="block text-gray-300 mb-2 font-medium">¿Cuánto cobrás por servicio? ($ ARS)</label>
+              <input type="number" id="precio-servicio" class="calculator-input" placeholder="Ej: 5000" min="1">
+            </div>
+            
+            <div>
+              <label class="block text-gray-300 mb-2 font-medium">¿Cuántos turnos perdés por no tener web?</label>
+              <input type="number" id="turnos-perdidos" class="calculator-input" placeholder="Ej: 5" min="0">
+            </div>
+            
+            <button onclick="calcularROI()" class="btn-primary w-full justify-center">
+              <i class="fas fa-calculator"></i>
+              Calcular mi retorno
+            </button>
+          </div>
+          
+          <div class="flex flex-col justify-center">
+            <div id="calculator-result" class="calculator-result" style="display: none;">
+              <p class="text-gray-400 mb-2">Recuperás tu inversión en:</p>
+              <div class="calculator-result-number" id="dias-retorno">--</div>
+              <p class="text-xl text-white mt-2">días</p>
+              
+              <div class="mt-6 pt-6 border-t border-white/20">
+                <p class="text-gray-400 text-sm mb-1">Ganancia adicional mensual estimada:</p>
+                <p class="text-2xl font-bold text-green-400" id="ganancia-mensual">$0 ARS</p>
+              </div>
+              
+              <a href="#contacto" class="btn-primary w-full justify-center mt-6">
+                <i class="fab fa-whatsapp"></i>
+                Quiero empezar
+              </a>
+            </div>
+            
+            <div id="calculator-placeholder" class="text-center text-gray-500">
+              <i class="fas fa-chart-line text-6xl mb-4 opacity-50"></i>
+              <p>Completá los datos para ver tu proyección</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section id="faq" class="section-white py-14">
     <div class="max-w-3xl mx-auto px-6">
@@ -2334,7 +2337,7 @@
   <section id="contacto" class="section-light py-14">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-10 gsap-reveal">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Listo para tu nueva web?</h2>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 elegant-title">¿Listo para tu proyecto?</h2>
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">Completá el formulario y te contactamos en menos de 24 horas.</p>
       </div>
       
@@ -2372,6 +2375,8 @@
                 <option value="turnos">Web con Sistema de Turnos ($84.000 ARS)</option>
                 <option value="premium">Plan Premium ($120.000 ARS)</option>
                 <option value="ecommerce">Tienda Online (Consultar)</option>
+                <option value="software">Software a medida (Consultar)</option>
+                <option value="app">Aplicación para celular (Consultar)</option>
                 <option value="otro">Otro / No estoy seguro</option>
               </select>
             </div>
@@ -2499,6 +2504,9 @@
       const kind = document.getElementById('hero-shot-kind');
       const caption = name ? name.parentElement : null;
       const urlBox = url ? url.parentElement : null;
+      const link = document.getElementById('hero-shot-link');
+      const screen = document.querySelector('.hero-screen');
+      if (screen && link) screen.addEventListener('click', () => window.open(link.href, '_blank', 'noopener'));
       if (shots.length < 2 || !url) return;
       let i = 0;
       // Fade the current site out to black and only then fade the next one in,
@@ -2519,6 +2527,7 @@
           shots[i].classList.add('active');
           dots[i]?.classList.add('active');
           url.textContent = shots[i].dataset.url;
+          if (link) link.href = 'https://' + shots[i].dataset.url + '/';
           if (name) name.textContent = shots[i].dataset.name;
           if (kind) kind.textContent = shots[i].dataset.kind;
           if (caption) caption.style.opacity = 1;
